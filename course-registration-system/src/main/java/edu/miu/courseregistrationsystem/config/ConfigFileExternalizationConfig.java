@@ -17,9 +17,9 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * @author <a href="mailto:ali.amadou@ace3i.com?">Ali AMADOU </a>
+ * @author <a href="mailto:hermann.tipoh@gmail.com">Koffi Adolf Hermann Tipoh </a>
  * @version %I%, %G%
- * @since 02/09/2020
+ * @since 12/16/2022
  */
 @Slf4j
 public class ConfigFileExternalizationConfig {
