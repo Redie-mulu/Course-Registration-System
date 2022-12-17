@@ -74,21 +74,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-        <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.24</version>
-        </dependency>
-		<dependency>
-			<groupId>name.remal.gradle-plugins.lombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.0.0</version>
-		</dependency>
-		<dependency>
-			<groupId>name.remal.lombok</groupId>
-			<artifactId>name.remal.lombok.gradle.plugin</artifactId>
-			<version>1.0.0</version>
-		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
