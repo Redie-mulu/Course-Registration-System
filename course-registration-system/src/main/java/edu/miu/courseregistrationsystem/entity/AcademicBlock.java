@@ -1,13 +1,13 @@
 package edu.miu.courseregistrationsystem.entity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import lombok.Data;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
+@Entity
+@Data
 public class AcademicBlock {
     @Id
     @GeneratedValue
@@ -19,6 +19,7 @@ public class AcademicBlock {
     private LocalDate endDate;
     @ManyToMany(mappedBy = "block", cascade = CascadeType.ALL)
     private List<CourseOffering> courseOffering = new ArrayList<>();
+
 
     public AcademicBlock() {
     }
@@ -33,59 +34,16 @@ public class AcademicBlock {
         this.courseOffering = courseOffering;
     }
 
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSemester() {
-        return semester;
-    }
-
-    public void setSemester(String semester) {
-        this.semester = semester;
-    }
-
-    public LocalDate getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
-
-    public LocalDate getEndDate() {
-        return endDate;
-    }
-
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
-
-    public List<CourseOffering> getCourseOffering() {
-        return courseOffering;
-    }
-
-    public void setCourseOffering(List<CourseOffering> courseOffering) {
-        this.courseOffering = courseOffering;
+    @Override
+    public String toString() {
+        return "AcademicBlock{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                ", semester='" + semester + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", courseOffering=" + courseOffering +
+                '}';
     }
 }
