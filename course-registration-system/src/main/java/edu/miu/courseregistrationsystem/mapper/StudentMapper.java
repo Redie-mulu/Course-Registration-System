@@ -2,33 +2,24 @@ package edu.miu.courseregistrationsystem.mapper;
 
 import edu.miu.courseregistrationsystem.dto.StudentDto;
 import edu.miu.courseregistrationsystem.entity.Student;
+import org.mapstruct.Mapper;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentMapper {
-    public static Student getStudentFromStudentDto(StudentDto studentDto) {
-        Student student = new Student();
-        student.setId(studentDto.getId());
-        student.setName(studentDto.getName());
-        student.setEmail(studentDto.getEmail());
-//        student.setHomeAddress(AddressAdapter.getAddressFromAddressDto(studentDto.getHomeAddress()));
-        return student;
-    }
+/**
+ * @author <a href="mailto:hermann.tipoh@gmail.com">Koffi Adolf Hermann Tipoh </a>
+ * @version %I% %G%
+ * @since 12/17/2022
+ *
+ * Interface to map StudentDto to Student and vice versa
+ */
+@Mapper(componentModel = "spring")
+public interface StudentMapper {
 
-    public static StudentDto getStudentDtoFromStudent(Student student) {
-        StudentDto studentDto = new StudentDto();
-        studentDto.setId(student.getId());
-        studentDto.setName(student.getName());
-        studentDto.setEmail(student.getEmail());
-//        studentDto.setHomeAddress(AddressAdapter.getAddressDtoFromAddress(student.getHomeAddress()));
-        return studentDto;
-    }
-    public static List<StudentDto> getStudentDtosFromStudents(List<Student> students) {
-        List<StudentDto> studentDtos = new ArrayList<>();
-        for (Student student : students) {
-            studentDtos.add(getStudentDtoFromStudent(student));
-        }
-        return studentDtos;
-    }
+    Student studentDtoToStudent(StudentDto studentDto);
+
+    StudentDto studentToStudentDto(Student student);
+
+    List<StudentDto> studentsToStudentDtos(List<Student> students);
 }

@@ -7,8 +7,8 @@ spring:
     database: registrationdb
     hostname: localhost
     port: 5432
-    username: rediet
-    password: testdb1234
+    username:
+    password:
     url: jdbc:postgresql://${spring.datasource.hostname}:${spring.datasource.port}/${spring.datasource.database}
     driver-class-name: org.postgresql.Driver
     hikari:
