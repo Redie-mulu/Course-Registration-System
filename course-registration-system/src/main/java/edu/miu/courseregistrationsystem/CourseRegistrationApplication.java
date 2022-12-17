@@ -1,8 +1,15 @@
 package edu.miu.courseregistrationsystem;
 
 import edu.miu.courseregistrationsystem.config.ConfigFileExternalizationConfig;
+import edu.miu.courseregistrationsystem.entity.Address;
+import edu.miu.courseregistrationsystem.entity.Student;
+import edu.miu.courseregistrationsystem.repository.AddressRepository;
+import edu.miu.courseregistrationsystem.repository.StudentRepository;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -15,7 +22,12 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication(scanBasePackages = {"edu.miu.courseregistrationsystem"})
 @EntityScan(basePackages = {"edu.miu.courseregistrationsystem"})
 @EnableJpaRepositories(basePackages = {"edu.miu.courseregistrationsystem"})
+@OpenAPIDefinition
 public class CourseRegistrationApplication {
+	@Autowired
+	private AddressRepository addressRepository;
+	@Autowired
+	private StudentRepository studentRepository;
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(CourseRegistrationApplication.class);
 
@@ -42,5 +54,4 @@ public class CourseRegistrationApplication {
 			LOGGER.error("Please proceed to manually creation of configuration files!");
 		}
 	}
-
 }
