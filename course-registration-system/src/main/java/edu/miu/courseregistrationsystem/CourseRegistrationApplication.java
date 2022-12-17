@@ -23,7 +23,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan(basePackages = {"edu.miu.courseregistrationsystem"})
 @EnableJpaRepositories(basePackages = {"edu.miu.courseregistrationsystem"})
 @OpenAPIDefinition
-public class CourseRegistrationApplication implements CommandLineRunner {
+public class CourseRegistrationApplication {
 	@Autowired
 	private AddressRepository addressRepository;
 	@Autowired
@@ -53,13 +53,5 @@ public class CourseRegistrationApplication implements CommandLineRunner {
 		} else {
 			LOGGER.error("Please proceed to manually creation of configuration files!");
 		}
-	}
-
-	@Override
-	public void run(String... args) throws Exception {
-		Address address = new Address( "1000 N 4th St", "Fairfield","5227", "Iowa", "Usa");
-		addressRepository.save(address);
-		Student student = new Student(1,"John",  "john@miu.edu", address);
-		studentRepository.save(student);
 	}
 }

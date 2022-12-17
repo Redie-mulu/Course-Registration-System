@@ -19,8 +19,8 @@ public class Student {
     private String email;
     @ManyToOne
     private Address mailingAddress;
-//    @ManyToOne
-//    private Address homeAddress;
+    @ManyToOne
+    private Address homeAddress;
 
     @Override
     public String toString() {
