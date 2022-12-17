@@ -1,6 +1,7 @@
 package edu.miu.courseregistrationsystem;
 
 import edu.miu.courseregistrationsystem.config.ConfigFileExternalizationConfig;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,6 +16,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication(scanBasePackages = {"edu.miu.courseregistrationsystem"})
 @EntityScan(basePackages = {"edu.miu.courseregistrationsystem"})
 @EnableJpaRepositories(basePackages = {"edu.miu.courseregistrationsystem"})
+@OpenAPIDefinition
 public class CourseRegistrationApplication {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(CourseRegistrationApplication.class);
