@@ -1,4 +1,4 @@
-package edu.miu.courseregistrationsystem.service;
+package edu.miu.courseregistrationsystem.mapper;
 
 import edu.miu.courseregistrationsystem.dto.StudentDto;
 import edu.miu.courseregistrationsystem.entity.Student;
@@ -6,7 +6,7 @@ import edu.miu.courseregistrationsystem.entity.Student;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentAdapter {
+public class StudentMapper {
     public static Student getStudentFromStudentDto(StudentDto studentDto) {
         Student student = new Student();
         student.setId(studentDto.getId());

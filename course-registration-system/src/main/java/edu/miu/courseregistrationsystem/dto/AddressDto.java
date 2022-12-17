@@ -13,26 +13,12 @@ import java.util.List;
 @Data
 public class AddressDto {
 
-
     private long id;
     private String street;
     private String city;
     private String postalCode;
     private String stateProvince;
     private String countryRegion;
-    @ManyToMany
     private List<StudentDto> students;
 
-    @Override
-    public String toString() {
-        return "AddressDto{" +
-                "id='" + id + '\'' +
-                ", street='" + street + '\'' +
-                ", city='" + city + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                ", stateProvince='" + stateProvince + '\'' +
-                ", countryRegion='" + countryRegion + '\'' +
-                ", students=" + students +
-                '}';
-    }
 }

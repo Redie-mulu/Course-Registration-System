@@ -16,19 +16,9 @@ public class StudentDto {
     private long id;
     private String name;
     private String email;
-    @ManyToOne
+
     private AddressDto mailingAddress;
-    @ManyToOne
+
     private AddressDto homeAddress;
 
-    @Override
-    public String toString() {
-        return "StudentDto{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", mailingAddress=" + mailingAddress +
-                ", homeAddress=" + homeAddress +
-                '}';
-    }
 }
