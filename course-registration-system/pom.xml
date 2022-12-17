@@ -84,11 +84,7 @@
 			<artifactId>lombok</artifactId>
 			<version>1.0.0</version>
 		</dependency>
-		<dependency>
-			<groupId>name.remal.lombok</groupId>
-			<artifactId>name.remal.lombok.gradle.plugin</artifactId>
-			<version>1.0.0</version>
-		</dependency>
+
 	</dependencies>
   
 	<dependencyManagement>
