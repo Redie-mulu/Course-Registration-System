@@ -1,11 +1,16 @@
 package edu.miu.courseregistrationsystem.entity;
 
 import edu.miu.courseregistrationsystem.entity.AcademicBlock;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+import net.bytebuddy.asm.Advice;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class CourseOffering {
     @Id
     @GeneratedValue
@@ -13,7 +18,7 @@ public class CourseOffering {
     private String code;
     private long capacity;
     private long availableSeats;
-    private String facultyInitial;
+    private String initials;
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "Bloc_CourseOffering",
     joinColumns = {@JoinColumn(name = "courseOffering_id")},
@@ -21,76 +26,42 @@ public class CourseOffering {
     private List<AcademicBlock> block = new ArrayList<>();
     @ManyToOne
     private Course course;
+    @OneToMany
+    @JoinColumn(name = "courseOffering_id")
+    private List<Faculty> staff = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(name = "Registration")
+    private List<Student> students = new ArrayList<>();
 
 
-    public CourseOffering() {
+    public long availableSeats(){
+        return this.capacity - students.size();
+    }
+    public void addAcademicBlock(AcademicBlock block){
+        this.block.add(block);
+    }
+    public void addFaculty(Faculty faculty){
+        staff.add(faculty);
     }
 
-    public CourseOffering(String code, Course course, long capacity, long availableSeats,
-                          List<AcademicBlock> block, String facultyInitial) {
-        this.code = code;
-        this.course = course;
-        this.capacity = capacity;
-        this.availableSeats = availableSeats;
-        this.block = block;
-        this.facultyInitial = facultyInitial;
-    }
-    public long availableSeats(long numberOfStudents){
-        return this.capacity - numberOfStudents;
-    }
-    public long getId() {
-        return id;
+    // Todo
+    public void initial(){
+
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getCourse() {
-        return course;
-    }
-
-    public void setCourse(String course) {
-        this.course = course;
-    }
-
-    public long getCapacity() {
-        return capacity;
-    }
-
-    public void setCapacity(long capacity) {
-        this.capacity = capacity;
-    }
-
-    public long getAvailableSeats() {
-        return availableSeats;
-    }
-
-    public void setAvailableSeats(long availableSeats) {
-        this.availableSeats = availableSeats;
-    }
-
-    public List<AcademicBlock> getBlock() {
-        return block;
-    }
-
-    public void setBlock(List<AcademicBlock> block) {
-        this.block = block;
-    }
-
-    public String getFacultyInitial() {
-        return facultyInitial;
-    }
-
-    public void setFacultyInitial(String facultyInitial) {
-        this.facultyInitial = facultyInitial;
+    @Override
+    public String toString() {
+        return "CourseOffering{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", capacity=" + capacity +
+                ", availableSeats=" + availableSeats +
+                ", initials='" + initials + '\'' +
+                ", block=" + block +
+                ", course=" + course +
+                ", staff=" + staff +
+                ", students=" + students +
+                '}';
     }
 }
