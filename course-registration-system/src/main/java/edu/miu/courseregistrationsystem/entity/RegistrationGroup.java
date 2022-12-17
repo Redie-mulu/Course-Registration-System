@@ -1,17 +1,13 @@
 package edu.miu.courseregistrationsystem.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 @Entity
 public class RegistrationGroup {
 
-    @Id
+    @Id @GeneratedValue
     long id;
     @OneToMany
     private List<Student> students;
-    @ManyToOne
-    private RegistrationEvent registrationEvent;
+
 }
