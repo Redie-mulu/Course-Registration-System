@@ -23,19 +23,19 @@ public class StudentServiceImp implements StudentService {
     }
 
     @Override
-    public void dropStudent(String id) {
+    public void dropStudent(long id) {
         studentRepository.deleteById(id);
     }
 
     @Override
-    public StudentDto updateStudent(String id, StudentDto studentDto) {
+    public StudentDto updateStudent(long id, StudentDto studentDto) {
         Student student = StudentAdapter.getStudentFromStudentDto(studentDto);
         studentRepository.save(student);
         return studentDto;
     }
 
     @Override
-    public StudentDto getStudent(String id) {
+    public StudentDto getStudent(long id) {
         Student student = studentRepository.findById(id).get();
         StudentDto studentDto = StudentAdapter.getStudentDtoFromStudent(student);
         return studentDto;

@@ -6,9 +6,9 @@ import java.util.List;
 
 public interface StudentService {
     public StudentDto registerStudent(StudentDto studentDto);
-    public void dropStudent(String id);
-    public StudentDto updateStudent(String id, StudentDto studentDto);
-    public StudentDto getStudent(String id);
+    public void dropStudent(long id);
+    public StudentDto updateStudent(long id, StudentDto studentDto);
+    public StudentDto getStudent(long id);
     public List<StudentDto> getAllStudents();
 
 }

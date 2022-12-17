@@ -14,7 +14,7 @@ import java.util.List;
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private long id;
     private String name;
     private String email;
     @ManyToOne
@@ -32,4 +32,5 @@ public class Student {
 //                ", homeAddress=" + homeAddress +
                 '}';
     }
+
 }

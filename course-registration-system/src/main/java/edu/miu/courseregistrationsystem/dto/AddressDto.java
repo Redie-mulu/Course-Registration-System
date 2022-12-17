@@ -14,7 +14,7 @@ import java.util.List;
 public class AddressDto {
 
 
-    private String id;
+    private long id;
     private String street;
     private String city;
     private String postalCode;

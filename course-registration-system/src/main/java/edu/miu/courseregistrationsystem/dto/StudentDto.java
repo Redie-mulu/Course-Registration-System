@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class StudentDto {
-    private String id;
+    private long id;
     private String name;
     private String email;
     @ManyToOne

@@ -3,10 +3,10 @@ package edu.miu.courseregistrationsystem.service.imp;
 import edu.miu.courseregistrationsystem.dto.AddressDto;
 import edu.miu.courseregistrationsystem.entity.Address;
 import edu.miu.courseregistrationsystem.repository.AddressRepository;
+import edu.miu.courseregistrationsystem.service.AddressAdapter;
 import edu.miu.courseregistrationsystem.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class AddressServiceImp implements AddressService {
@@ -15,24 +15,29 @@ public class AddressServiceImp implements AddressService {
     private AddressRepository addressRepository;
 
     @Override
-    public AddressDto getAddressById(String id) {
-//        Address address = addressRepository.findById(id).get();
-        return null;
+    public AddressDto getAddressById(long id) {
+        Address address = addressRepository.findById(id).get();
+        AddressDto addressDto = AddressAdapter.getAddressDtoFromAddress(address);
+        return addressDto;
     }
 
     @Override
     public AddressDto createAddress(AddressDto addressDto) {
-        return null;
+        Address address = AddressAdapter.getAddressFromAddressDto(addressDto);
+        addressRepository.save(address);
+        return addressDto;
     }
 
     @Override
     public AddressDto updateAddress(AddressDto addressDto) {
-        return null;
+        Address address = AddressAdapter.getAddressFromAddressDto(addressDto);
+        addressRepository.save(address);
+        return addressDto;
     }
 
     @Override
-    public void deleteAddress(String id) {
-
+    public void deleteAddress(long id) {
+        addressRepository.deleteById(id);
     }
 
 }
