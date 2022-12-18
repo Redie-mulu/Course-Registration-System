@@ -10,6 +10,11 @@ import javax.persistence.Entity;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+/**
+ * @author Rediet
+ * @version 1.0
+ * @created 17-Dec-2022 12:48 AM
+ */
 public class Faculty extends User{
     private String title;
 }

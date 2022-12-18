@@ -7,6 +7,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * @author REDIET
+ * @version 1.0
+ *@created 16-Dec-2022 10:00:00 AM
+ */
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,7 +35,7 @@ public class Student extends User {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", mailingAddress=" + mailingAddress +
-//                ", homeAddress=" + homeAddress +
+                ", homeAddress=" + homeAddress +
                 '}';
     }
 

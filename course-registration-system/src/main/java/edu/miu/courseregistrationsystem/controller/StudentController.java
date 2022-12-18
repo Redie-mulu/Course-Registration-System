@@ -36,7 +36,7 @@ public class StudentController {
     @PostMapping("/register")
     public ResponseEntity<?> registerStudent(@RequestBody StudentDto studentDto) {
         studentService.registerStudent(studentDto);
-        return new ResponseEntity<>(studentDto, null, 200);
+        return new ResponseEntity<StudentDto>(studentDto, HttpStatus.OK);
     }
     @GetMapping("/{id}")
     public ResponseEntity<?> getStudent(@PathVariable long id) {
@@ -52,6 +52,15 @@ public class StudentController {
     public ResponseEntity<?> dropStudent(@PathVariable long id) {
         studentService.dropStudent(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+    /**
+     * admin can add student
+     * @param "studentDto"
+     */
+    @PostMapping
+    public ResponseEntity<?> addStudents(@RequestBody List<StudentDto> studentDtos) {
+        studentService.addStudents(studentDtos);
+        return new ResponseEntity<Students>(HttpStatus.OK);
     }
 
 }

@@ -23,4 +23,8 @@ public class Students {
     public void setStudents(List<StudentDto> students) {
         this.students = students;
     }
+
+    public List<StudentDto> getStudents() {
+        return students;
+    }
 }

@@ -13,8 +13,8 @@ import java.util.List;
  * @version 1.0
  * @created 09/12/2020 10:00 PM
  */
-@AllArgsConstructor
-@NoArgsConstructor
+
+
 @Data
 public class AddressDto {
 
@@ -24,6 +24,5 @@ public class AddressDto {
     private String postalCode;
     private String stateProvince;
     private String countryRegion;
-    private List<StudentDto> students;
 
 }

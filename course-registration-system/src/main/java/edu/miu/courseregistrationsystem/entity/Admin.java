@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 /**
  * @author Rediet
  * @version 1.0
- * @created 10/12/2020 12:48 AM
+ * @created 17-Dec-2022 12:48 AM
  */
 @Entity
 @Data

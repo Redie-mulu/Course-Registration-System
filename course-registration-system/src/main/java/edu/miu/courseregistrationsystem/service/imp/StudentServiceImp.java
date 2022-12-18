@@ -50,4 +50,15 @@ public class StudentServiceImp implements StudentService {
         //return studentDtos;
         return null;
     }
+
+    /**
+     * @author Rediet
+     * @param students
+     * admin can add students
+     * @return
+     */
+    @Override
+    public List<Student> addStudents(List<StudentDto> students) {
+        return studentRepository.saveAll(studentMapper.getStudentsFromStudentDtos(students));
+    }
 }

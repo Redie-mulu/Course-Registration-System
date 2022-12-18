@@ -2,6 +2,11 @@ package edu.miu.courseregistrationsystem.entity;
 
 import javax.persistence.*;
 
+/**
+ * @author REDIET
+ * @version 1.0
+ *@created 16-Dec-2022 9:00:00 AM
+ */
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class User {

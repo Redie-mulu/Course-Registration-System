@@ -1,6 +1,7 @@
 package edu.miu.courseregistrationsystem.controller;
 
 import edu.miu.courseregistrationsystem.dto.RegistrationEventDto;
+import edu.miu.courseregistrationsystem.dto.StudentDto;
 import edu.miu.courseregistrationsystem.service.RegistrationEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/registration-events")
-public class RegistrationEventController {
+public class  RegistrationEventController {
     @Autowired
     private RegistrationEventService registrationEventService;
 
@@ -48,13 +49,21 @@ public class RegistrationEventController {
         registrationEventService.deleteRegistrationEvent(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
-
     @GetMapping("/latest")
     public ResponseEntity<?> getLatestRegistrationEvent() {
         List<RegistrationEventDto> registrationEventDto = registrationEventService.getLatestRegistrationEvent();
         return new ResponseEntity<List<RegistrationEventDto>>(registrationEventDto, HttpStatus.OK);
     }
-
-
+    /**
+     * admin can add student
+     * REST API for admin to add registration event
+     * ADMINE CAN CALL THIS API
+     * need to use FeignClient to call student service to get all students
+     */
+    @PostMapping("/student)")
+    public ResponseEntity<?> addNewStudents(List<StudentDto> studentDtos) {
+//        studentService.addNewStudents(studentDtos);
+        return new ResponseEntity<List<StudentDto>>(studentDtos, HttpStatus.OK);
+    }
 
 }
