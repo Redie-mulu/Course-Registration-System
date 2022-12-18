@@ -13,8 +13,8 @@ public class RegistrationRequest {
     private long id;
     private int priorityNumber;
 
-     @ManyToMany
-     @JoinTable(name="Registration")
+     @OneToMany
+     @JoinColumn(name="registration_id")
     private List<CourseOffering> courseOffering;
      @ManyToOne
      private Student student ;

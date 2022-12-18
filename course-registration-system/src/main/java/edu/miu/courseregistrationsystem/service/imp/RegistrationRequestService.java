@@ -1,7 +1,15 @@
 package edu.miu.courseregistrationsystem.service.imp;
 
+import edu.miu.courseregistrationsystem.entity.RegistrationEvent;
+import edu.miu.courseregistrationsystem.entity.RegistrationRequest;
+import edu.miu.courseregistrationsystem.repository.CourseOfferingRepository;
+import edu.miu.courseregistrationsystem.repository.RegistrationEventRepository;
 import edu.miu.courseregistrationsystem.repository.RegistrationRequestRepository;
+import name.remal.gradleplugins.lombok.internal._relocated.name.remal.gradleplugins.toolkit.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.time.Instant;
+import java.util.List;
 
 @Service
 public class RegistrationRequestService {
@@ -32,7 +40,7 @@ public class RegistrationRequestService {
                 .collect(Collectors.toMap(CourseOffering::getId, Function.identity()));
         for (RegistrationRequest request : requests) {
             CourseOffering courseOffering = courseOfferingsById.get(request.getCourseOfferingId());
-            if (courseOffering == null) {
+            if (courseOffering == null)
                 throw new InvalidRequestException("Invalid course offering ID: " + request.getCourseOfferingId());
             }
             if (request.getPriority() < 1 || request.getPriority() > courseOffering.getBlock().getCourseOfferings().size()) {
