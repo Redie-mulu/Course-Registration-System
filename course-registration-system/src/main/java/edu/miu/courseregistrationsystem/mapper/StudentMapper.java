@@ -5,7 +5,7 @@ import edu.miu.courseregistrationsystem.entity.Student;
 import org.mapstruct.Mapper;
 import java.util.List;
 
-/** @author: Redie
+/** @author: Rediet
  * @Version: 1.0
  * @created: 10/12/2020 10:00 AM
  */

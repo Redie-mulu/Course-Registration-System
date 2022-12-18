@@ -23,7 +23,11 @@ public class AcademicBlock {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
+    /**
+     * The code for the course offering
+     *
+     * 2020-09-01D
+      */
     private String code;
     /**
      * The name of the academic block

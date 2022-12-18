@@ -21,6 +21,8 @@ public class RegistrationEvent {
     @OneToMany
     List<RegistrationGroup> registrationGroups;
 
+
+
     @Override
     public String toString() {
         return "RegistrationEvent{" +

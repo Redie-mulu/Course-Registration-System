@@ -23,8 +23,4 @@ public class AcademicBlockDto {
     private LocalDate endDate;
     private List<CourseOfferingDto> courseOfferings = new ArrayList<>();
 
-
- /*   public void addCourseOffering(CourseOfferingDto courseOffering){
-        this.courseOfferings.add(courseOffering);
-    }*/
 }

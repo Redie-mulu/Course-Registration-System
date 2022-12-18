@@ -8,6 +8,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.ManyToMany;
 import java.util.List;
 
+/**
+ * @author Rediet
+ * @version 1.0
+ * @created 09/12/2020 10:00 PM
+ */
 @AllArgsConstructor
 @NoArgsConstructor
 @Data

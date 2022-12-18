@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @author
  * @version 1.0
@@ -14,14 +16,17 @@ import org.springframework.web.bind.annotation.*;
  */
 
 @RestController
-@RequestMapping("api/registrationEvents")
+@RequestMapping("api/registration-events")
 public class RegistrationEventController {
     @Autowired
     private RegistrationEventService registrationEventService;
 
     @GetMapping
-    public String getAllRegistrationEvents() {
-        return "Hello World";
+    public ResponseEntity<?> getAllRegistrationEvents() {
+        RegistrationEvents registrationEvents = new RegistrationEvents();
+        List<RegistrationEventDto> registrationEvents2 = registrationEventService.getAllRegistrationEvents();
+        registrationEvents.setRegistrationEvents(registrationEvents2);
+        return new ResponseEntity<>(registrationEvents, HttpStatus.OK);
     }
     @PostMapping
     public ResponseEntity<?> addRegistrationEvent(@RequestBody RegistrationEventDto registrationEventDto) {
@@ -44,6 +49,11 @@ public class RegistrationEventController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
+    @GetMapping("/latest")
+    public ResponseEntity<?> getLatestRegistrationEvent() {
+        List<RegistrationEventDto> registrationEventDto = registrationEventService.getLatestRegistrationEvent();
+        return new ResponseEntity<List<RegistrationEventDto>>(registrationEventDto, HttpStatus.OK);
+    }
 
 
 

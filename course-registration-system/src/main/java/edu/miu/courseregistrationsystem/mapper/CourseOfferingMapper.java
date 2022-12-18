@@ -2,25 +2,19 @@ package edu.miu.courseregistrationsystem.mapper;
 
 import edu.miu.courseregistrationsystem.dto.CourseOfferingDto;
 import edu.miu.courseregistrationsystem.entity.CourseOffering;
+import org.mapstruct.Mapper;
 
 import java.util.ArrayList;
 import java.util.List;
-
-public class CourseOfferingMapper {
-    public static CourseOffering getCourseOfferingFromCourseOfferingDto(CourseOfferingDto courseOfferingDto) {
-        CourseOffering courseOffering = new CourseOffering();
-        return courseOffering;
-    }
-    public static CourseOfferingDto getCourseOfferingDtoFromCourseOffering(CourseOffering courseOffering) {
-        CourseOfferingDto courseOfferingDto = new CourseOfferingDto();
-        return courseOfferingDto;
-    }
-    public static List<CourseOffering> getCourseOfferingsFromCourseOfferingDtos(List<CourseOfferingDto> courseOfferingDtos) {
-        List<CourseOffering> courseOfferings = new ArrayList<>();
-        return courseOfferings;
-    }
-    public static List<CourseOfferingDto> getCourseOfferingDtosFromCourseOfferings(List<CourseOffering> courseOfferings) {
-        List<CourseOfferingDto> courseOfferingDtos = new ArrayList<>();
-        return courseOfferingDtos;
-    }
+/**
+ * @author Rediet
+ * @version 1.0
+ * @created 10/12/2020 12:10 AM
+ */
+@Mapper(componentModel = "spring")
+public interface CourseOfferingMapper {
+    public CourseOffering getCourseOfferingFromCourseOfferingDto(CourseOfferingDto courseOfferingDto);
+    public CourseOfferingDto getCourseOfferingDtoFromCourseOffering(CourseOffering courseOffering);
+    public List<CourseOffering> getCourseOfferingsFromCourseOfferingDtos(List<CourseOfferingDto> courseOfferingDtos);
+    public List<CourseOfferingDto> getCourseOfferingDtosFromCourseOfferings(List<CourseOffering> courseOfferings);
 }

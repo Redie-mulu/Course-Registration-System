@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
 /**
  * @author
  * @version 1.0
@@ -19,7 +22,14 @@ public class StudentController {
     private StudentService studentService;
 
     @GetMapping
-    public String getAllStudents() {
+    public ResponseEntity<?> getAllStudents() {
+        Students students = new Students();
+        List<StudentDto> students2 = studentService.getAllStudents();
+        students.setStudents(students2);
+        return new ResponseEntity<>(students, HttpStatus.OK);
+    }
+    @GetMapping("/test")
+    public String test() {
         return "Hello World";
     }
 
