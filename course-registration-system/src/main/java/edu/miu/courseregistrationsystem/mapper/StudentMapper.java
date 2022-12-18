@@ -4,10 +4,10 @@ import edu.miu.courseregistrationsystem.dto.StudentDto;
 import edu.miu.courseregistrationsystem.entity.Student;
 import org.mapstruct.Mapper;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * * @author: Redie
  * @author <a href="mailto:hermann.tipoh@gmail.com">Koffi Adolf Hermann Tipoh </a>
  * @version %I% %G%
  * @since 12/17/2022
@@ -17,9 +17,15 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface StudentMapper {
 
-    Student studentDtoToStudent(StudentDto studentDto);
 
-    StudentDto studentToStudentDto(Student student);
+    public Student getStudentFromStudentDto(StudentDto studentDto);
 
-    List<StudentDto> studentsToStudentDtos(List<Student> students);
+    public StudentDto getStudentDtoFromStudent(Student student);
+
+    public List<StudentDto> getStudentDtosFromStudents(List<Student> students);
+
+    public List<Student> getStudentsFromStudentDtos(List<StudentDto> studentDtos);
+
 }
+
+
