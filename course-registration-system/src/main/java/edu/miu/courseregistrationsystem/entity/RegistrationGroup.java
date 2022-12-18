@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 import javax.persistence.*;
 import java.util.List;
 @Entity
@@ -11,7 +12,8 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class RegistrationGroup {
-    @Id
+
+    @Id @GeneratedValue
     long id;
     @OneToMany
     @JoinColumn

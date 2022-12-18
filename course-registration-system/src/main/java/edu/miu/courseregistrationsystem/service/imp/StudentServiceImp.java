@@ -19,6 +19,7 @@ public class StudentServiceImp implements StudentService {
 
     @Override
     public StudentDto registerStudent(StudentDto studentDto) {
+
         Student student = studentMapper.getStudentFromStudentDto(studentDto);
         studentRepository.save(student);
         return studentDto;
@@ -46,8 +47,7 @@ public class StudentServiceImp implements StudentService {
     @Override
     public List<StudentDto> getAllStudents() {
         List<Student> students = studentRepository.findAll();
-        //List<StudentDto> studentDtos = StudentMapper.getStudentDtosFromStudents(students);
-        //return studentDtos;
-        return null;
+        List<StudentDto> studentDtos = studentMapper.getStudentDtosFromStudents(students);
+        return studentDtos;
     }
 }
