@@ -1,6 +1,7 @@
 package edu.miu.courseregistrationsystem.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class RegistrationEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,4 +20,14 @@ public class RegistrationEvent {
     private LocalDate endDate;
     @OneToMany
     List<RegistrationGroup> registrationGroups;
+
+    @Override
+    public String toString() {
+        return "RegistrationEvent{" +
+                "id=" + id +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", registrationGroups=" + registrationGroups +
+                '}';
+    }
 }

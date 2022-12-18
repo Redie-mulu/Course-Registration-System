@@ -16,5 +16,5 @@ public class RegistrationEventDto {
     private long id;
     private LocalDate startDate;
     private LocalDate endDate;
-    List<RegistrationGroup> registrationGroups;
+    List<RegistrationGroupDto> registrationGroups;
 }

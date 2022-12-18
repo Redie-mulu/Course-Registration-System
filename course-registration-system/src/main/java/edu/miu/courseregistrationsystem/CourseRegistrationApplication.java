@@ -24,11 +24,6 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableJpaRepositories(basePackages = {"edu.miu.courseregistrationsystem"})
 @OpenAPIDefinition
 public class CourseRegistrationApplication {
-	@Autowired
-	private AddressRepository addressRepository;
-	@Autowired
-	private StudentRepository studentRepository;
-
 	private static final Logger LOGGER = LoggerFactory.getLogger(CourseRegistrationApplication.class);
 
 	public static void main(String[] args) {
