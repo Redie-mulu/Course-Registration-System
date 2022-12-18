@@ -3,7 +3,7 @@ package edu.miu.courseregistrationsystem.service.imp;
 import edu.miu.courseregistrationsystem.dto.AddressDto;
 import edu.miu.courseregistrationsystem.entity.Address;
 import edu.miu.courseregistrationsystem.repository.AddressRepository;
-import edu.miu.courseregistrationsystem.service.AddressAdapter;
+import edu.miu.courseregistrationsystem.mapper.AddressAdapter;
 import edu.miu.courseregistrationsystem.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

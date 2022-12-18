@@ -20,9 +20,6 @@ public class Address {
     private String postalCode;
     private String stateProvince;
     private String countryRegion;
-//    @OneToMany(cascade = CascadeType.PERSIST)
-//    @JoinColumn(name = "address_id")
-//    private List<Student> students;
 
     public Address(String street, String city, String postalCode, String stateProvince, String countryRegion) {
         this.street = street;

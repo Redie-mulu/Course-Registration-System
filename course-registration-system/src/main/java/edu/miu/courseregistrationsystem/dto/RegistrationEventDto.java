@@ -1,21 +1,20 @@
-package edu.miu.courseregistrationsystem.entity;
+package edu.miu.courseregistrationsystem.dto;
 
+import edu.miu.courseregistrationsystem.entity.RegistrationGroup;
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.OneToMany;
 import java.time.LocalDate;
 import java.util.List;
 
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class RegistrationEvent {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+@Getter
+public class RegistrationEventDto {
     private long id;
     private LocalDate startDate;
     private LocalDate endDate;
-    @OneToMany
     List<RegistrationGroup> registrationGroups;
 }
