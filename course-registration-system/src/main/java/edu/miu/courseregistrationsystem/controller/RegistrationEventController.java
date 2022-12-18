@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("api/registrationEvents")
 public class RegistrationEventController {
+
+    @Autowired
+    private final RegistrationEventService registrationEventService;
+
     @Autowired
     private RegistrationEventService registrationEventService;
 
@@ -42,5 +46,12 @@ public class RegistrationEventController {
     public ResponseEntity<?> deleteRegistrationEvent(@PathVariable long id) {
         registrationEventService.deleteRegistrationEvent(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @PatchMapping("/{id}")
+    public void processRegistrationEvent(@PathVariable Long id, @RequestParam("processed") boolean processed) {
+        if (processed) {
+            registrationEventService.processRegistrationEvent(id);
+        }
     }
 }
