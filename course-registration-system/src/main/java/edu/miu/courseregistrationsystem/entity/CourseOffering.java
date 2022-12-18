@@ -1,9 +1,7 @@
 package edu.miu.courseregistrationsystem.entity;
 
-import edu.miu.courseregistrationsystem.entity.AcademicBlock;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import net.bytebuddy.asm.Advice;
 
 import javax.persistence.*;
 import java.util.ArrayList;

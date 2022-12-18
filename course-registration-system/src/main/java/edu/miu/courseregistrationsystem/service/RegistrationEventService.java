@@ -1,0 +1,13 @@
+package edu.miu.courseregistrationsystem.service;
+
+import edu.miu.courseregistrationsystem.dto.RegistrationEventDto;
+
+import java.util.List;
+
+public interface RegistrationEventService {
+    public RegistrationEventDto addRegistrationEvent(RegistrationEventDto registrationEventDto);
+    public RegistrationEventDto updateRegistrationEvent(long id,  RegistrationEventDto registrationEventDto);
+    public RegistrationEventDto deleteRegistrationEvent(long id);
+    public RegistrationEventDto getRegistrationEvent(long id);
+    public List<RegistrationEventDto> getAllRegistrationEvents();
+}

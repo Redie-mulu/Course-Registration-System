@@ -6,6 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+/**
+ * @author
+ * @version 1.0
+ * @created 12-Sep-2020 10:00:00 AM
+ */
 
 @RestController
 @RequestMapping("/api/students")
@@ -26,7 +31,7 @@ public class StudentController {
     @GetMapping("/{id}")
     public ResponseEntity<?> getStudent(@PathVariable long id) {
         StudentDto studentDto = studentService.getStudent(id);
-        return new ResponseEntity<>(studentDto, null, 200);
+        return new ResponseEntity<StudentDto>(studentDto, HttpStatus.OK);
     }
     @PutMapping("/{id}")
     public ResponseEntity<?> updateStudent(@PathVariable long id, @RequestBody StudentDto studentDto) {
