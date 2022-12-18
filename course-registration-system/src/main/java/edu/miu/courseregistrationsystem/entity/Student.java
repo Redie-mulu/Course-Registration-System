@@ -17,8 +17,10 @@ public class Student extends User {
     private String name;
     private String email;
     @ManyToOne
+    @JoinColumn(name = "mailing_address_id")
     private Address mailingAddress;
     @ManyToOne
+    @JoinColumn(name = "home_address_id")
     private Address homeAddress;
 
     @Override
