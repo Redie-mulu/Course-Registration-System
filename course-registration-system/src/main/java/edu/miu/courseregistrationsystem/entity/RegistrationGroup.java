@@ -7,6 +7,12 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+
+/**
+ * @author Rediet
+ * @version 1.0
+ * @created 17-Dec-2022 5:00 PM
+ */
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -18,8 +24,6 @@ public class RegistrationGroup {
     @OneToMany
     @JoinColumn
     private List<Student> students;
-    @ManyToOne
-    private RegistrationEvent registrationEvent;
     @OneToMany
     private List<AcademicBlock> academicBlocks;
 }

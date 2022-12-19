@@ -3,6 +3,8 @@ package edu.miu.courseregistrationsystem.mapper;
 import edu.miu.courseregistrationsystem.dto.StudentDto;
 import edu.miu.courseregistrationsystem.entity.Student;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.Mappings;
 
 import java.util.List;
 
@@ -17,15 +19,13 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface StudentMapper {
 
+    public Student studentFromStudentDto(StudentDto studentDto);
 
-    public Student getStudentFromStudentDto(StudentDto studentDto);
+    public StudentDto studentDtoFromStudent(Student student);
 
-    public StudentDto getStudentDtoFromStudent(Student student);
+    public List<StudentDto> studentDtosFromStudents(List<Student> students);
 
-    public List<StudentDto> getStudentDtosFromStudents(List<Student> students);
-
-    public List<Student> getStudentsFromStudentDtos(List<StudentDto> studentDtos);
-
+    public List<Student> studentsFromStudentDtos(List<StudentDto> studentDtos);
 }
 
 

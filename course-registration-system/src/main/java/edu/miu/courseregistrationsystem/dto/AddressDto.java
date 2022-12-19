@@ -8,8 +8,13 @@ import lombok.NoArgsConstructor;
 import javax.persistence.ManyToMany;
 import java.util.List;
 
-@AllArgsConstructor
-@NoArgsConstructor
+/**
+ * @author Rediet
+ * @version 1.0
+ * @created 09/12/2020 10:00 PM
+ */
+
+
 @Data
 public class AddressDto {
 
@@ -19,6 +24,5 @@ public class AddressDto {
     private String postalCode;
     private String stateProvince;
     private String countryRegion;
-    private List<StudentDto> students;
 
 }

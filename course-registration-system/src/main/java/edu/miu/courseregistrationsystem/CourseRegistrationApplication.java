@@ -10,6 +10,7 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+//import org.springframework.jms.annotation.EnableJms;
 
 
 //@EnableScheduling
@@ -17,6 +18,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan(basePackages = {"edu.miu.courseregistrationsystem"})
 @EnableJpaRepositories(basePackages = {"edu.miu.courseregistrationsystem"})
 @OpenAPIDefinition
+//@EnableJms
 public class CourseRegistrationApplication {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(CourseRegistrationApplication.class);

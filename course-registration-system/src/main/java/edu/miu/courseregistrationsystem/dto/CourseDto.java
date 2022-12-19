@@ -20,10 +20,6 @@ public class CourseDto {
     private LocalDate startDate;
     private LocalDate endDate;
 
-    private List<CourseOffering> courseOffering = new ArrayList<>();
+    private List<CourseOfferingDto> courseOffering;
 
-
-    public void addCourseOffering(CourseOffering courseOffering){
-        this.courseOffering.add(courseOffering);
-    }
 }

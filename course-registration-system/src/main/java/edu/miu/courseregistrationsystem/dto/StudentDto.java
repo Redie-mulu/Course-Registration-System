@@ -17,8 +17,18 @@ public class StudentDto {
     private String name;
     private String email;
 
-    private AddressDto mailingAddress;
+    private Address mailingAddress;
 
-    private AddressDto homeAddress;
+    private Address homeAddress;
+
+    @Data
+    public static class Address {
+        private long id;
+        private String street;
+        private String city;
+        private String postalCode;
+        private String stateProvince;
+        private String countryRegion;
+    }
 
 }
