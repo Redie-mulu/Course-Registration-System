@@ -1,7 +1,6 @@
 package edu.miu.courseregistrationsystem.service.imp;
 
 import edu.miu.courseregistrationsystem.dto.AdminDto;
-import edu.miu.courseregistrationsystem.dto.RegistrationRequestDto;
 import edu.miu.courseregistrationsystem.entity.Admin;
 import edu.miu.courseregistrationsystem.mapper.AdminMapper;
 import edu.miu.courseregistrationsystem.repository.AdminRepository;
@@ -20,7 +19,7 @@ public class AdminServiceImp implements AdminService {
 
     @Override
     public AdminDto save(AdminDto adminDto) {
-        Admin admin=  adminMapper.getAdminFromAdminDto(adminDto);
+        Admin admin=  adminMapper.adminToAdminDto(adminDto);
         adminRepository.save(admin);
         return  adminDto;
     }
@@ -28,7 +27,7 @@ public class AdminServiceImp implements AdminService {
     @Override
     public List<AdminDto> allAdmin() {
         List<AdminDto> adminDtos= adminRepository.findAll().
-                stream().map(x-> adminMapper.getAdminDtoFromAdmin(x)).
+                stream().map(x-> adminMapper.adminToAdminDto(x)).
                 collect(Collectors.toList());
         return  adminDtos;
 
@@ -39,7 +38,7 @@ public class AdminServiceImp implements AdminService {
 
         Admin admin= adminRepository.findById(id).get();
 
-        return adminMapper.getAdminDtoFromAdmin(admin);
+        return adminMapper.adminToAdminDto(admin);
 
     }
 }

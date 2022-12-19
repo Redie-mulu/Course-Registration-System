@@ -50,9 +50,9 @@ public class RegistrationRequestController {
         return new ResponseEntity<RegistrationRequestDto>(registrationRequestDto, HttpStatus.OK);
     }
 
-    @PostMapping("/{id}/submitRegistrationRequests")
-    public ResponseEntity<?> submitRegistrationRequests(@RequestBody List<RegistrationRequestDto> registrationRequestDtos,@PathVariable long id) {
-        registrationRequestService.submitRegistrationRequests(registrationRequestDtos,id);
+    @PostMapping("/{studentId}/{eventId}/submitRegistrationRequests")
+    public ResponseEntity<?> submitRegistrationRequests(@PathVariable long studentId, @RequestBody List<RegistrationRequestDto> registrationRequestDtos,@PathVariable long eventId) {
+        registrationRequestService.submitRegistrationRequests(studentId,registrationRequestDtos,eventId);
         return new ResponseEntity<>(registrationRequestDtos, HttpStatus.OK);
     }
 

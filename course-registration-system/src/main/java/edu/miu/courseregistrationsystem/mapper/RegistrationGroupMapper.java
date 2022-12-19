@@ -12,11 +12,11 @@ public class RegistrationGroupMapper {
     public RegistrationGroup getRegistrationGroupFromRegistrationGroupDto(RegistrationGroupDto registrationGroupDto) {
         RegistrationGroup registrationGroup = new RegistrationGroup();
         registrationGroup.setId(registrationGroupDto.getId());
-        registrationGroup.setStudents(studentMapper.getStudentsFromStudentDtos(registrationGroupDto.getStudents()));
+        registrationGroup.setStudents(studentMapper.studentDtosToStudents(registrationGroupDto.getStudents()));
         return registrationGroup;
     }
     public RegistrationGroupDto getRegistrationGroupDtoFromRegistrationGroup(RegistrationGroup registrationGroup) {
-        RegistrationGroupDto registrationGroupDto = new RegistrationGroupDto(registrationGroup.getId(),studentMapper.getStudentDtosFromStudents(registrationGroup.getStudents()),
+        RegistrationGroupDto registrationGroupDto = new RegistrationGroupDto(registrationGroup.getId(),studentMapper.studentsToStudentDtos(registrationGroup.getStudents()),
         registrationGroup.getRegistrationEvent(), AcademicBlockMapper.getAcademicBlockDtosFromAcademicBlocks(registrationGroup.getAcademicBlocks()));
         return registrationGroupDto;
     }

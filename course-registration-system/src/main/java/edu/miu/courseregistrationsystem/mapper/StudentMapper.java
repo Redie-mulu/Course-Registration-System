@@ -18,14 +18,15 @@ import java.util.List;
 public interface StudentMapper {
 
 
-    public Student getStudentFromStudentDto(StudentDto studentDto);
+    public Student studentDtoToStudent(StudentDto studentDto);
 
-    public StudentDto getStudentDtoFromStudent(Student student);
+    public StudentDto studentToStudentDto(Student student);
 
-    public List<StudentDto> getStudentDtosFromStudents(List<Student> students);
+    public List<StudentDto> studentsToStudentDtos(List<Student> students);
 
-    public List<Student> getStudentsFromStudentDtos(List<StudentDto> studentDtos);
+    public List<Student> studentDtosToStudents(List<StudentDto> studentDtos);
 
 }
+
 
 

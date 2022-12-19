@@ -1,0 +1,46 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -5,14 +5,8 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="f8907c85-f0d0-4dff-8c02-19e3acf3e2dc" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/UserController.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/entity/Role.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/imp/UserServiceImpl.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/dto/AdminDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/dto/AdminDto.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/dto/StudentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/dto/StudentDto.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/entity/User.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/imp/RegistrationRequestServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/imp/RegistrationRequestServiceImp.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/UserController.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+Index: course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/UserController.java
+===================================================================
+diff --git a/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/UserController.java b/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/UserController.java
+--- a/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/UserController.java	
++++ b/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/UserController.java	
+@@ -21,7 +21,7 @@
+ //    @Autowired
+ //    private  FacultyService facultyService
+ 
+-    @Autowired
++
+ 
+ 
+     @PostMapping("/signup/student")
+@@ -48,6 +48,7 @@
+     }
+     @GetMapping("/")
+     public String hello(){
++
+         return  "Welcome To Course Registration System";
+     }
+ }

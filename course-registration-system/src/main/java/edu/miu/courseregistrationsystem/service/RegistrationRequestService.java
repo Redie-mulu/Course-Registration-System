@@ -18,7 +18,8 @@ public interface RegistrationRequestService  {
     public void deleteRegistrationRequest(long id);
     public RegistrationRequestDto addRegistrationRequest(RegistrationRequestDto registrationRequest);
 
-    public void submitRegistrationRequests(List<RegistrationRequestDto> registrationRequestDtos,long id);
+
+    public void submitRegistrationRequests(long studentId, List<RegistrationRequestDto> registrationRequestDtos,long  eventId);
 
 
 }

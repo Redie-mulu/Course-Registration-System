@@ -1,9 +1,7 @@
 package edu.miu.courseregistrationsystem.mapper;
 
 import edu.miu.courseregistrationsystem.dto.RegistrationRequestDto;
-import edu.miu.courseregistrationsystem.dto.StudentDto;
 import edu.miu.courseregistrationsystem.entity.RegistrationRequest;
-import edu.miu.courseregistrationsystem.entity.Student;
 import org.mapstruct.Mapper;
 
 import java.util.List;
@@ -18,11 +16,11 @@ import java.util.List;
  */
 @Mapper(componentModel = "spring")
 public interface RegistrationRequestMapper {
-    public RegistrationRequest getRegistrationRequestFromRegistrationRequestDto(RegistrationRequestDto registrationRequestDto);
+    public RegistrationRequest registrationRequestDtoToregistrationRequest(RegistrationRequestDto registrationRequestDto);
 
-    public RegistrationRequestDto  getRegistrationRequestDtoFromRegistrationRequest(RegistrationRequest registrationRequest);
+    public RegistrationRequestDto registrationRequestToregistrationRequestDto(RegistrationRequest registrationRequest);
 
-    public List<RegistrationRequestDto> getRegistrationRequestDtosFromRegistrationRequests(List<RegistrationRequest> registrationRequests);
+    public List<RegistrationRequestDto> registrationRequestsToregistrationRequestDtos(List<RegistrationRequest> registrationRequests);
 
-    public List<RegistrationRequest> getRegistrationRequestsFromRegistrationRequestDtos(List<RegistrationRequestDto> registrationRequestDtos);
+    public List<RegistrationRequest> registrationRequestDtosToregistrationRequests(List<RegistrationRequestDto> registrationRequestDtos);
 }

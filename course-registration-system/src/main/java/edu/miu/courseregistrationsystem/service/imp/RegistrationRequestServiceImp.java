@@ -1,15 +1,12 @@
 package edu.miu.courseregistrationsystem.service.imp;
 
-import edu.miu.courseregistrationsystem.dto.AddressDto;
 import edu.miu.courseregistrationsystem.dto.RegistrationRequestDto;
-import edu.miu.courseregistrationsystem.entity.Address;
-import edu.miu.courseregistrationsystem.entity.RegistrationEvent;
 import edu.miu.courseregistrationsystem.entity.RegistrationRequest;
-import edu.miu.courseregistrationsystem.mapper.AddressMapper;
+import edu.miu.courseregistrationsystem.entity.Student;
 import edu.miu.courseregistrationsystem.mapper.RegistrationRequestMapper;
-import edu.miu.courseregistrationsystem.repository.AddressRepository;
 import edu.miu.courseregistrationsystem.repository.RegistrationEventRepository;
 import edu.miu.courseregistrationsystem.repository.RegistrationRequestRepository;
+import edu.miu.courseregistrationsystem.repository.StudentRepository;
 import edu.miu.courseregistrationsystem.service.RegistrationRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,18 +24,21 @@ public class RegistrationRequestServiceImp implements RegistrationRequestService
     @Autowired
     private  RegistrationEventRepository registrationEventRepository;
 
+    @Autowired
+    private StudentRepository studentRepository;
+
 
     @Override
     public RegistrationRequestDto getRegistrationRequestById(long id) {
         RegistrationRequest registrationRequest= registrationRequestRepository.findById(id).get();
-        RegistrationRequestDto registrationRequestDto  = registrationRequestMapper.getRegistrationRequestDtoFromRegistrationRequest(registrationRequest);
+        RegistrationRequestDto registrationRequestDto  = registrationRequestMapper.registrationRequestToregistrationRequestDto(registrationRequest);
         return registrationRequestDto;
     }
 
     @Override
     public List<RegistrationRequestDto> getAllRegistrationRequest() {
       List<RegistrationRequestDto> registrationRequestDtos= registrationRequestRepository.findAll().
-                                                                stream().map(x-> registrationRequestMapper.getRegistrationRequestDtoFromRegistrationRequest(x)).
+                                                                stream().map(x-> registrationRequestMapper.registrationRequestToregistrationRequestDto(x)).
                                                                collect(Collectors.toList());
       return  registrationRequestDtos;
 
@@ -46,14 +46,14 @@ public class RegistrationRequestServiceImp implements RegistrationRequestService
 
     @Override
     public RegistrationRequestDto createRegistrationRequest(RegistrationRequestDto registrationRequestDto) {
-        RegistrationRequest registrationRequest = registrationRequestMapper.getRegistrationRequestFromRegistrationRequestDto(registrationRequestDto);
+        RegistrationRequest registrationRequest = registrationRequestMapper.registrationRequestDtoToregistrationRequest(registrationRequestDto);
         registrationRequestRepository.save(registrationRequest);
         return registrationRequestDto;
     }
 
     @Override
     public RegistrationRequestDto updateRegistrationRequest(long id,RegistrationRequestDto registrationRequestDto) {
-        RegistrationRequest registrationRequest = registrationRequestMapper.getRegistrationRequestFromRegistrationRequestDto(registrationRequestDto);
+        RegistrationRequest registrationRequest = registrationRequestMapper.registrationRequestDtoToregistrationRequest(registrationRequestDto);
        registrationRequestRepository.save(registrationRequest);
         return registrationRequestDto;
     }
@@ -66,13 +66,14 @@ public class RegistrationRequestServiceImp implements RegistrationRequestService
 
     @Override
     public RegistrationRequestDto addRegistrationRequest(RegistrationRequestDto registrationRequestDto) {
-        RegistrationRequest registrationRequest = registrationRequestMapper.getRegistrationRequestFromRegistrationRequestDto(registrationRequestDto);
+        RegistrationRequest registrationRequest = registrationRequestMapper.registrationRequestDtoToregistrationRequest(registrationRequestDto);
         registrationRequestRepository.save(registrationRequest);
         return registrationRequestDto;
     }
 
     @Override
-    public void submitRegistrationRequests(List<RegistrationRequestDto> registrationRequestDtos,long id) {
+    public void submitRegistrationRequests(long studentId, List<RegistrationRequestDto> registrationRequestDtos,long  eventId) {
+         Student student = studentRepository.findById(studentId).get();
 //        RegistrationEvent event= registrationEventRepository.findById(id).get();
 //        if(event.getStatus.equals("Open")){
 //            for (RegistrationRequestDto r:registrationRequestDtos) {
@@ -80,4 +81,6 @@ public class RegistrationRequestServiceImp implements RegistrationRequestService
 //        }
 
     }
+
+
 }
