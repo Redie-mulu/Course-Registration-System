@@ -7,6 +7,12 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+
+/**
+ * @author Rediet
+ * @version 1.0
+ * @created 17-Dec-2022 5:00 PM
+ */
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,11 +21,10 @@ public class RegistrationGroup {
 
     @Id @GeneratedValue
     long id;
-    @OneToMany
+
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinColumn
     private List<Student> students;
-    @ManyToOne
-    private RegistrationEvent registrationEvent;
-    @OneToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<AcademicBlock> academicBlocks;
 }

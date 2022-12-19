@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * @author REDIET
  * @version 1.0
- * @created 08-Sep-2020 10:00:00 AM
+ * @created 17-Dec-2022 10:00:00 AM
  */
 
 @Entity
@@ -23,7 +23,11 @@ public class AcademicBlock {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-
+    /**
+     * The code for the course offering
+     *
+     * 2020-09-01D
+      */
     private String code;
     /**
      * The name of the academic block
@@ -34,7 +38,7 @@ public class AcademicBlock {
     private LocalDate endDate;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<CourseOffering> courseOfferings = new ArrayList<>();
+    private List<CourseOffering> courseOfferings;
 
 
     public void addCourseOffering(CourseOffering courseOffering){

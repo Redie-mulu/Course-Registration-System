@@ -2,14 +2,24 @@ package edu.miu.courseregistrationsystem.mapper;
 
 import edu.miu.courseregistrationsystem.dto.RegistrationEventDto;
 import edu.miu.courseregistrationsystem.entity.RegistrationEvent;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 
-public class RegistrationEventMapper {
-    /*public static RegistrationEvent getRegistrationEventFromRegistrationEventDto(RegistrationEventDto registrationEventDto) {
-        RegistrationEvent registrationEvent = new RegistrationEvent();
-        registrationEvent.setId(registrationEventDto.getId());
-        registrationEvent.setStartDate(registrationEventDto.getStartDate());
-        registrationEvent.setEndDate(registrationEventDto.getEndDate());
-        registrationEvent.setRegistrationGroups(RegistrationGroupMapper.getRegistrationGroupsFromRegistrationGroupDtos(registrationEventDto.getRegistrationGroups()));
-        return registrationEvent;
-    }*/
+import java.util.List;
+
+/**
+ * @author Rediet
+ * @version 1.0
+ * @created 10/12/2020 12:11 AM
+ */
+
+@Mapper(componentModel = "spring")
+public interface RegistrationEventMapper {
+
+    public RegistrationEvent registrationEventFromRegistrationEventDto(RegistrationEventDto registrationEventDto);
+
+//    @Mapping(target = "registrationGroups", ignore = true)
+    public RegistrationEventDto registrationEventDtoFromRegistrationEvent(RegistrationEvent registrationEvent);
+    public List<RegistrationEventDto> registrationEventDtosFromRegistrationEvents(List<RegistrationEvent> registrationEvents);
+    public List<RegistrationEvent> registrationEventsFromRegistrationEventDtos(List<RegistrationEventDto> registrationEventDtos);
 }

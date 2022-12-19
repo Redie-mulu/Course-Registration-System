@@ -1,18 +1,17 @@
 package edu.miu.courseregistrationsystem.dto;
 
 import edu.miu.courseregistrationsystem.entity.CourseOffering;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.CascadeType;
 import javax.persistence.ManyToMany;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-@Data
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
 public class CourseDto {
     private String code;
     private String name;
@@ -20,10 +19,6 @@ public class CourseDto {
     private LocalDate startDate;
     private LocalDate endDate;
 
-    private List<CourseOffering> courseOffering = new ArrayList<>();
+//    private List<CourseOfferingDto> courseOffering;
 
-
-    public void addCourseOffering(CourseOffering courseOffering){
-        this.courseOffering.add(courseOffering);
-    }
 }

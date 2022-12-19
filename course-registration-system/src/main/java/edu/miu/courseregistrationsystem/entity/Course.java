@@ -1,5 +1,6 @@
 package edu.miu.courseregistrationsystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,7 +22,7 @@ public class Course {
     private String description;
     @OneToMany
     @JoinColumn(name = "course_id")
-    private List<Course> preRequisite = new ArrayList<>();
+    private List<Course> preRequisite;
 
     @Override
     public String toString() {
@@ -30,7 +31,7 @@ public class Course {
                 ", code='" + code + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-                ", preRequisite=" + preRequisite +
+//                ", preRequisite=" + preRequisite +
                 '}';
     }
 

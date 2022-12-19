@@ -1,10 +1,7 @@
 package edu.miu.courseregistrationsystem.dto;
 
 import edu.miu.courseregistrationsystem.entity.Address;
-import edu.miu.courseregistrationsystem.entity.Role;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -12,14 +9,25 @@ import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Builder
+@Getter
 public class StudentDto {
     private long id;
     private String name;
     private String email;
-    private Role role;
-    private AddressDto mailingAddress;
 
-    private AddressDto homeAddress;
+    private Address mailingAddress;
+
+    private Address homeAddress;
+
+    @Data
+    public static class Address {
+        private long id;
+        private String street;
+        private String city;
+        private String postalCode;
+        private String stateProvince;
+        private String countryRegion;
+    }
 
 }
