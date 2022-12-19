@@ -6,6 +6,7 @@ import edu.miu.courseregistrationsystem.entity.Student;
 import edu.miu.courseregistrationsystem.repository.AddressRepository;
 import edu.miu.courseregistrationsystem.repository.StudentRepository;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+//import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jms.annotation.EnableJms;
@@ -51,4 +53,5 @@ public class CourseRegistrationApplication {
 			LOGGER.error("Please proceed to manually creation of configuration files!");
 		}
 	}
+
 }
