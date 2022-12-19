@@ -15,9 +15,5 @@ public class RegistrationRequest {
 
     @ManyToOne
     private CourseOffering courseOffering;
-     @ManyToOne
-     private Student student ;
-
-
 
 }

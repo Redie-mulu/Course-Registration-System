@@ -49,6 +49,13 @@ public class RegistrationRequestController {
         registrationRequestService.updateRegistrationRequest(id, registrationRequestDto);
         return new ResponseEntity<RegistrationRequestDto>(registrationRequestDto, HttpStatus.OK);
     }
+
+    @PostMapping("/{id}/submitRegistrationRequests")
+    public ResponseEntity<?> submitRegistrationRequests(@RequestBody List<RegistrationRequestDto> registrationRequestDtos,@PathVariable long id) {
+        registrationRequestService.submitRegistrationRequests(registrationRequestDtos,id);
+        return new ResponseEntity<>(registrationRequestDtos, HttpStatus.OK);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteRegistrationRequest(@PathVariable long id) {
         registrationRequestService.deleteRegistrationRequest(id);

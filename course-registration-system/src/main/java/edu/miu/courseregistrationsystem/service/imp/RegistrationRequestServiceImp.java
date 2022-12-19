@@ -3,6 +3,7 @@ package edu.miu.courseregistrationsystem.service.imp;
 import edu.miu.courseregistrationsystem.dto.AddressDto;
 import edu.miu.courseregistrationsystem.dto.RegistrationRequestDto;
 import edu.miu.courseregistrationsystem.entity.Address;
+import edu.miu.courseregistrationsystem.entity.RegistrationEvent;
 import edu.miu.courseregistrationsystem.entity.RegistrationRequest;
 import edu.miu.courseregistrationsystem.mapper.AddressMapper;
 import edu.miu.courseregistrationsystem.mapper.RegistrationRequestMapper;
@@ -22,6 +23,9 @@ public class RegistrationRequestServiceImp implements RegistrationRequestService
     private RegistrationRequestMapper registrationRequestMapper;
     @Autowired
     private RegistrationRequestRepository registrationRequestRepository;
+
+    @Autowired
+    private  RegistrationEventRepository registrationEventRepository
 
 
     @Override
@@ -65,5 +69,15 @@ public class RegistrationRequestServiceImp implements RegistrationRequestService
         RegistrationRequest registrationRequest = registrationRequestMapper.getRegistrationRequestFromRegistrationRequestDto(registrationRequestDto);
         registrationRequestRepository.save(registrationRequest);
         return registrationRequestDto;
+    }
+
+    @Override
+    public void submitRegistrationRequests(List<RegistrationRequestDto> registrationRequestDtos,long id) {
+        RegistrationEvent event= registrationEventRepository.findById(id).get();
+        if(event.getStatus.equals("Open")){
+            for (RegistrationRequestDto r:registrationRequestDtos) {
+                addRegistrationRequest(r);}
+        }
+
     }
 }
