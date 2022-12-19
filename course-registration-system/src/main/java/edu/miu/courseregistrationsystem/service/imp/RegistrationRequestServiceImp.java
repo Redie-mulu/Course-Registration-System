@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class RegistrationRequestServiceImp implements RegistrationRequestService {
@@ -28,6 +29,15 @@ public class RegistrationRequestServiceImp implements RegistrationRequestService
         RegistrationRequest registrationRequest= registrationRequestRepository.findById((int) id).get();
         RegistrationRequestDto registrationRequestDto  = registrationRequestMapper.getRegistrationRequestDtoFromRegistrationRequest(registrationRequest);
         return registrationRequestDto;
+    }
+
+    @Override
+    public List<RegistrationRequestDto> getAllRegistrationRequest() {
+      List<RegistrationRequestDto> registrationRequestDtos= registrationRequestRepository.findAll().
+                                                                stream().map(x-> registrationRequestMapper.getRegistrationRequestDtoFromRegistrationRequest(x)).
+                                                               collect(Collectors.toList());
+      return  registrationRequestDtos;
+
     }
 
     @Override
