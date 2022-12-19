@@ -13,9 +13,8 @@ public class RegistrationRequest {
     private long id;
     private int priorityNumber;
 
-     @OneToMany
-     @JoinColumn(name="registration_id")
-    private List<CourseOffering> courseOffering;
+    @ManyToOne
+    private CourseOffering courseOffering;
      @ManyToOne
      private Student student ;
 

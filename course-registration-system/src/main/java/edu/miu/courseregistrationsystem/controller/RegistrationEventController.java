@@ -1,6 +1,7 @@
 package edu.miu.courseregistrationsystem.controller;
 
 import edu.miu.courseregistrationsystem.dto.RegistrationEventDto;
+import edu.miu.courseregistrationsystem.entity.RegistrationEvent;
 import edu.miu.courseregistrationsystem.service.RegistrationEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,13 +17,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("api/registrationEvents")
 public class RegistrationEventController {
-
     @Autowired
-    private final RegistrationEventService registrationEventService;
-
-    @Autowired
-    private RegistrationEventService registrationEventService;
-
+    RegistrationEventService registrationEventService;
     @GetMapping
     public String getAllRegistrationEvents() {
         return "Hello World";
@@ -48,10 +44,6 @@ public class RegistrationEventController {
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PatchMapping("/{id}")
-    public void processRegistrationEvent(@PathVariable Long id, @RequestParam("processed") boolean processed) {
-        if (processed) {
-            registrationEventService.processRegistrationEvent(id);
-        }
+
     }
-}
+
