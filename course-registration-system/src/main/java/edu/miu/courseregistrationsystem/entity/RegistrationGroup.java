@@ -21,9 +21,10 @@ public class RegistrationGroup {
 
     @Id @GeneratedValue
     long id;
-    @OneToMany
+
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinColumn
     private List<Student> students;
-    @OneToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<AcademicBlock> academicBlocks;
 }

@@ -9,4 +9,5 @@ public interface RegistrationGroupService {
     public RegistrationGroupDto creatRegistrationGroup (RegistrationGroupDto registrationGroupDto);
     public void updateRegistrationGroup (long registrationGroupId, List<Long> studentIds,Long academicBlockId);
     public RegistrationGroup getRegistrationGroupById(long id);
+    public List<RegistrationGroup> getAllRegistrationGroupsByStudentId(long studentId);
 }

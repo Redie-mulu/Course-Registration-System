@@ -22,8 +22,7 @@ public class Course {
     private String description;
     @OneToMany
     @JoinColumn(name = "course_id")
-    @JsonIgnore
-    private List<Course> preRequisite = new ArrayList<>();
+    private List<Course> preRequisite;
 
     @Override
     public String toString() {

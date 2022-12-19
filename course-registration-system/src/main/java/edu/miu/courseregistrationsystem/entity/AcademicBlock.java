@@ -38,7 +38,7 @@ public class AcademicBlock {
     private LocalDate endDate;
 
     @OneToMany(cascade = CascadeType.ALL)
-    private List<CourseOffering> courseOfferings = new ArrayList<>();
+    private List<CourseOffering> courseOfferings;
 
 
     public void addCourseOffering(CourseOffering courseOffering){
