@@ -10,8 +10,5 @@ import javax.persistence.Entity;
 @Data
 @NoArgsConstructor
 public class Admin extends User{
-    public Admin(String firstName, String lastName, String email, String password) {
-
-    }
 
 }
