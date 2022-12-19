@@ -12,4 +12,6 @@ public interface AdminService {
 
     AdminDto save(AdminDto admin);
     List<AdminDto> allAdmin();
+
+    AdminDto getAdmin(long id);
 }

@@ -26,7 +26,7 @@ public class RegistrationRequestServiceImp implements RegistrationRequestService
 
     @Override
     public RegistrationRequestDto getRegistrationRequestById(long id) {
-        RegistrationRequest registrationRequest= registrationRequestRepository.findById((int) id).get();
+        RegistrationRequest registrationRequest= registrationRequestRepository.findById(id).get();
         RegistrationRequestDto registrationRequestDto  = registrationRequestMapper.getRegistrationRequestDtoFromRegistrationRequest(registrationRequest);
         return registrationRequestDto;
     }
@@ -56,7 +56,7 @@ public class RegistrationRequestServiceImp implements RegistrationRequestService
 
 
     public void deleteRegistrationRequest(long id) {
-        registrationRequestRepository.deleteById((int) id);
+        registrationRequestRepository.deleteById(id);
 
     }
 

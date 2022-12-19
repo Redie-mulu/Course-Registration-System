@@ -19,10 +19,10 @@ public class AdminServiceImp implements AdminService {
     AdminRepository adminRepository;
 
     @Override
-    public AdminDto save(AdminDto admin) {
-        Admin a=  adminMapper.getAdminFromAdminDto(admin);
-        adminRepository.save(a);
-        return  admin;
+    public AdminDto save(AdminDto adminDto) {
+        Admin admin=  adminMapper.getAdminFromAdminDto(adminDto);
+        adminRepository.save(admin);
+        return  adminDto;
     }
 
     @Override
@@ -31,6 +31,15 @@ public class AdminServiceImp implements AdminService {
                 stream().map(x-> adminMapper.getAdminDtoFromAdmin(x)).
                 collect(Collectors.toList());
         return  adminDtos;
+
+    }
+
+    @Override
+    public AdminDto getAdmin(long id) {
+
+        Admin admin= adminRepository.findById(id).get();
+
+        return adminMapper.getAdminDtoFromAdmin(admin);
 
     }
 }
