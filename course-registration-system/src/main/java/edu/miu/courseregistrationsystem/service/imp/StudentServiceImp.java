@@ -48,4 +48,30 @@ public class StudentServiceImp implements StudentService {
         //return studentDtos;
         return null;
     }
+
+    @Override
+    public List<Student> findAll() {
+        return studentRepository.findAll();
+    }
+
+    @Override
+    public Student findOne(Long id) {
+        return studentRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public Student update(Student student) {
+        return studentRepository.save(student);
+    }
+
+    @Override
+    public void delete(Long id) {
+        studentRepository.deleteById(id);
+
+    }
+
+    @Override
+    public Student add(Student t) {
+        return studentRepository.save(t);
+    }
 }

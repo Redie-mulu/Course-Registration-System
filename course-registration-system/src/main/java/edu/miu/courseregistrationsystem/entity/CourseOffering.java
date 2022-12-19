@@ -1,9 +1,7 @@
 package edu.miu.courseregistrationsystem.entity;
 
-import edu.miu.courseregistrationsystem.entity.AcademicBlock;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import net.bytebuddy.asm.Advice;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -29,9 +27,8 @@ public class CourseOffering {
     @OneToMany
     @JoinColumn(name = "courseOffering_id")
     private List<Faculty> staff = new ArrayList<>();
-    @ManyToMany
-    @JoinTable(name = "Registration")
-    private List<Student> students = new ArrayList<>();
+
+    static List<Student> students;
 
 
     public long availableSeats(){

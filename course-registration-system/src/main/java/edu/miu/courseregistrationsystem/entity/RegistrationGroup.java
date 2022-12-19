@@ -5,6 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.List;
+
 @Entity
 public class RegistrationGroup {
 
@@ -12,6 +13,7 @@ public class RegistrationGroup {
     long id;
     @OneToMany
     private List<Student> students;
+
     @ManyToOne
     private RegistrationEvent registrationEvent;
 }
