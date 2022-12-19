@@ -5,17 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8907c85-f0d0-4dff-8c02-19e3acf3e2dc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations/CourseRegistrationApplication.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/repository/RegistrationRequestRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/dto/AdminDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/dto/AdminDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/AdminService.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/AdminService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/imp/AdminServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/imp/AdminServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/imp/RegistrationRequestServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/imp/RegistrationRequestServiceImp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
