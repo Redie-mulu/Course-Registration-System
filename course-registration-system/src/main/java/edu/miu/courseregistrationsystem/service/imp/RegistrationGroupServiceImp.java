@@ -70,4 +70,9 @@ public class RegistrationGroupServiceImp implements RegistrationGroupService {
     public RegistrationGroup getRegistrationGroupById(long id) {
         return registrationGroupRepository.findById(id).get();
     }
+
+    @Override
+    public List<RegistrationGroup> getAllRegistrationGroupsByStudentId(long studentId) {
+        return null;
+    }
 }

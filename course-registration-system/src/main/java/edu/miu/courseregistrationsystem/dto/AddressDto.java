@@ -1,9 +1,7 @@
 package edu.miu.courseregistrationsystem.dto;
 
 import edu.miu.courseregistrationsystem.entity.Student;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.ManyToMany;
 import java.util.List;
@@ -15,7 +13,8 @@ import java.util.List;
  */
 
 
-@Data
+@Builder
+@Getter
 public class AddressDto {
 
     private long id;

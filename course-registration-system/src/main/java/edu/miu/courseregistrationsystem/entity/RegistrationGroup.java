@@ -19,9 +19,10 @@ import java.util.List;
 public class RegistrationGroup {
     @Id
     long id;
-    @OneToMany
+
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinColumn
     private List<Student> students;
-    @OneToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<AcademicBlock> academicBlocks;
 }

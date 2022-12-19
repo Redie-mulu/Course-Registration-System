@@ -14,7 +14,6 @@ import java.util.List;
  * @created 17-Dec-2022 07:48 AM
  */
 @Entity
-@NoArgsConstructor
 @Data
 public class RegistrationEvent {
     @Id
@@ -23,8 +22,11 @@ public class RegistrationEvent {
     private LocalDate startDate;
     private LocalDate endDate;
     private String status = "new";
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     List<RegistrationGroup> registrationGroups;
+
+    public RegistrationEvent() {
+    }
 
     public RegistrationEvent(long id, LocalDate startDate, LocalDate endDate, List<RegistrationGroup> registrationGroups) {
         this.id = id;

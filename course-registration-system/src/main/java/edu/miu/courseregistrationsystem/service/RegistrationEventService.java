@@ -1,6 +1,7 @@
 package edu.miu.courseregistrationsystem.service;
 
 import edu.miu.courseregistrationsystem.dto.RegistrationEventDto;
+import edu.miu.courseregistrationsystem.dto.RegistrationEventStudentDto;
 
 import java.util.List;
 /**
@@ -24,4 +25,12 @@ public interface RegistrationEventService {
      * admin can add registration group to registration event
      */
     public void addRegistrationGroupToRegistrationEvent(long registrationEventId, long registrationGroupId);
+
+    /**
+     * @author REDIET
+        * student can see the list of registration events
+     *
+     */
+    public RegistrationEventStudentDto getRegistrationEventStudent(long studentId);
+
 }
