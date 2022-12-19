@@ -16,4 +16,12 @@ public interface RegistrationEventService {
     public List<RegistrationEventDto> getAllRegistrationEvents();
 
     public List<RegistrationEventDto>  getLatestRegistrationEvent();
+
+    /**
+     * @author REDIET
+     * @param registrationEventId
+     * @param registrationGroupId
+     * admin can add registration group to registration event
+     */
+    public void addRegistrationGroupToRegistrationEvent(long registrationEventId, long registrationGroupId);
 }

@@ -13,13 +13,15 @@ import java.util.List;
 @Service
 public class StudentServiceImp implements StudentService {
 
+    @Autowired
     private StudentMapper studentMapper;
     @Autowired
     private StudentRepository studentRepository;
 
     @Override
     public StudentDto registerStudent(StudentDto studentDto) {
-        Student student = studentMapper.getStudentFromStudentDto(studentDto);
+        Student student = studentMapper.studentFromStudentDto(studentDto);
+        System.out.println(student);
         studentRepository.save(student);
         return studentDto;
     }
@@ -31,7 +33,7 @@ public class StudentServiceImp implements StudentService {
 
     @Override
     public StudentDto updateStudent(long id, StudentDto studentDto) {
-        Student student = studentMapper.getStudentFromStudentDto(studentDto);
+        Student student = studentMapper.studentFromStudentDto(studentDto);
         studentRepository.save(student);
         return studentDto;
     }
@@ -39,16 +41,15 @@ public class StudentServiceImp implements StudentService {
     @Override
     public StudentDto getStudent(long id) {
         Student student = studentRepository.findById(id).get();
-        StudentDto studentDto = studentMapper.getStudentDtoFromStudent(student);
+        StudentDto studentDto = studentMapper.studentDtoFromStudent(student);
         return studentDto;
     }
 
     @Override
     public List<StudentDto> getAllStudents() {
         List<Student> students = studentRepository.findAll();
-        //List<StudentDto> studentDtos = StudentMapper.getStudentDtosFromStudents(students);
-        //return studentDtos;
-        return null;
+        List<StudentDto> studentDtos = studentMapper.studentDtosFromStudents(students);
+        return studentDtos;
     }
 
     /**
@@ -59,6 +60,6 @@ public class StudentServiceImp implements StudentService {
      */
     @Override
     public List<Student> addStudents(List<StudentDto> students) {
-        return studentRepository.saveAll(studentMapper.getStudentsFromStudentDtos(students));
+        return studentRepository.saveAll(studentMapper.studentsFromStudentDtos(students));
     }
 }

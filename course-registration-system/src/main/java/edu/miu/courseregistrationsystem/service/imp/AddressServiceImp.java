@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AddressServiceImp implements AddressService {
 
+    @Autowired
     private AddressMapper addressMapper;
     @Autowired
     private AddressRepository addressRepository;

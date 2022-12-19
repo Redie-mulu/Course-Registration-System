@@ -28,11 +28,6 @@ public class StudentController {
         students.setStudents(students2);
         return new ResponseEntity<>(students, HttpStatus.OK);
     }
-    @GetMapping("/test")
-    public String test() {
-        return "Hello World";
-    }
-
     @PostMapping("/register")
     public ResponseEntity<?> registerStudent(@RequestBody StudentDto studentDto) {
         studentService.registerStudent(studentDto);

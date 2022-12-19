@@ -1,6 +1,6 @@
 package edu.miu.courseregistrationsystem.entity;
 
-import lombok.AllArgsConstructor;
+
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -22,7 +22,7 @@ public class RegistrationEvent {
     private long id;
     private LocalDate startDate;
     private LocalDate endDate;
-    private String status;
+    private String status = "new";
     @OneToMany
     List<RegistrationGroup> registrationGroups;
 

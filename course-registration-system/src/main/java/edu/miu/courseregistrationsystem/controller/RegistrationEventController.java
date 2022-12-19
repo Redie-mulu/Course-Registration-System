@@ -6,6 +6,7 @@ import edu.miu.courseregistrationsystem.service.RegistrationEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -44,6 +45,19 @@ public class  RegistrationEventController {
         registrationEventService.updateRegistrationEvent(id, registrationEventDto);
         return new ResponseEntity<RegistrationEventDto>(registrationEventDto, HttpStatus.OK);
     }
+
+    /**
+     * @author REDIET
+     * @param id
+     * @param registrationGroupId
+     * admin can add registration group to registration event
+     */
+    @PutMapping("/{id}/registration-groups")
+    public ResponseEntity<?> getRegistrationEventService(@PathVariable long id, @RequestBody long registrationGroupId) {
+        registrationEventService.addRegistrationGroupToRegistrationEvent(id, registrationGroupId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deleteRegistrationEvent(@PathVariable long id) {
         registrationEventService.deleteRegistrationEvent(id);
@@ -57,7 +71,7 @@ public class  RegistrationEventController {
     /**
      * admin can add student
      * REST API for admin to add registration event
-     * ADMINE CAN CALL THIS API
+     * admin can call this API
      * need to use FeignClient to call student service to get all students
      */
     @PostMapping("/student)")

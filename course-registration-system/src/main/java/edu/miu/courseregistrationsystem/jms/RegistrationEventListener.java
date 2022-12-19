@@ -10,11 +10,11 @@ import org.springframework.stereotype.Component;
  *
  */
 
-@Component
+/*@Component
 public class RegistrationEventListener {
     @JmsListener(destination = "registrationQueue")
     public void receiveMessage(final String registrationEventAsString) {
         System.out.println("JMS receiver received message:" + registrationEventAsString);
     }
 
-}
+}*/

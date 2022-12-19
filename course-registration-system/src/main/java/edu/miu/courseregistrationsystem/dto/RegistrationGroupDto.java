@@ -17,6 +17,6 @@ import java.util.List;
 public class RegistrationGroupDto {
     long id;
     private List<StudentDto> students;
-    private RegistrationEvent registrationEvent;
+
     private List<AcademicBlockDto> academicBlocks;
 }

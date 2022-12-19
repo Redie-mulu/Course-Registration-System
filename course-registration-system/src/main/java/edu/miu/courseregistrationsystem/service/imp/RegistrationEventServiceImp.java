@@ -19,15 +19,16 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
     RegistrationEventRepository registrationEventRepository;
     @Autowired
     private JmsTemplate jmsTemplate;
+    @Autowired
     private RegistrationEventMapper registrationEventMapper;
-//    @Autowired
-//    private RegistrationGroupServiceImp registrationGroupServiceImp;
+    @Autowired
+    private RegistrationGroupServiceImp registrationGroupServiceImp;
 
     @Override
     public RegistrationEventDto addRegistrationEvent(RegistrationEventDto registrationEventDto) {
         RegistrationEvent registrationEvent = registrationEventMapper.getRegistrationEventFromRegistrationEventDto(registrationEventDto);
         registrationEventRepository.save(registrationEvent);
-        jmsTemplate.convertAndSend("registrationEventQueue", registrationEvent);
+//        jmsTemplate.convertAndSend("registrationEventQueue", registrationEvent);
         return registrationEventDto;
     }
 
@@ -67,5 +68,18 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
         }
     }
             return registrationEventMapper.getRegistrationEventDtosFromRegistrationEvents(latestRegistrationEventTwo);
+    }
+
+    /**
+     * @author REDIET
+     * @param registrationEventId
+     * @param registrationGroupId
+     * admin can add registration group to registration event
+     * admin will get existing registration group to existing registration event
+     */
+    @Override
+    public void addRegistrationGroupToRegistrationEvent(long registrationEventId, long registrationGroupId) {
+        RegistrationEvent registrationEvent = registrationEventRepository.findById(registrationEventId).get();
+        registrationEvent.getRegistrationGroups().add(registrationGroupServiceImp.getRegistrationGroupById(registrationGroupId));
     }
 }

@@ -12,11 +12,10 @@ import java.util.List;
  * @created 10/12/2020 12:04 AM
  */
 @Mapper(componentModel = "spring")
-
 public interface RegistrationGroupMapper {
 
-    public RegistrationGroup getRegistrationGroupFromRegistrationGroupDto(RegistrationGroupDto registrationGroupDto);
-    public RegistrationGroupDto getRegistrationGroupDtoFromRegistrationGroup(RegistrationGroup registrationGroup);
-    public List<RegistrationGroupDto> getRegistrationGroupDtosFromRegistrationGroups(List<RegistrationGroup> registrationGroups);
-    public List<RegistrationGroup> getRegistrationGroupsFromRegistrationGroupDtos(List<RegistrationGroupDto> registrationGroupDtos);
+    public RegistrationGroup registrationGroupFromRegistrationGroupDto(RegistrationGroupDto registrationGroupDto);
+    public RegistrationGroupDto registrationGroupDtoFromRegistrationGroup(RegistrationGroup registrationGroup);
+    public List<RegistrationGroupDto> registrationGroupDtosFromRegistrationGroups(List<RegistrationGroup> registrationGroups);
+    public List<RegistrationGroup> registrationGroupsFromRegistrationGroupDtos(List<RegistrationGroupDto> registrationGroupDtos);
 }

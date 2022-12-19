@@ -13,8 +13,8 @@ import java.util.List;
  */
 @Mapper(componentModel = "spring")
 public interface CourseOfferingMapper {
-    public CourseOffering getCourseOfferingFromCourseOfferingDto(CourseOfferingDto courseOfferingDto);
-    public CourseOfferingDto getCourseOfferingDtoFromCourseOffering(CourseOffering courseOffering);
-    public List<CourseOffering> getCourseOfferingsFromCourseOfferingDtos(List<CourseOfferingDto> courseOfferingDtos);
-    public List<CourseOfferingDto> getCourseOfferingDtosFromCourseOfferings(List<CourseOffering> courseOfferings);
+    public CourseOffering courseOfferingFromCourseOfferingDto(CourseOfferingDto courseOfferingDto);
+    public CourseOfferingDto courseOfferingDtoFromCourseOffering(CourseOffering courseOffering);
+    public List<CourseOffering> courseOfferingsFromCourseOfferingDtos(List<CourseOfferingDto> courseOfferingDtos);
+    public List<CourseOfferingDto> courseOfferingDtosFromCourseOfferings(List<CourseOffering> courseOfferings);
 }

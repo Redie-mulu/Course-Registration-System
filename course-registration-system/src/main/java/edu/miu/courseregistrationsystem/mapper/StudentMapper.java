@@ -12,13 +12,13 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface StudentMapper {
 
-    public Student getStudentFromStudentDto(StudentDto studentDto);
+    public Student studentFromStudentDto(StudentDto studentDto);
 
-    public StudentDto getStudentDtoFromStudent(Student student);
+    public StudentDto studentDtoFromStudent(Student student);
 
-    public List<StudentDto> getStudentDtosFromStudents(List<Student> students);
+    public List<StudentDto> studentDtosFromStudents(List<Student> students);
 
-    public List<Student> getStudentsFromStudentDtos(List<StudentDto> studentDtos);
+    public List<Student> studentsFromStudentDtos(List<StudentDto> studentDtos);
 }
 
 
