@@ -7,6 +7,11 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
+/**
+ * @author REDIET
+ * @version 1.0
+ *@created 16-Dec-2022 10:00:00 AM
+ */
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
@@ -16,10 +21,11 @@ public class Student extends User {
     private long id;
     private String name;
     private String email;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "mailing_address_id")
     private Address mailingAddress;
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "home_address_id")
     private Address homeAddress;
 
@@ -30,7 +36,7 @@ public class Student extends User {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", mailingAddress=" + mailingAddress +
-//                ", homeAddress=" + homeAddress +
+                ", homeAddress=" + homeAddress +
                 '}';
     }
 
