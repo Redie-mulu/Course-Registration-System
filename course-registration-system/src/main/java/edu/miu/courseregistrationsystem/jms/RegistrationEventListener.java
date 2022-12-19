@@ -1,6 +1,6 @@
 package edu.miu.courseregistrationsystem.jms;
 
-import org.springframework.jms.annotation.JmsListener;
+//import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 /**

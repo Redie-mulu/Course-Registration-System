@@ -5,7 +5,6 @@ import edu.miu.courseregistrationsystem.entity.Student;
 import edu.miu.courseregistrationsystem.repository.StudentRepository;
 import edu.miu.courseregistrationsystem.mapper.StudentMapper;
 import edu.miu.courseregistrationsystem.service.StudentService;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,18 +12,15 @@ import java.util.List;
 
 @Service
 public class StudentServiceImp implements StudentService {
+
     @Autowired
     private StudentMapper studentMapper;
     @Autowired
     private StudentRepository studentRepository;
 
-//    @Autowired
-//    private ModelMapper modelMapper;
-
     @Override
     public StudentDto registerStudent(StudentDto studentDto) {
         Student student = studentMapper.studentFromStudentDto(studentDto);
-//        Student student = modelMapper.map(studentDto, Student.class);
         System.out.println(student);
         studentRepository.save(student);
         return studentDto;

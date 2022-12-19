@@ -7,7 +7,7 @@ import edu.miu.courseregistrationsystem.mapper.RegistrationEventMapper;
 import edu.miu.courseregistrationsystem.repository.RegistrationEventRepository;
 import edu.miu.courseregistrationsystem.service.RegistrationEventService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jms.core.JmsTemplate;
+//import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -18,8 +18,8 @@ import java.util.List;
 public class RegistrationEventServiceImp implements RegistrationEventService {
     @Autowired
     RegistrationEventRepository registrationEventRepository;
-    @Autowired
-    private JmsTemplate jmsTemplate;
+//    @Autowired
+//    private JmsTemplate jmsTemplate;
     @Autowired
     private RegistrationEventMapper registrationEventMapper;
     @Autowired

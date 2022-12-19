@@ -24,6 +24,7 @@ public class Student  {
     private long id;
     private String name;
     private String email;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "mailing_address_id")
     private Address mailingAddress;

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -17,7 +18,8 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class RegistrationGroup {
-    @Id
+
+    @Id @GeneratedValue
     long id;
 
     @ManyToMany(cascade = CascadeType.ALL)

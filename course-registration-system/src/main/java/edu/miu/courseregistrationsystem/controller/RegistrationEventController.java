@@ -67,6 +67,7 @@ public class  RegistrationEventController {
         registrationEventService.deleteRegistrationEvent(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
     @GetMapping("/latest")
     public ResponseEntity<?> getLatestRegistrationEvent() {
         List<RegistrationEventDto> registrationEventDto = registrationEventService.getLatestRegistrationEvent();
