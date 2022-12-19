@@ -25,7 +25,7 @@ public class RegistrationRequestServiceImp implements RegistrationRequestService
     private RegistrationRequestRepository registrationRequestRepository;
 
     @Autowired
-    private  RegistrationEventRepository registrationEventRepository
+    private  RegistrationEventRepository registrationEventRepository;
 
 
     @Override
@@ -73,11 +73,11 @@ public class RegistrationRequestServiceImp implements RegistrationRequestService
 
     @Override
     public void submitRegistrationRequests(List<RegistrationRequestDto> registrationRequestDtos,long id) {
-        RegistrationEvent event= registrationEventRepository.findById(id).get();
-        if(event.getStatus.equals("Open")){
-            for (RegistrationRequestDto r:registrationRequestDtos) {
-                addRegistrationRequest(r);}
-        }
+//        RegistrationEvent event= registrationEventRepository.findById(id).get();
+//        if(event.getStatus.equals("Open")){
+//            for (RegistrationRequestDto r:registrationRequestDtos) {
+//                addRegistrationRequest(r);}
+//        }
 
     }
 }

@@ -1,5 +1,6 @@
 package edu.miu.courseregistrationsystem.dto;
 
+import edu.miu.courseregistrationsystem.entity.Role;
 import edu.miu.courseregistrationsystem.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,4 +15,5 @@ public class AdminDto  {
     private long id;
     private String name;
     private String email;
+    private Role role;
 }

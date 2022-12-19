@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8907c85-f0d0-4dff-8c02-19e3acf3e2dc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/entity/Role.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/imp/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/RegistrationRequestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/RegistrationRequestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/dto/RegistrationRequestDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/dto/RegistrationRequestDto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/entity/RegistrationRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/entity/RegistrationRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/RegistrationRequestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/RegistrationRequestService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/dto/AdminDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/dto/AdminDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/dto/StudentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/dto/StudentDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/imp/RegistrationRequestServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/imp/RegistrationRequestServiceImp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +22,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
