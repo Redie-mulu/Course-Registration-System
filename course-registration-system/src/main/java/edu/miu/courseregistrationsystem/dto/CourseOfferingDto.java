@@ -20,10 +20,10 @@ public class CourseOfferingDto {
     private long capacity;
     private long availableSeats;
     private String initials;
-    private List<AcademicBlockDto> block;
-    private CourseDto courseDto;
-    private List<FacultyDto> staff;
-    private List<StudentDto> students;
+    private List<AcademicBlock> block;
+    private Course course;
+    private List<Faculty> staff;
+    private List<Student> students;
 
 
 }

@@ -16,5 +16,5 @@ import javax.persistence.ManyToOne;
 public class RegistrationRequestDto {
     private long id;
     private int priorityNumber;
-    private CourseOfferingDto courseOffering;
+    private CourseOffering courseOffering;
 }
