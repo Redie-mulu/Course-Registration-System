@@ -12,7 +12,8 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class Student extends User {
-
+    @Id
+    @GeneratedValue
     private long id;
     private String name;
     private String email;

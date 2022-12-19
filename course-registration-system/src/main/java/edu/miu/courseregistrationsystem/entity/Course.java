@@ -10,8 +10,6 @@ import java.util.List;
 
 @Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Course {
     @Id
     @GeneratedValue
@@ -19,8 +17,8 @@ public class Course {
     private String code;
     private String name;
     private String description;
-    @OneToMany
-    @JoinColumn(name = "course_id")
+    @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "preRequisite_id")
     private List<Course> preRequisite = new ArrayList<>();
 
     @Override

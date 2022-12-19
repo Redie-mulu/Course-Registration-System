@@ -1,14 +1,11 @@
 package edu.miu.courseregistrationsystem.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-
+import lombok.Data;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class CourseOffering {
     @Id
     @GeneratedValue
@@ -18,22 +15,19 @@ public class CourseOffering {
     private long availableSeats;
     private String initials;
     @ManyToMany(cascade = CascadeType.PERSIST)
-    @JoinTable(name = "Bloc_CourseOffering",
-    joinColumns = {@JoinColumn(name = "courseOffering_id")},
-    inverseJoinColumns = {@JoinColumn(name = "academicBlock_id")})
+    @JoinColumn(name = "Block_id")
     private List<AcademicBlock> block = new ArrayList<>();
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Course course;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "courseOffering_id")
     private List<Faculty> staff = new ArrayList<>();
-    @ManyToMany
-    @JoinTable(name = "Registration")
-    private List<Student> students = new ArrayList<>();
+   @Transient
+    private List<RegistrationRequest> registrationRequests;
 
 
     public long availableSeats(){
-        return this.capacity - students.size();
+        return this.capacity - registrationRequests.size();
     }
     public void addAcademicBlock(AcademicBlock block){
         this.block.add(block);
@@ -42,9 +36,15 @@ public class CourseOffering {
         staff.add(faculty);
     }
 
-    // Todo
     public void initial(){
+        String[] initial = new String[2];
+        for(Faculty names: staff){
+            initial = names.getName().split("");
+        }
+        char firstName = initial[0].charAt(0);
+        char secondName = initial[1].charAt(1);
 
+        this.initials = "" + firstName + secondName;
     }
 
 
@@ -59,7 +59,6 @@ public class CourseOffering {
                 ", block=" + block +
                 ", course=" + course +
                 ", staff=" + staff +
-                ", students=" + students +
                 '}';
     }
 }

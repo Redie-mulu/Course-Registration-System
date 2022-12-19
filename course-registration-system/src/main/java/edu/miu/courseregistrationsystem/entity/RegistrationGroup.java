@@ -21,5 +21,6 @@ public class RegistrationGroup {
     @ManyToOne
     private RegistrationEvent registrationEvent;
     @OneToMany
+    @JoinColumn(name = "block_id")
     private List<AcademicBlock> academicBlocks;
 }

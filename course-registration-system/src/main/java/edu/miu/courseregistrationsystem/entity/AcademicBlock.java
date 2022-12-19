@@ -1,6 +1,5 @@
 package edu.miu.courseregistrationsystem.entity;
 
-import edu.miu.courseregistrationsystem.dto.CourseOfferingDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,27 +16,27 @@ import java.util.List;
 
 @Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class AcademicBlock {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private long id;
-
     private String code;
-    /**
-     * The name of the academic block
-     */
     private String name;
     private String semester;
     private LocalDate startDate;
     private LocalDate endDate;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<CourseOffering> courseOfferings = new ArrayList<>();
 
 
-    public void addCourseOffering(CourseOffering courseOffering){
-        this.courseOfferings.add(courseOffering);
+    @Override
+    public String toString() {
+        return "AcademicBlock{" +
+                "id=" + id +
+                ", code='" + code + '\'' +
+                ", name='" + name + '\'' +
+                ", semester='" + semester + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                '}';
     }
 }
