@@ -1,0 +1,20 @@
+Index: course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/AdminController.java
+===================================================================
+diff --git a/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/AdminController.java b/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/AdminController.java
+--- a/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/AdminController.java	
++++ b/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/AdminController.java	
+@@ -1,14 +1,6 @@
+ package edu.miu.courseregistrationsystem.controller;
+ 
+ 
+-import edu.miu.courseregistrationsystem.repository.AdminRepository;
+-import edu.miu.courseregistrationsystem.service.AdminService;
+-import org.springframework.beans.factory.annotation.Autowired;
+-import org.springframework.http.ResponseEntity;
+-import org.springframework.web.bind.annotation.GetMapping;
+-import org.springframework.web.bind.annotation.RequestMapping;
+-import org.springframework.web.bind.annotation.RestController;
+-
+ @RestController
+ @RequestMapping(value = "/admin")
+ public class AdminController {
