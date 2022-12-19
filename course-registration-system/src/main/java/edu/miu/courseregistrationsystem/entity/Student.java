@@ -16,10 +16,10 @@ public class Student extends User {
     private long id;
     private String name;
     private String email;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "mailing_address_id")
     private Address mailingAddress;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "home_address_id")
     private Address homeAddress;
 

@@ -19,6 +19,5 @@ public class AddressDto {
     private String postalCode;
     private String stateProvince;
     private String countryRegion;
-    private List<StudentDto> students;
 
 }

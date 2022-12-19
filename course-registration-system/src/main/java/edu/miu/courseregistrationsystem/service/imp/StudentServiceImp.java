@@ -13,6 +13,7 @@ import java.util.List;
 @Service
 public class StudentServiceImp implements StudentService {
 
+
     private StudentMapper studentMapper;
     @Autowired
     private StudentRepository studentRepository;
@@ -20,7 +21,7 @@ public class StudentServiceImp implements StudentService {
     @Override
     public StudentDto registerStudent(StudentDto studentDto) {
 
-        Student student = studentMapper.getStudentFromStudentDto(studentDto);
+        Student student = studentMapper.studentFromStudentDto(studentDto);
         studentRepository.save(student);
         return studentDto;
     }
@@ -32,7 +33,7 @@ public class StudentServiceImp implements StudentService {
 
     @Override
     public StudentDto updateStudent(long id, StudentDto studentDto) {
-        Student student = studentMapper.getStudentFromStudentDto(studentDto);
+        Student student = studentMapper.studentFromStudentDto(studentDto);
         studentRepository.save(student);
         return studentDto;
     }
@@ -49,5 +50,10 @@ public class StudentServiceImp implements StudentService {
         List<Student> students = studentRepository.findAll();
         List<StudentDto> studentDtos = studentMapper.getStudentDtosFromStudents(students);
         return studentDtos;
+    }
+
+    @Autowired
+    public void setStudentMapper(StudentMapper studentMapper) {
+        this.studentMapper = studentMapper;
     }
 }
