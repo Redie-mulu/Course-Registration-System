@@ -70,4 +70,42 @@ public class StudentServiceImp implements StudentService {
     public List<Student> addStudents(List<StudentDto> students) {
         return studentRepository.saveAll(studentMapper.studentsFromStudentDtos(students));
     }
+    /**
+     * @author Feven
+     * students that registers
+     * @return
+     */
+    @Override
+    public List<StudentDto> findAll() {
+        List<Student> students = studentRepository.findAll();
+        List<StudentDto> studentDto = studentMapper.studentDtosFromStudents(students);
+        return studentDto;
+    }
+
+    @Override
+    public StudentDto findOne(Long id) {
+        Student student = studentRepository.findById(id).get();
+        StudentDto studentDto = studentMapper.studentDtoFromStudent(student);
+        return studentDto;
+    }
+
+    @Override
+    public StudentDto  update(StudentDto studentDto) {
+        Student student = studentMapper.studentFromStudentDto(studentDto);
+        studentRepository.save(student);
+        return studentDto;
+    }
+
+    @Override
+    public void delete(Long id) {
+        studentRepository.deleteById(id);
+
+    }
+
+    @Override
+    public StudentDto add(StudentDto studentDto) {
+        Student student = studentMapper.studentFromStudentDto(studentDto);
+        studentRepository.save(student);
+        return studentDto;
+    }
 }

@@ -5,7 +5,6 @@ import edu.miu.courseregistrationsystem.dto.RegistrationGroupDto;
 import edu.miu.courseregistrationsystem.entity.RegistrationGroup;
 import org.mapstruct.Mapper;
 
-import java.util.ArrayList;
 import java.util.List;
 /**
  * @author Rediet

@@ -1,13 +1,13 @@
 package edu.miu.courseregistrationsystem.dto;
 
-import edu.miu.courseregistrationsystem.entity.CourseOffering;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.CascadeType;
-import javax.persistence.ManyToMany;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
+
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor

@@ -3,8 +3,6 @@ package edu.miu.courseregistrationsystem.mapper;
 import edu.miu.courseregistrationsystem.dto.StudentDto;
 import edu.miu.courseregistrationsystem.entity.Student;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
-import org.mapstruct.Mappings;
 
 import java.util.List;
 
