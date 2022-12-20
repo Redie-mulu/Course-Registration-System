@@ -1,13 +1,15 @@
 package edu.miu.courseregistrationsystem.dto;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
 
 @Getter
 @Builder
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class RegistrationEventStudentDto {
     private long id;
     private LocalDate startDate;

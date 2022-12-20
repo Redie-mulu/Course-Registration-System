@@ -5,5 +5,5 @@ package edu.miu.courseregistrationsystem.controller;
  * @created 19/12/2020 5:57 PM
  */
 
-public class CourseOffering {
-}
+//public class CourseOffering {
+//}

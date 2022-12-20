@@ -3,7 +3,6 @@ package edu.miu.courseregistrationsystem.service.imp;
 import edu.miu.courseregistrationsystem.dto.AcademicBlockDto;
 import edu.miu.courseregistrationsystem.dto.AcademicBlockStudentDto;
 import edu.miu.courseregistrationsystem.entity.AcademicBlock;
-import edu.miu.courseregistrationsystem.entity.CourseOffering;
 import edu.miu.courseregistrationsystem.mapper.AcademicBlockMapper;
 import edu.miu.courseregistrationsystem.repository.AcademicBlockRepository;
 import edu.miu.courseregistrationsystem.service.AcademicBlockService;
@@ -11,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -63,17 +60,18 @@ public class AcademicBlockServiceImp implements AcademicBlockService {
      */
     @Override
     public List<AcademicBlockStudentDto> getAcademicBlocksByStudent(long studentId) {
-        List<AcademicBlock> academicBlocks = academicBlockRepository.findAll();
-        List<AcademicBlock> academicBlocksByStudent = new ArrayList<>();
-        for (AcademicBlock academicBlock: academicBlocks) {
-            List<CourseOffering> courseOfferings = academicBlock.getCourseOfferings();
-            for (CourseOffering courseOffering: courseOfferings) {
-                if (courseOffering.getStudents().contains(studentId)) {
-                    academicBlocksByStudent.add(academicBlock);
-                }
-            }
-
-        }
-        return academicBlockMapper.academicBlockStudentDtosFromAcademicBlocks(academicBlocksByStudent);
+//        List<AcademicBlock> academicBlocks = academicBlockRepository.findAll();
+//        List<AcademicBlock> academicBlocksByStudent = new ArrayList<>();
+//        for (AcademicBlock academicBlock: academicBlocks) {
+//            List<CourseOffering> courseOfferings = academicBlock.getCourseOfferings();
+//            for (CourseOffering courseOffering: courseOfferings) {
+//                if (courseOffering.getStudents().contains(studentId)) {
+//                    academicBlocksByStudent.add(academicBlock);
+//                }
+//            }
+//
+//        }
+//        return academicBlockMapper.academicBlockStudentDtosFromAcademicBlocks(academicBlocksByStudent);
+        return null;
     }
 }

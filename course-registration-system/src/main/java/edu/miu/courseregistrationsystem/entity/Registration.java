@@ -4,8 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.*;
 
 /**
  * @author Feven
@@ -13,10 +12,20 @@ import java.util.List;
  *@created 16-Dec-2022 10:00:00 AM
  */
 
+@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
 public class Registration {
 
-    List<CourseOffering> courseOfferings = new ArrayList<>();
+    @Id
+    @GeneratedValue
+
+    private long id;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private Student student;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    private CourseOffering courseOffering;
 }

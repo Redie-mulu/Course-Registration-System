@@ -5,8 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -19,34 +17,22 @@ public class CourseOffering {
     private long capacity;
     private long availableSeats;
     private String initials;
-//    @ManyToMany(cascade = CascadeType.PERSIST)
-//    @JoinTable(name = "Bloc_CourseOffering",
-//    joinColumns = {@JoinColumn(name = "courseOffering_id")},
-//    inverseJoinColumns = {@JoinColumn(name = "academicBlock_id")})
-//    private List<AcademicBlock> block = new ArrayList<>();
     @ManyToOne
     private Course course;
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "courseOffering_id")
-    private List<Faculty> staff ;
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "Registration")
-    private List<Student> students ;
+    private Faculty staff;
 
 
-    public long availableSeats(){
-        return this.capacity - students.size();
-    }
-//    public void addAcademicBlock(AcademicBlock block){
-//        this.block.add(block);
-//    }
-    public void addFaculty(Faculty faculty){
-        staff.add(faculty);
-    }
 
-    // Todo
     public void initial(){
+        String[] initial = new String[2];
+        initial = staff.getName().split("");
 
+        char firstname = initial[0].charAt(0);
+        char lastname = initial[1].charAt(0);
+
+        this.initials = ""+ firstname + lastname;
     }
 
     @Override
@@ -57,10 +43,8 @@ public class CourseOffering {
                 ", capacity=" + capacity +
                 ", availableSeats=" + availableSeats +
                 ", initials='" + initials + '\'' +
-//                ", block=" + block +
                 ", course=" + course +
                 ", staff=" + staff +
-                ", students=" + students +
                 '}';
     }
 }
