@@ -5,6 +5,8 @@ import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 //import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -12,6 +14,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jms.annotation.EnableJms;
+import org.springframework.jms.core.JmsTemplate;
 //import org.springframework.jms.annotation.EnableJms;
 
 
@@ -20,8 +24,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan(basePackages = {"edu.miu.courseregistrationsystem"})
 @EnableJpaRepositories(basePackages = {"edu.miu.courseregistrationsystem"})
 @OpenAPIDefinition
-//@EnableJms
-public class CourseRegistrationApplication {
+@EnableJms
+public class CourseRegistrationApplication implements CommandLineRunner {
+	@Autowired
+	JmsTemplate jmsTemplate;
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(CourseRegistrationApplication.class);
 
@@ -49,4 +55,8 @@ public class CourseRegistrationApplication {
 		}
 	}
 
+	@Override
+	public void run(String... args) throws Exception {
+		jmsTemplate.convertAndSend("testQueue", "Hello World!");
+	}
 }

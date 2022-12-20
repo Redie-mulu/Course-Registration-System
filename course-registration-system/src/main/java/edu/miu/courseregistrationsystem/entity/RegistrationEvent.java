@@ -43,6 +43,9 @@ public class RegistrationEvent {
         }
         this.status = status;
     }
+   /* public void minusHours(int hours){
+        this.endDate.getHour()-=hours;
+    }*/
 
     @Override
     public String toString() {

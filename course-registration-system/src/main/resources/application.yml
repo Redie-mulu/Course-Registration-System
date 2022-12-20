@@ -24,6 +24,10 @@ spring:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     database: postgresql
+#  activemq:
+#    broker-url: tcp://localhost:61616
+#    user: admin
+#    password: admin
 
 server:
   port: 8081

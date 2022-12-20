@@ -10,6 +10,7 @@ import edu.miu.courseregistrationsystem.repository.RegistrationEventRepository;
 import edu.miu.courseregistrationsystem.service.RegistrationEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.jms.core.JmsTemplate;
+import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,8 +24,8 @@ import java.util.List;
 public class RegistrationEventServiceImp implements RegistrationEventService {
     @Autowired
     RegistrationEventRepository registrationEventRepository;
-//    @Autowired
-//    private JmsTemplate jmsTemplate;
+    @Autowired
+    private JmsTemplate jmsTemplate;
     @Autowired
     private RegistrationEventMapper registrationEventMapper;
     @Autowired
@@ -35,7 +36,9 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
         RegistrationEvent registrationEvent = registrationEventMapper.registrationEventFromRegistrationEventDto(registrationEventDto);
         System.out.println(registrationEvent);
         registrationEventRepository.save(registrationEvent);
-//        jmsTemplate.convertAndSend("registrationEventQueue", registrationEvent);
+        RegistrationEventStudentDto registrationEventStudentDto = registrationEventMapper.registrationEventStudentDtoFromRegistrationEvent(registrationEvent);
+        jmsTemplate.convertAndSend("registrationEventQueue", "registrationEvent");
+        System.out.println("message sent");
         return registrationEventDto;
     }
 
@@ -110,5 +113,23 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
         }*/
 //        return registrationEventMapper.registrationEventStudentDtosFromRegistrationGroups(registrationEventsForStudent);
         return registrationEventMapper.registrationEventStudentDtosFromRegistrationGroups(registrationEvents);
+    }
+
+    /**
+     * @author REDIET
+     * send an email to student 8 and 4 hours before the registration event ends
+     */
+    @Override
+    public void sendEmailReminder() {
+       /* List<RegistrationEvent> registrationEvents = registrationEventRepository.findAll();
+        for(RegistrationEvent registrationEvent: registrationEvents){
+            if(registrationEvent.getEndDate().minusHours(8).isBefore(LocalDate.now()) && registrationEvent.getEndDate().minusHours(4).isAfter(LocalDate.now())){
+                for(RegistrationGroup registrationGroup: registrationEvent.getRegistrationGroups()){
+                    for(Student student: registrationGroup.getStudents()){
+                        System.out.println("send email to student: ");
+                    }
+                }
+            }
+        }*/
     }
 }

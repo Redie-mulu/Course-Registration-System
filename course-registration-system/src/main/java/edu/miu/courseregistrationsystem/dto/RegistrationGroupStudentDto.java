@@ -17,5 +17,5 @@ import java.util.List;
 @Builder
 public class RegistrationGroupStudentDto {
     long id;
-    private List<AcademicBlockDto> academicBlocks;
+    private List<AcademicBlockStudentDto> academicBlocks;
 }
