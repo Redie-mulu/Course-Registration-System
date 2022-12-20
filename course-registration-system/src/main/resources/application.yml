@@ -4,11 +4,11 @@ spring:
     description: Registration system
     basedir: ${user.home}/.${spring.application.name}
   datasource:
-    database: registrationdb
+    database: Test1
     hostname: localhost
     port: 5432
-    username:
-    password:
+    username: ruth
+    password: 123456789
     url: jdbc:postgresql://${spring.datasource.hostname}:${spring.datasource.port}/${spring.datasource.database}
     driver-class-name: org.postgresql.Driver
     hikari:

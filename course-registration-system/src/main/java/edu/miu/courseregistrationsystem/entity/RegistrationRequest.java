@@ -18,8 +18,8 @@ public class RegistrationRequest {
     private long id;
     private int priorityNumber;
 
-    @ManyToOne
-    private CourseOffering courseOffering;
+   // @ManyToOne
+    //private CourseOffering courseOffering;
 
 
 }

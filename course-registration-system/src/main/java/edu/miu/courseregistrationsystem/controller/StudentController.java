@@ -43,11 +43,11 @@ public class StudentController {
         studentService.updateStudent(id, studentDto);
         return new ResponseEntity<StudentDto>(studentDto, HttpStatus.OK);
     }
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> dropStudent(@PathVariable long id) {
-        studentService.dropStudent(id);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-    }
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<?> dropStudent(@PathVariable long id) {
+//        studentService.dropStudent(id);
+//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//    }
     /**
      * admin can add student
      * @param "studentDto"
