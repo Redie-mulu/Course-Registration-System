@@ -16,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,7 +74,7 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
          List<RegistrationEvent> registrationEvents = registrationEventRepository.findAll();
          List<RegistrationEvent> latestRegistrationEventTwo = new ArrayList<>();
     for(RegistrationEvent registrationEvent: registrationEvents){
-        if(registrationEvent.getStartDate().isBefore(LocalDate.now()) && registrationEvent.getEndDate().isAfter(LocalDate.now())){
+        if(registrationEvent.getStartDate().isBefore(LocalDateTime.now()) && registrationEvent.getEndDate().isAfter(LocalDateTime.now())){
             latestRegistrationEventTwo.add(registrationEvent);
         }
     }
@@ -121,15 +122,16 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
      */
     @Override
     public void sendEmailReminder() {
-       /* List<RegistrationEvent> registrationEvents = registrationEventRepository.findAll();
+        List<RegistrationEvent> registrationEvents = registrationEventRepository.findAll();
         for(RegistrationEvent registrationEvent: registrationEvents){
-            if(registrationEvent.getEndDate().minusHours(8).isBefore(LocalDate.now()) && registrationEvent.getEndDate().minusHours(4).isAfter(LocalDate.now())){
+
+            /*if(registrationEvent.getEndDate().minusHours(8).isBefore(LocalDate.now()) && registrationEvent.getEndDate().minusHours(4).isAfter(LocalDate.now())){
                 for(RegistrationGroup registrationGroup: registrationEvent.getRegistrationGroups()){
                     for(Student student: registrationGroup.getStudents()){
                         System.out.println("send email to student: ");
                     }
                 }
-            }
-        }*/
+            }*/
+        }
     }
 }
