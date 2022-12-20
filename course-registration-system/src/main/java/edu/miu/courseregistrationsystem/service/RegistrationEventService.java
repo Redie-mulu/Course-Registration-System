@@ -31,6 +31,7 @@ public interface RegistrationEventService {
         * student can see the list of registration events
      *
      */
-    public RegistrationEventStudentDto getRegistrationEventStudent(long studentId);
+    public  List<RegistrationEventStudentDto>  getRegistrationEventByStudentId(long studentId);
 
+    public void sendEmailReminder();
 }

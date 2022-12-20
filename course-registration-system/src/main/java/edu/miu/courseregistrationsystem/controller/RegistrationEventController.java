@@ -1,6 +1,7 @@
 package edu.miu.courseregistrationsystem.controller;
 
 import edu.miu.courseregistrationsystem.dto.RegistrationEventDto;
+import edu.miu.courseregistrationsystem.dto.RegistrationEventStudentDto;
 import edu.miu.courseregistrationsystem.dto.StudentDto;
 import edu.miu.courseregistrationsystem.entity.RegistrationEvent;
 import edu.miu.courseregistrationsystem.mapper.RegistrationEventMapper;
@@ -78,10 +79,19 @@ public class  RegistrationEventController {
      * admin can call this API
      * need to use FeignClient to call student service to get all students
      */
-    @PostMapping("/student)")
-    public ResponseEntity<?> addNewStudents(List<StudentDto> studentDtos) {
-//        studentService.addNewStudents(studentDtos);
-        return new ResponseEntity<List<StudentDto>>(studentDtos, HttpStatus.OK);
+//    @PostMapping("/student)")
+//    public ResponseEntity<?> addNewStudents(List<StudentDto> studentDtos) {
+////        studentService.addNewStudents(studentDtos);
+//        return new ResponseEntity<List<StudentDto>>(studentDtos, HttpStatus.OK);
+//    }
+
+    /**
+     * student can register to registration event that the student is a member of
+     */
+    @GetMapping("/student/{id}")
+    public ResponseEntity<?> getRegistrationEventByStudentId(@PathVariable long id) {
+        List<RegistrationEventStudentDto> registrationEventDtos = registrationEventService.getRegistrationEventByStudentId(id);
+        return new ResponseEntity<List<RegistrationEventStudentDto>>(registrationEventDtos, HttpStatus.OK);
     }
 
 }

@@ -40,7 +40,6 @@ public class AcademicBlock {
     @OneToMany(cascade = CascadeType.ALL)
     private List<CourseOffering> courseOfferings;
 
-
     public void addCourseOffering(CourseOffering courseOffering){
         this.courseOfferings.add(courseOffering);
     }

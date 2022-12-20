@@ -1,5 +1,6 @@
 package edu.miu.courseregistrationsystem.mapper;
 
+import edu.miu.courseregistrationsystem.dto.RegistrationEventStudentDto;
 import edu.miu.courseregistrationsystem.dto.RegistrationGroupDto;
 import edu.miu.courseregistrationsystem.entity.RegistrationGroup;
 import org.mapstruct.Mapper;

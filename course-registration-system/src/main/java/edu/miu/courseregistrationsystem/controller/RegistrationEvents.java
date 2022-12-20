@@ -26,4 +26,5 @@ public class RegistrationEvents {
     public void setRegistrationEvents(List<RegistrationEventDto> registrationEvents) {
         this.registrationEvents = registrationEvents;
     }
+
 }

@@ -19,6 +19,6 @@ public class AcademicBlockDto {
     private String semester;
     private LocalDate startDate;
     private LocalDate endDate;
-//    private List<CourseOfferingDto> courseOfferings;
+    private List<CourseOfferingDto> courseOfferings;
 
 }
