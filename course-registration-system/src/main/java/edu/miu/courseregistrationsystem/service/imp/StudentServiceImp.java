@@ -61,6 +61,16 @@ public class StudentServiceImp implements StudentService {
      */
     @Override
     public List<Student> addStudents(List<StudentDto> students) {
+
         return studentRepository.saveAll(studentMapper.studentsFromStudentDtos(students));
+    }
+    public void addStudent(StudentDto studentDto){
+        System.out.println("new student ");
+        if (studentDto.getId() == null) {
+            throw new IllegalArgumentException("StudentDto must have a non-null id");
+        }
+        Student student = studentMapper.studentFromStudentDto(studentDto);
+        studentRepository.save(student);
+
     }
 }

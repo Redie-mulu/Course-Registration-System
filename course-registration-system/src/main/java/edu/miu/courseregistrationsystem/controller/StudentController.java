@@ -58,4 +58,12 @@ public class StudentController {
         return new ResponseEntity<Students>(HttpStatus.OK);
     }
 
+    @PostMapping("/add")
+    public ResponseEntity<?> addStudent(@RequestBody StudentDto studentDtos) {
+        studentService.addStudent(studentDtos);
+        return new ResponseEntity<Students>(HttpStatus.OK);
+    }
+
+
+
 }

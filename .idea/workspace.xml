@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8907c85-f0d0-4dff-8c02-19e3acf3e2dc" name="Changes" comment="" />
+    <list default="true" id="f8907c85-f0d0-4dff-8c02-19e3acf3e2dc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/StudentController.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/StudentController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/dto/StudentDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/dto/StudentDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/entity/Student.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/entity/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/StudentService.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/StudentService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/imp/StudentServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/imp/StudentServiceImp.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +28,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="ruth" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />

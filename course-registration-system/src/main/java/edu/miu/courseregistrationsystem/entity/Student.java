@@ -17,11 +17,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Student extends User  {
-//
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+public class Student   {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String name;
     private String email;
 
@@ -41,7 +41,7 @@ public class Student extends User  {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", mailingAddress=" + mailingAddress +
-//                ", homeAddress=" + homeAddress +
+               ", homeAddress=" + homeAddress +
                 '}';
     }
 

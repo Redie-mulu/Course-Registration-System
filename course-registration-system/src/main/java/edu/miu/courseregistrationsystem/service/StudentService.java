@@ -20,5 +20,7 @@ public interface StudentService {
      * admin can add students
      */
     public List<Student> addStudents(List<StudentDto> students);
+    public void addStudent(StudentDto studentDto);
+
 
 }
