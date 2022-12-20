@@ -12,9 +12,9 @@ import java.util.List;
  */
 @Mapper(componentModel = "spring")
 public interface AcademicBlockMapper {
-    public AcademicBlock getAcademicBlockFromAcademicBlockDto(AcademicBlockDto academicBlockDto);
-    public AcademicBlockDto getAcademicBlockDtoFromAcademicBlock(AcademicBlock academicBlock);
-    public List<AcademicBlockDto> getAcademicBlockDtosFromAcademicBlocks(List<AcademicBlock> academicBlocks);
-    public List<AcademicBlock> getAcademicBlocksFromAcademicBlockDtos(List<AcademicBlockDto> academicBlockDtos);
+    public AcademicBlock academicBlockFromAcademicBlockDto(AcademicBlockDto academicBlockDto);
+    public AcademicBlockDto academicBlockDtoFromAcademicBlock(AcademicBlock academicBlock);
+    public List<AcademicBlockDto> academicBlockDtosFromAcademicBlocks(List<AcademicBlock> academicBlocks);
+    public List<AcademicBlock> academicBlocksFromAcademicBlockDtos(List<AcademicBlockDto> academicBlockDtos);
 
 }

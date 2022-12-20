@@ -1,14 +1,13 @@
 package edu.miu.courseregistrationsystem.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import edu.miu.courseregistrationsystem.entity.Address;
+import lombok.*;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Data
+@Getter
 public class StudentDto {
     private long id;
     private String name;

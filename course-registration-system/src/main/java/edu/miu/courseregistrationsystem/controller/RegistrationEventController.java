@@ -2,6 +2,8 @@ package edu.miu.courseregistrationsystem.controller;
 
 import edu.miu.courseregistrationsystem.dto.RegistrationEventDto;
 import edu.miu.courseregistrationsystem.dto.StudentDto;
+import edu.miu.courseregistrationsystem.entity.RegistrationEvent;
+import edu.miu.courseregistrationsystem.mapper.RegistrationEventMapper;
 import edu.miu.courseregistrationsystem.service.RegistrationEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -21,6 +23,8 @@ import java.util.List;
 public class  RegistrationEventController {
     @Autowired
     private RegistrationEventService registrationEventService;
+    @Autowired
+    private RegistrationEventMapper registrationEventMapper;
 
     @GetMapping
     public ResponseEntity<?> getAllRegistrationEvents() {

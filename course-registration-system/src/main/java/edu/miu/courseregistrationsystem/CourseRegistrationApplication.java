@@ -10,6 +10,8 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+
+//import org.modelmapper.ModelMapper;
 //import org.springframework.jms.annotation.EnableJms;
 
 
@@ -46,4 +48,5 @@ public class CourseRegistrationApplication {
 			LOGGER.error("Please proceed to manually creation of configuration files!");
 		}
 	}
+
 }

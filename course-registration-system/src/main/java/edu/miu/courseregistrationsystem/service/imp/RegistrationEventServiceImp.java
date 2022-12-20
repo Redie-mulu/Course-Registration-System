@@ -1,6 +1,7 @@
 package edu.miu.courseregistrationsystem.service.imp;
 
 import edu.miu.courseregistrationsystem.dto.RegistrationEventDto;
+import edu.miu.courseregistrationsystem.dto.RegistrationEventStudentDto;
 import edu.miu.courseregistrationsystem.entity.RegistrationEvent;
 import edu.miu.courseregistrationsystem.mapper.RegistrationEventMapper;
 import edu.miu.courseregistrationsystem.repository.RegistrationEventRepository;
@@ -26,7 +27,8 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
 
     @Override
     public RegistrationEventDto addRegistrationEvent(RegistrationEventDto registrationEventDto) {
-        RegistrationEvent registrationEvent = registrationEventMapper.getRegistrationEventFromRegistrationEventDto(registrationEventDto);
+        RegistrationEvent registrationEvent = registrationEventMapper.registrationEventFromRegistrationEventDto(registrationEventDto);
+        System.out.println(registrationEvent);
         registrationEventRepository.save(registrationEvent);
 //        jmsTemplate.convertAndSend("registrationEventQueue", registrationEvent);
         return registrationEventDto;
@@ -34,7 +36,7 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
 
     @Override
     public RegistrationEventDto updateRegistrationEvent(long id, RegistrationEventDto registrationEventDto) {
-        RegistrationEvent registrationEvent = registrationEventMapper.getRegistrationEventFromRegistrationEventDto(registrationEventDto);
+        RegistrationEvent registrationEvent = registrationEventMapper.registrationEventFromRegistrationEventDto(registrationEventDto);
         registrationEventRepository.save(registrationEvent);
         return registrationEventDto;
     }
@@ -47,14 +49,14 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
     @Override
     public RegistrationEventDto getRegistrationEvent(long id) {
         RegistrationEvent registrationEvent = registrationEventRepository.findById(id).get();
-        RegistrationEventDto registrationEventDto = registrationEventMapper.getRegistrationEventDtoFromRegistrationEvent(registrationEvent);
+        RegistrationEventDto registrationEventDto = registrationEventMapper.registrationEventDtoFromRegistrationEvent(registrationEvent);
         return registrationEventDto;
     }
 
     @Override
     public List<RegistrationEventDto> getAllRegistrationEvents() {
         List<RegistrationEvent> registrationEvents = registrationEventRepository.findAll();
-        List<RegistrationEventDto> registrationEventDtos = registrationEventMapper.getRegistrationEventDtosFromRegistrationEvents(registrationEvents);
+        List<RegistrationEventDto> registrationEventDtos = registrationEventMapper.registrationEventDtosFromRegistrationEvents(registrationEvents);
         return registrationEventDtos;
     }
 
@@ -67,7 +69,7 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
             latestRegistrationEventTwo.add(registrationEvent);
         }
     }
-            return registrationEventMapper.getRegistrationEventDtosFromRegistrationEvents(latestRegistrationEventTwo);
+            return registrationEventMapper.registrationEventDtosFromRegistrationEvents(latestRegistrationEventTwo);
     }
 
     /**
@@ -81,5 +83,10 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
     public void addRegistrationGroupToRegistrationEvent(long registrationEventId, long registrationGroupId) {
         RegistrationEvent registrationEvent = registrationEventRepository.findById(registrationEventId).get();
         registrationEvent.getRegistrationGroups().add(registrationGroupServiceImp.getRegistrationGroupById(registrationGroupId));
+    }
+
+    @Override
+    public RegistrationEventStudentDto getRegistrationEventStudent(long studentId) {
+        return null;
     }
 }

@@ -1,6 +1,7 @@
 package edu.miu.courseregistrationsystem.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,8 +16,10 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Student extends User {
+public class Student  {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String name;
     private String email;
@@ -24,9 +27,11 @@ public class Student extends User {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "mailing_address_id")
     private Address mailingAddress;
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "home_address_id")
     private Address homeAddress;
+
 
     @Override
     public String toString() {
@@ -35,7 +40,7 @@ public class Student extends User {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", mailingAddress=" + mailingAddress +
-                ", homeAddress=" + homeAddress +
+//                ", homeAddress=" + homeAddress +
                 '}';
     }
 
