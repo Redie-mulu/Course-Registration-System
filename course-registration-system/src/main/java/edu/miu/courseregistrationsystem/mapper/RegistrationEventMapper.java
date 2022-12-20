@@ -1,7 +1,9 @@
 package edu.miu.courseregistrationsystem.mapper;
 
 import edu.miu.courseregistrationsystem.dto.RegistrationEventDto;
+import edu.miu.courseregistrationsystem.dto.RegistrationEventStudentDto;
 import edu.miu.courseregistrationsystem.entity.RegistrationEvent;
+import edu.miu.courseregistrationsystem.entity.RegistrationGroup;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -18,8 +20,10 @@ public interface RegistrationEventMapper {
 
     public RegistrationEvent registrationEventFromRegistrationEventDto(RegistrationEventDto registrationEventDto);
 
-//    @Mapping(target = "registrationGroups", ignore = true)
+////    @Mapping(target = "registrationGroups", ignore = true)
     public RegistrationEventDto registrationEventDtoFromRegistrationEvent(RegistrationEvent registrationEvent);
     public List<RegistrationEventDto> registrationEventDtosFromRegistrationEvents(List<RegistrationEvent> registrationEvents);
     public List<RegistrationEvent> registrationEventsFromRegistrationEventDtos(List<RegistrationEventDto> registrationEventDtos);
+    public List<RegistrationEventStudentDto> registrationEventStudentDtosFromRegistrationGroups(List<RegistrationEvent> registrationEvents);
+
 }

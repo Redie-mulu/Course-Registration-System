@@ -12,6 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
+
 public class CourseDto {
     private String code;
     private String name;
@@ -19,6 +20,6 @@ public class CourseDto {
     private LocalDate startDate;
     private LocalDate endDate;
 
-//    private List<CourseOfferingDto> courseOffering;
+    private List<CourseOfferingDto> courseOffering;
 
 }

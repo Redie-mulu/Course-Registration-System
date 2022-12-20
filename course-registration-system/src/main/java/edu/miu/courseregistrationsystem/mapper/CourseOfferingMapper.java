@@ -17,4 +17,5 @@ public interface CourseOfferingMapper {
     public CourseOfferingDto courseOfferingDtoFromCourseOffering(CourseOffering courseOffering);
     public List<CourseOffering> courseOfferingsFromCourseOfferingDtos(List<CourseOfferingDto> courseOfferingDtos);
     public List<CourseOfferingDto> courseOfferingDtosFromCourseOfferings(List<CourseOffering> courseOfferings);
+
 }

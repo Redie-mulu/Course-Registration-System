@@ -3,18 +3,23 @@ package edu.miu.courseregistrationsystem.service.imp;
 import edu.miu.courseregistrationsystem.dto.RegistrationEventDto;
 import edu.miu.courseregistrationsystem.dto.RegistrationEventStudentDto;
 import edu.miu.courseregistrationsystem.entity.RegistrationEvent;
+import edu.miu.courseregistrationsystem.entity.RegistrationGroup;
+import edu.miu.courseregistrationsystem.entity.Student;
 import edu.miu.courseregistrationsystem.mapper.RegistrationEventMapper;
 import edu.miu.courseregistrationsystem.repository.RegistrationEventRepository;
 import edu.miu.courseregistrationsystem.service.RegistrationEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
 @Service
+@Transactional
 public class RegistrationEventServiceImp implements RegistrationEventService {
     @Autowired
     RegistrationEventRepository registrationEventRepository;
@@ -71,7 +76,6 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
     }
             return registrationEventMapper.registrationEventDtosFromRegistrationEvents(latestRegistrationEventTwo);
     }
-
     /**
      * @author REDIET
      * @param registrationEventId
@@ -84,9 +88,27 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
         RegistrationEvent registrationEvent = registrationEventRepository.findById(registrationEventId).get();
         registrationEvent.getRegistrationGroups().add(registrationGroupServiceImp.getRegistrationGroupById(registrationGroupId));
     }
+    /**
+     * @author REDIET
+     * student can see the list of registration events
+     * student will get existing registration event to existing student
+     */
 
     @Override
-    public RegistrationEventStudentDto getRegistrationEventStudent(long studentId) {
-        return null;
+    public List<RegistrationEventStudentDto>  getRegistrationEventByStudentId(long studentId) {
+        List<RegistrationEvent> registrationEvents =  registrationEventRepository.findByRegistrationGroupsStudentsId(studentId);
+        /*List<RegistrationEvent> registrationEvents = registrationEventRepository.findAll();
+        List<RegistrationEvent> registrationEventsForStudent = new ArrayList<>();
+        for(RegistrationEvent registrationEvent: registrationEvents){
+            for (RegistrationGroup registrationGroup: registrationEvent.getRegistrationGroups()){
+                for (Student student: registrationGroup.getStudents()){
+                    if(student.getId() == studentId){
+                        registrationEventsForStudent.add(registrationEvent);
+                    }
+                }
+            }
+        }*/
+//        return registrationEventMapper.registrationEventStudentDtosFromRegistrationGroups(registrationEventsForStudent);
+        return registrationEventMapper.registrationEventStudentDtosFromRegistrationGroups(registrationEvents);
     }
 }

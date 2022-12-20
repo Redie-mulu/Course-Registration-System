@@ -11,8 +11,10 @@ import edu.miu.courseregistrationsystem.repository.StudentRepository;
 import edu.miu.courseregistrationsystem.service.RegistrationGroupService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -21,6 +23,7 @@ import java.util.List;
  * @created 18-Dec-2022 5:59 PM
  */
 @Service
+@Transactional
 public class RegistrationGroupServiceImp implements RegistrationGroupService {
     @Autowired
     private RegistrationGroupRepository registrationGroupRepository;
@@ -55,14 +58,22 @@ public class RegistrationGroupServiceImp implements RegistrationGroupService {
          * admin will add a list of registered students to registration group
          */
         RegistrationGroup registrationGroup = registrationGroupRepository.findById(registrationGroupId).get();
-        List<Student> students = new ArrayList<>();
+        HashMap<Long, Student> existingStudent  = new HashMap<>();
+        for (Student student: registrationGroup.getStudents()) {
+            existingStudent.put(student.getId(), student);
+        }
+
         for (Long studentId : studentIds) {
             Student student = studentRepository.findById(studentId).get();
-            students.add(student);
+            if (!existingStudent.containsKey(studentId)) {
+                registrationGroup.getStudents().add(student);
+            }
         }
         List<AcademicBlock> academicBlocksForRegistrationGroup = registrationGroup.getAcademicBlocks();
         AcademicBlock academicBlock = academicBlockRepository.findById(academicBlockId).get();
         academicBlocksForRegistrationGroup.add(academicBlock);
+        registrationGroup.setAcademicBlocks(academicBlocksForRegistrationGroup);
+
         registrationGroupRepository.save(registrationGroup);
     }
 
@@ -72,7 +83,29 @@ public class RegistrationGroupServiceImp implements RegistrationGroupService {
     }
 
     @Override
-    public List<RegistrationGroup> getAllRegistrationGroupsByStudentId(long studentId) {
-        return null;
+    public List<RegistrationGroupDto> getAllRegistrationGroups() {
+        List<RegistrationGroup> registrationGroups = registrationGroupRepository.findAll();
+        List<RegistrationGroupDto> registrationGroupDtos = registrationGroupMapper.registrationGroupDtosFromRegistrationGroups(registrationGroups);
+        return registrationGroupDtos;
+    }
+
+
+    /**
+     * @author Rediet
+     * student can get all the registration group he/she is registered
+     */
+    @Override
+    public List<RegistrationGroup> getRegistrationGroupByStudentIds(long studentId) {
+        List<RegistrationGroup> registrationGroups = registrationGroupRepository.findAll();
+        List<RegistrationGroup> registrationGroupsForStudent = new ArrayList<>();
+        for(RegistrationGroup registrationGroup : registrationGroups){
+            List<Student> students = registrationGroup.getStudents();
+            for(Student student : students){
+                if(student.getId() == studentId){
+                    registrationGroupsForStudent.add(registrationGroup);
+                }
+            }
+        }
+        return registrationGroupsForStudent;
     }
 }

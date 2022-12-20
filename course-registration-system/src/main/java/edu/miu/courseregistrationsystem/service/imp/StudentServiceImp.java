@@ -8,10 +8,12 @@ import edu.miu.courseregistrationsystem.service.StudentService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
+@Transactional
 public class StudentServiceImp implements StudentService {
     @Autowired
     private StudentMapper studentMapper;
@@ -26,8 +28,10 @@ public class StudentServiceImp implements StudentService {
         Student student = studentMapper.studentFromStudentDto(studentDto);
 //        Student student = modelMapper.map(studentDto, Student.class);
         System.out.println(student);
-        studentRepository.save(student);
-        return studentDto;
+        Student new_student = studentRepository.save(student);
+
+        return studentMapper.studentDtoFromStudent(new_student);
+        //return studentDto;
     }
 
     @Override

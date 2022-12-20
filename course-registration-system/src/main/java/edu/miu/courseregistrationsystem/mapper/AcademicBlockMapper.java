@@ -1,6 +1,7 @@
 package edu.miu.courseregistrationsystem.mapper;
 
 import edu.miu.courseregistrationsystem.dto.AcademicBlockDto;
+import edu.miu.courseregistrationsystem.dto.AcademicBlockStudentDto;
 import edu.miu.courseregistrationsystem.entity.AcademicBlock;
 import org.mapstruct.Mapper;
 
@@ -17,5 +18,6 @@ public interface AcademicBlockMapper {
     public AcademicBlockDto academicBlockDtoFromAcademicBlock(AcademicBlock academicBlock);
     public List<AcademicBlockDto> academicBlockDtosFromAcademicBlocks(List<AcademicBlock> academicBlocks);
     public List<AcademicBlock> academicBlocksFromAcademicBlockDtos(List<AcademicBlockDto> academicBlockDtos);
+    public List<AcademicBlockStudentDto> academicBlockStudentDtosFromAcademicBlocks(List<AcademicBlock> academicBlocks);
 
 }

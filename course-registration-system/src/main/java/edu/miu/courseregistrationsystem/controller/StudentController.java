@@ -52,9 +52,11 @@ public class StudentController {
      * admin can add student
      * @param "studentDto"
      */
+    // TODO: fix list of students
     @PostMapping
     public ResponseEntity<?> addStudents(@RequestBody List<StudentDto> studentDtos) {
         studentService.addStudents(studentDtos);
+        System.out.println(studentDtos);
         return new ResponseEntity<Students>(HttpStatus.OK);
     }
 
