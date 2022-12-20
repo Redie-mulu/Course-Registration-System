@@ -12,12 +12,16 @@ import java.util.List;
 
 @Service
 public class StudentServiceImp implements StudentService {
+
+    @Autowired
+    private StudentMapper studentMapper;
     @Autowired
     private StudentRepository studentRepository;
 
     @Override
     public StudentDto registerStudent(StudentDto studentDto) {
-        Student student = StudentMapper.getStudentFromStudentDto(studentDto);
+
+        Student student = studentMapper.studentFromStudentDto(studentDto);
         studentRepository.save(student);
         return studentDto;
     }
@@ -29,7 +33,7 @@ public class StudentServiceImp implements StudentService {
 
     @Override
     public StudentDto updateStudent(long id, StudentDto studentDto) {
-        Student student = StudentMapper.getStudentFromStudentDto(studentDto);
+        Student student = studentMapper.studentFromStudentDto(studentDto);
         studentRepository.save(student);
         return studentDto;
     }
@@ -37,31 +41,51 @@ public class StudentServiceImp implements StudentService {
     @Override
     public StudentDto getStudent(long id) {
         Student student = studentRepository.findById(id).get();
-        StudentDto studentDto = StudentMapper.getStudentDtoFromStudent(student);
+        StudentDto studentDto = studentMapper.studentDtoFromStudent(student);
         return studentDto;
     }
 
     @Override
     public List<StudentDto> getAllStudents() {
         List<Student> students = studentRepository.findAll();
-        //List<StudentDto> studentDtos = StudentMapper.getStudentDtosFromStudents(students);
-        //return studentDtos;
-        return null;
+        List<StudentDto> studentDtos = studentMapper.studentDtosFromStudents(students);
+        return studentDtos;
+    }
+
+    /**
+     * @author Rediet
+     * @param students
+     * admin can add students
+     * @return
+     */
+    @Override
+    public List<Student> addStudents(List<StudentDto> students) {
+        return studentRepository.saveAll(studentMapper.studentsFromStudentDtos(students));
+    }
+    /**
+     * @author Feven
+     * students that registers
+     * @return
+     */
+    @Override
+    public List<StudentDto> findAll() {
+        List<Student> students = studentRepository.findAll();
+        List<StudentDto> studentDto = studentMapper.studentDtosFromStudents(students);
+        return studentDto;
     }
 
     @Override
-    public List<Student> findAll() {
-        return studentRepository.findAll();
+    public StudentDto findOne(Long id) {
+        Student student = studentRepository.findById(id).get();
+        StudentDto studentDto = studentMapper.studentDtoFromStudent(student);
+        return studentDto;
     }
 
     @Override
-    public Student findOne(Long id) {
-        return studentRepository.findById(id).orElse(null);
-    }
-
-    @Override
-    public Student update(Student student) {
-        return studentRepository.save(student);
+    public StudentDto  update(StudentDto studentDto) {
+        Student student = studentMapper.studentFromStudentDto(studentDto);
+        studentRepository.save(student);
+        return studentDto;
     }
 
     @Override
@@ -71,7 +95,9 @@ public class StudentServiceImp implements StudentService {
     }
 
     @Override
-    public Student add(Student t) {
-        return studentRepository.save(t);
+    public StudentDto add(StudentDto studentDto) {
+        Student student = studentMapper.studentFromStudentDto(studentDto);
+        studentRepository.save(student);
+        return studentDto;
     }
 }

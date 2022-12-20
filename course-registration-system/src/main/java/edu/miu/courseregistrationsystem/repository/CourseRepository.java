@@ -1,15 +1,16 @@
 package edu.miu.courseregistrationsystem.repository;
 
-import edu.miu.courseregistrationsystem.entity.CourseOffering;
+import edu.miu.courseregistrationsystem.entity.Course;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * @author feven
+ * @author Feven
  * @version 1.0
- *@created 18-Dec-2022 3:10PM
+ * @created 20-Dec-2022 12:00AM
  */
+
 @Repository
-public interface CourseOfferingRepository extends JpaRepository<CourseOffering,Long> {
+public interface CourseRepository extends JpaRepository<Course, Long> {
 
 }
