@@ -74,6 +74,7 @@ public class AcademicBlockServiceImp implements AcademicBlockService {
             }
 
         }
-        return academicBlockMapper.academicBlockStudentDtosFromAcademicBlocks(academicBlocksByStudent);
+       // return academicBlockMapper.academicBlockStudentDtosFromAcademicBlocks(academicBlocksByStudent);
+       return null;
     }
 }

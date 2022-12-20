@@ -36,7 +36,7 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
         RegistrationEvent registrationEvent = registrationEventMapper.registrationEventFromRegistrationEventDto(registrationEventDto);
         System.out.println(registrationEvent);
         registrationEventRepository.save(registrationEvent);
-        RegistrationEventStudentDto registrationEventStudentDto = registrationEventMapper.registrationEventStudentDtoFromRegistrationEvent(registrationEvent);
+        //RegistrationEventStudentDto registrationEventStudentDto = registrationEventMapper.registrationEventStudentDtoFromRegistrationEvent(registrationEvent);
         jmsTemplate.convertAndSend("registrationEventQueue", "registrationEvent");
         System.out.println("message sent");
         return registrationEventDto;
@@ -112,7 +112,8 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
             }
         }*/
 //        return registrationEventMapper.registrationEventStudentDtosFromRegistrationGroups(registrationEventsForStudent);
-        return registrationEventMapper.registrationEventStudentDtosFromRegistrationGroups(registrationEvents);
+        //return registrationEventMapper.registrationEventStudentDtosFromRegistrationGroups(registrationEvents);
+      return null;
     }
 
     /**

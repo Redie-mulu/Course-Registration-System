@@ -1,0 +1,296 @@
+Index: course-registration-system/src/main/java/edu/miu/courseregistrationsystem/mapper/RegistrationEventMapper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.miu.courseregistrationsystem.mapper;\n\nimport edu.miu.courseregistrationsystem.dto.RegistrationEventDto;\nimport edu.miu.courseregistrationsystem.dto.RegistrationEventStudentDto;\nimport edu.miu.courseregistrationsystem.entity.RegistrationEvent;\nimport edu.miu.courseregistrationsystem.entity.RegistrationGroup;\nimport org.mapstruct.Mapper;\nimport org.mapstruct.Mapping;\n\nimport java.util.List;\n\n/**\n * @author Rediet\n * @version 1.0\n * @created 10/12/2020 12:11 AM\n */\n\n@Mapper(componentModel = \"spring\")\npublic interface RegistrationEventMapper {\n\n    public RegistrationEvent registrationEventFromRegistrationEventDto(RegistrationEventDto registrationEventDto);\n\n////    @Mapping(target = \"registrationGroups\", ignore = true)\n    public RegistrationEventDto registrationEventDtoFromRegistrationEvent(RegistrationEvent registrationEvent);\n    public List<RegistrationEventDto> registrationEventDtosFromRegistrationEvents(List<RegistrationEvent> registrationEvents);\n    public List<RegistrationEvent> registrationEventsFromRegistrationEventDtos(List<RegistrationEventDto> registrationEventDtos);\n    public RegistrationEventStudentDto registrationEventStudentDtoFromRegistrationEvent(RegistrationEvent registrationEvent);\n    public List<RegistrationEventStudentDto> registrationEventStudentDtosFromRegistrationGroups(List<RegistrationEvent> registrationEvents);\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/mapper/RegistrationEventMapper.java b/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/mapper/RegistrationEventMapper.java
+--- a/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/mapper/RegistrationEventMapper.java	
++++ b/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/mapper/RegistrationEventMapper.java	
+@@ -24,7 +24,7 @@
+     public RegistrationEventDto registrationEventDtoFromRegistrationEvent(RegistrationEvent registrationEvent);
+     public List<RegistrationEventDto> registrationEventDtosFromRegistrationEvents(List<RegistrationEvent> registrationEvents);
+     public List<RegistrationEvent> registrationEventsFromRegistrationEventDtos(List<RegistrationEventDto> registrationEventDtos);
+-    public RegistrationEventStudentDto registrationEventStudentDtoFromRegistrationEvent(RegistrationEvent registrationEvent);
++   public RegistrationEventStudentDto registrationEventStudentDtoFromRegistrationEvent(RegistrationEvent registrationEvent);
+     public List<RegistrationEventStudentDto> registrationEventStudentDtosFromRegistrationGroups(List<RegistrationEvent> registrationEvents);
+ 
+ }
+Index: course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/AcademicBlockController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.miu.courseregistrationsystem.controller;\n\nimport edu.miu.courseregistrationsystem.dto.AcademicBlockDto;\nimport edu.miu.courseregistrationsystem.dto.AcademicBlockStudentDto;\nimport edu.miu.courseregistrationsystem.service.AcademicBlockService;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.http.HttpStatus;\nimport org.springframework.http.ResponseEntity;\nimport org.springframework.web.bind.annotation.*;\n\nimport java.util.List;\n\n@RestController\n@RequestMapping(\"api/academic-blocks\")\npublic class AcademicBlockController {\n    @Autowired\n    private AcademicBlockService academicBlockCService;\n\n    @GetMapping\n    public List<AcademicBlockDto> getAllAcademicBlocks() {\n        List<AcademicBlockDto> academicBlockDtos = academicBlockCService.getAllAcademicBlocks();\n        return academicBlockDtos;\n    }\n\n    @PostMapping\n    public ResponseEntity<?> addAcademicBlock(@RequestBody AcademicBlockDto academicBlockDto) {\n        academicBlockCService.createAcademicBlock(academicBlockDto);\n        return new ResponseEntity<>(academicBlockDto, HttpStatus.OK);\n    }\n    @GetMapping(\"/{id}\")\n    public ResponseEntity<?> getAcademicBlock(@PathVariable long id) {\n        AcademicBlockDto academicBlockDto = academicBlockCService.getAcademicBlock(id);\n        return new ResponseEntity<AcademicBlockDto>(academicBlockDto, HttpStatus.OK);\n    }\n    @PutMapping(\"/{id}\")\n    public ResponseEntity<?> updateAcademicBlock(@PathVariable long id, @RequestBody AcademicBlockDto academicBlockDto) {\n        academicBlockCService.updateAcademicBlock(id, academicBlockDto);\n        return new ResponseEntity<AcademicBlockDto>(academicBlockDto, HttpStatus.OK);\n    }\n    @DeleteMapping(\"/{id}\")\n    public ResponseEntity<?> dropAcademicBlock(@PathVariable long id) {\n        academicBlockCService.deleteAcademicBlock(id);\n        return new ResponseEntity<>(HttpStatus.NO_CONTENT);\n    }\n    /**\n     * @author REDIET\n     * student can view all academic blocks he is registered\n     *\n     */\n    @GetMapping(\"/student/{id}\")\n    public ResponseEntity<?> getAcademicBlocksByStudent(@PathVariable long id) {\n        List<AcademicBlockStudentDto> academicBlockDtos = academicBlockCService.getAcademicBlocksByStudent(id);\n        return new ResponseEntity<List<AcademicBlockStudentDto>>(academicBlockDtos, HttpStatus.OK);\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/AcademicBlockController.java b/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/AcademicBlockController.java
+--- a/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/AcademicBlockController.java	
++++ b/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/AcademicBlockController.java	
+@@ -47,9 +47,9 @@
+      * student can view all academic blocks he is registered
+      *
+      */
+-    @GetMapping("/student/{id}")
+-    public ResponseEntity<?> getAcademicBlocksByStudent(@PathVariable long id) {
+-        List<AcademicBlockStudentDto> academicBlockDtos = academicBlockCService.getAcademicBlocksByStudent(id);
+-        return new ResponseEntity<List<AcademicBlockStudentDto>>(academicBlockDtos, HttpStatus.OK);
+-    }
++//    @GetMapping("/student/{id}")
++//    public ResponseEntity<?> getAcademicBlocksByStudent(@PathVariable long id) {
++//        List<AcademicBlockStudentDto> academicBlockDtos = academicBlockCService.getAcademicBlocksByStudent(id);
++//        return new ResponseEntity<List<AcademicBlockStudentDto>>(academicBlockDtos, HttpStatus.OK);
++//    }
+ }
+Index: course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/AcademicBlockService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.miu.courseregistrationsystem.service;\n\nimport edu.miu.courseregistrationsystem.dto.AcademicBlockDto;\nimport edu.miu.courseregistrationsystem.dto.AcademicBlockStudentDto;\n\nimport java.util.List;\n\npublic interface AcademicBlockService {\n    public AcademicBlockDto createAcademicBlock(AcademicBlockDto academicBlockDto);\n    public AcademicBlockDto getAcademicBlock(long id);\n    public AcademicBlockDto updateAcademicBlock(long id, AcademicBlockDto academicBlockDto);\n    public void deleteAcademicBlock(long id);\n    public List<AcademicBlockDto> getAllAcademicBlocks();\n    /**\n     * @author Rediet\n     * student can get all the academic blocks he/she is registered\n     */\n    public List<AcademicBlockStudentDto> getAcademicBlocksByStudent(long studentId);\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/AcademicBlockService.java b/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/AcademicBlockService.java
+--- a/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/AcademicBlockService.java	
++++ b/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/AcademicBlockService.java	
+@@ -15,5 +15,5 @@
+      * @author Rediet
+      * student can get all the academic blocks he/she is registered
+      */
+-    public List<AcademicBlockStudentDto> getAcademicBlocksByStudent(long studentId);
++//    public List<AcademicBlockStudentDto> getAcademicBlocksByStudent(long studentId);
+ }
+Index: course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/imp/AcademicBlockServiceImp.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.miu.courseregistrationsystem.service.imp;\n\nimport edu.miu.courseregistrationsystem.dto.AcademicBlockDto;\nimport edu.miu.courseregistrationsystem.dto.AcademicBlockStudentDto;\nimport edu.miu.courseregistrationsystem.entity.AcademicBlock;\nimport edu.miu.courseregistrationsystem.entity.CourseOffering;\nimport edu.miu.courseregistrationsystem.mapper.AcademicBlockMapper;\nimport edu.miu.courseregistrationsystem.repository.AcademicBlockRepository;\nimport edu.miu.courseregistrationsystem.service.AcademicBlockService;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.stereotype.Service;\nimport org.springframework.transaction.annotation.Transactional;\n\n\nimport java.util.ArrayList;\nimport java.util.List;\n\n@Service\n@Transactional\npublic class AcademicBlockServiceImp implements AcademicBlockService {\n\n    private AcademicBlockMapper academicBlockMapper;\n    @Autowired\n    AcademicBlockRepository academicBlockRepository;\n    @Override\n    public AcademicBlockDto createAcademicBlock(AcademicBlockDto academicBlockDto) {\n        AcademicBlock academicBlock = academicBlockMapper.academicBlockFromAcademicBlockDto(academicBlockDto);\n        academicBlockRepository.save(academicBlock);\n        return academicBlockDto;\n    }\n\n    @Override\n    public AcademicBlockDto getAcademicBlock(long id) {\n        AcademicBlock academicBlock = academicBlockRepository.findById(id).get();\n        AcademicBlockDto academicBlockDto = academicBlockMapper.academicBlockDtoFromAcademicBlock(academicBlock);\n        return  academicBlockDto;\n    }\n\n    @Override\n    public AcademicBlockDto updateAcademicBlock(long id, AcademicBlockDto academicBlockDto) {\n        AcademicBlock academicBlock = academicBlockMapper.academicBlockFromAcademicBlockDto(academicBlockDto);\n        academicBlockRepository.save(academicBlock);\n        return academicBlockDto;\n    }\n\n    @Override\n    public void deleteAcademicBlock(long id) {\n        academicBlockRepository.deleteById(id);\n    }\n\n    @Override\n    public List<AcademicBlockDto> getAllAcademicBlocks() {\n        List<AcademicBlock> academicBlocks = academicBlockRepository.findAll();\n        List<AcademicBlockDto> academicBlockDtos = academicBlockMapper.academicBlockDtosFromAcademicBlocks(academicBlocks);\n        return academicBlockDtos;\n    }\n\n    /**\n     * @author Rediet\n     * @param studentId\n     * @return\n     * student can get all the academic blocks he/she is registered\n     */\n    @Override\n    public List<AcademicBlockStudentDto> getAcademicBlocksByStudent(long studentId) {\n        List<AcademicBlock> academicBlocks = academicBlockRepository.findAll();\n        List<AcademicBlock> academicBlocksByStudent = new ArrayList<>();\n        for (AcademicBlock academicBlock: academicBlocks) {\n            List<CourseOffering> courseOfferings = academicBlock.getCourseOfferings();\n            for (CourseOffering courseOffering: courseOfferings) {\n                if (courseOffering.getStudents().contains(studentId)) {\n                    academicBlocksByStudent.add(academicBlock);\n                }\n            }\n\n        }\n        return academicBlockMapper.academicBlockStudentDtosFromAcademicBlocks(academicBlocksByStudent);\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/imp/AcademicBlockServiceImp.java b/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/imp/AcademicBlockServiceImp.java
+--- a/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/imp/AcademicBlockServiceImp.java	
++++ b/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/imp/AcademicBlockServiceImp.java	
+@@ -4,6 +4,7 @@
+ import edu.miu.courseregistrationsystem.dto.AcademicBlockStudentDto;
+ import edu.miu.courseregistrationsystem.entity.AcademicBlock;
+ import edu.miu.courseregistrationsystem.entity.CourseOffering;
++//import edu.miu.courseregistrationsystem.mapper.AcademicBlockMapper;
+ import edu.miu.courseregistrationsystem.mapper.AcademicBlockMapper;
+ import edu.miu.courseregistrationsystem.repository.AcademicBlockRepository;
+ import edu.miu.courseregistrationsystem.service.AcademicBlockService;
+@@ -61,19 +62,19 @@
+      * @return
+      * student can get all the academic blocks he/she is registered
+      */
+-    @Override
+-    public List<AcademicBlockStudentDto> getAcademicBlocksByStudent(long studentId) {
+-        List<AcademicBlock> academicBlocks = academicBlockRepository.findAll();
+-        List<AcademicBlock> academicBlocksByStudent = new ArrayList<>();
+-        for (AcademicBlock academicBlock: academicBlocks) {
+-            List<CourseOffering> courseOfferings = academicBlock.getCourseOfferings();
+-            for (CourseOffering courseOffering: courseOfferings) {
+-                if (courseOffering.getStudents().contains(studentId)) {
+-                    academicBlocksByStudent.add(academicBlock);
+-                }
+-            }
+-
+-        }
+-        return academicBlockMapper.academicBlockStudentDtosFromAcademicBlocks(academicBlocksByStudent);
+-    }
++//    @Override
++//    public List<AcademicBlockStudentDto> getAcademicBlocksByStudent(long studentId) {
++////        List<AcademicBlock> academicBlocks = academicBlockRepository.findAll();
++////        List<AcademicBlock> academicBlocksByStudent = new ArrayList<>();
++////        for (AcademicBlock academicBlock: academicBlocks) {
++////            List<CourseOffering> courseOfferings = academicBlock.getCourseOfferings();
++////            for (CourseOffering courseOffering: courseOfferings) {
++////                if (courseOffering.getStudents().contains(studentId)) {
++////                    academicBlocksByStudent.add(academicBlock);
++////                }
++////            }
++////
++////        }
++////        return academicBlockMapper.academicBlockStudentDtosFromAcademicBlocks(academicBlocksByStudent);
++// }
+ }
+Index: course-registration-system/src/main/java/edu/miu/courseregistrationsystem/mapper/AcademicBlockMapper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.miu.courseregistrationsystem.mapper;\n\nimport edu.miu.courseregistrationsystem.dto.AcademicBlockDto;\nimport edu.miu.courseregistrationsystem.dto.AcademicBlockStudentDto;\nimport edu.miu.courseregistrationsystem.entity.AcademicBlock;\nimport org.mapstruct.Mapper;\n\nimport java.util.List;\n/**\n * @author Rediet\n * @version 1.0\n * @created 10/12/2020 12:04 AM\n */\n@Mapper(componentModel = \"spring\")\npublic interface AcademicBlockMapper {\n    public AcademicBlock academicBlockFromAcademicBlockDto(AcademicBlockDto academicBlockDto);\n    public AcademicBlockDto academicBlockDtoFromAcademicBlock(AcademicBlock academicBlock);\n    public List<AcademicBlockDto> academicBlockDtosFromAcademicBlocks(List<AcademicBlock> academicBlocks);\n    public List<AcademicBlock> academicBlocksFromAcademicBlockDtos(List<AcademicBlockDto> academicBlockDtos);\n    public List<AcademicBlockStudentDto> academicBlockStudentDtosFromAcademicBlocks(List<AcademicBlock> academicBlocks);\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/mapper/AcademicBlockMapper.java b/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/mapper/AcademicBlockMapper.java
+--- a/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/mapper/AcademicBlockMapper.java	
++++ b/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/mapper/AcademicBlockMapper.java	
+@@ -17,6 +17,6 @@
+     public AcademicBlockDto academicBlockDtoFromAcademicBlock(AcademicBlock academicBlock);
+     public List<AcademicBlockDto> academicBlockDtosFromAcademicBlocks(List<AcademicBlock> academicBlocks);
+     public List<AcademicBlock> academicBlocksFromAcademicBlockDtos(List<AcademicBlockDto> academicBlockDtos);
+-    public List<AcademicBlockStudentDto> academicBlockStudentDtosFromAcademicBlocks(List<AcademicBlock> academicBlocks);
+-
++//    public List<AcademicBlockStudentDto> academicBlockStudentDtosFromAcademicBlocks(List<AcademicBlock> academicBlocks);
++//
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"f8907c85-f0d0-4dff-8c02-19e3acf3e2dc\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"main\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"MavenImportPreferences\">\n    <option name=\"generalSettings\">\n      <MavenGeneralSettings>\n        <option name=\"useMavenConfig\" value=\"true\" />\n      </MavenGeneralSettings>\n    </option>\n  </component>\n  <component name=\"ProjectId\" id=\"2J1bd0JYFHHiHYGCXZC8DEs1bj6\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;\n  }\n}</component>\n  <component name=\"RunManager\">\n    <configuration name=\"CourseRegistrationApplication\" type=\"Application\" factoryName=\"Application\" nameIsGenerated=\"true\">\n      <option name=\"ALTERNATIVE_JRE_PATH\" value=\"18\" />\n      <option name=\"ALTERNATIVE_JRE_PATH_ENABLED\" value=\"true\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"edu.miu.courseregistrationsystem.CourseRegistrationApplication\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"edu.miu.courseregistrationsystem.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"f8907c85-f0d0-4dff-8c02-19e3acf3e2dc\" name=\"Changes\" comment=\"\" />\n      <created>1671248619986</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1671248619986</updated>\n    </task>\n    <servers />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"FILTERS\">\n                <map>\n                  <entry key=\"branch\">\n                    <value>\n                      <list>\n                        <option value=\"origin/main\" />\n                      </list>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -6,46 +6,92 @@
+   <component name="ChangeListManager">
+     <list default="true" id="f8907c85-f0d0-4dff-8c02-19e3acf3e2dc" name="Changes" comment="">
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/AcademicBlockController.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/AcademicBlockController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/mapper/AcademicBlockMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/mapper/AcademicBlockMapper.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/AcademicBlockService.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/AcademicBlockService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/imp/AcademicBlockServiceImp.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/imp/AcademicBlockServiceImp.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Interface" />
++        <option value="Class" />
++      </list>
++    </option>
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="main" />
++        <entry key="$PROJECT_DIR$" value="develop" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
++  <component name="JpbToolWindowState">
++    <option name="isToolWindowVisible" value="false" />
++  </component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+   </component>
+   <component name="MavenImportPreferences">
+     <option name="generalSettings">
+       <MavenGeneralSettings>
++        <option name="mavenHome" value="Use Maven wrapper" />
+         <option name="useMavenConfig" value="true" />
+       </MavenGeneralSettings>
+     </option>
+   </component>
+   <component name="ProjectId" id="2J1bd0JYFHHiHYGCXZC8DEs1bj6" />
++  <component name="ProjectLevelVcsManager">
++    <ConfirmationsSetting value="2" id="Add" />
++  </component>
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "Git.Branch.Popup.ShowAllRemotes": "true",
++    "RequestMappingsPanelOrder0": "0",
++    "RequestMappingsPanelOrder1": "1",
++    "RequestMappingsPanelWidth0": "75",
++    "RequestMappingsPanelWidth1": "75",
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "WebServerToolWindowFactoryState": "false",
++    "last_opened_file_path": "/Users/ruth/Desktop/EA/Project/cs/newProject/Course-Registration-System",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "project.structure.last.edited": "Global Libraries",
++    "project.structure.proportion": "0.15",
++    "project.structure.side.proportion": "0.2",
++    "settings.editor.selected.configurable": "preferences.pluginManager",
++    "spring.configuration.checksum": "a445e67bc3767185b4793e80f880397c",
++    "vue.rearranger.settings.migration": "true"
++  },
++  "keyToStringList": {
++    "DatabaseDriversLRU": [
++      "postgresql"
++    ]
+   }
+-}</component>
++}]]></component>
++  <component name="RunAnythingCache">
++    <option name="myCommands">
++      <command value="mvn clean install" />
++    </option>
++  </component>
+   <component name="RunManager">
+-    <configuration name="CourseRegistrationApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+-      <option name="ALTERNATIVE_JRE_PATH" value="18" />
+-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+-      <option name="MAIN_CLASS_NAME" value="edu.miu.courseregistrationsystem.CourseRegistrationApplication" />
++    <configuration name="CourseRegistrationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
++      <module name="course-registration-system" />
++      <option name="SPRING_BOOT_MAIN_CLASS" value="edu.miu.courseregistrationsystem.CourseRegistrationApplication" />
+       <extension name="coverage">
+         <pattern>
+           <option name="PATTERN" value="edu.miu.courseregistrationsystem.*" />
+@@ -56,6 +102,11 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
++    <recent_temporary>
++      <list>
++        <item itemvalue="Spring Boot.CourseRegistrationApplication" />
++      </list>
++    </recent_temporary>
+   </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+@@ -65,9 +116,26 @@
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+       <updated>1671248619986</updated>
++      <workItem from="1671520394815" duration="1247000" />
++      <workItem from="1671561083703" duration="685000" />
++      <workItem from="1671565846426" duration="1611000" />
+     </task>
+     <servers />
+   </component>
++  <component name="TypeScriptGeneratedFilesManager">
++    <option name="version" value="3" />
++  </component>
++  <component name="UnknownFeatures">
++    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
++    <option featureType="dependencySupport" implementationName="java:jakarta.validation:jakarta.validation-api" />
++    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
++    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
++    <option featureType="dependencySupport" implementationName="java:org.hibernate.validator:hibernate-validator" />
++    <option featureType="dependencySupport" implementationName="java:org.hibernate:hibernate-core" />
++    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-messaging" />
++    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
++    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
++  </component>
+   <component name="Vcs.Log.Tabs.Properties">
+     <option name="TAB_STATES">
+       <map>
+@@ -91,4 +159,9 @@
+       </map>
+     </option>
+   </component>
++  <component name="com.intellij.coverage.CoverageDataManagerImpl">
++    <SUITE FILE_PATH="coverage/Course_Registration_System$CourseRegistrationApplication.ic" NAME="CourseRegistrationApplication Coverage Results" MODIFIED="1671494729987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
++      <FILTER>edu.miu.courseregistrationsystem.*</FILTER>
++    </SUITE>
++  </component>
+ </project>
+\ No newline at end of file
