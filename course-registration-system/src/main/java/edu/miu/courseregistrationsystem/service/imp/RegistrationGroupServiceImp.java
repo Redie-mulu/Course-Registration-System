@@ -1,6 +1,8 @@
 package edu.miu.courseregistrationsystem.service.imp;
 
+import edu.miu.courseregistrationsystem.dto.AcademicBlockStudentDto;
 import edu.miu.courseregistrationsystem.dto.RegistrationGroupDto;
+import edu.miu.courseregistrationsystem.dto.RegistrationGroupStudentDto;
 import edu.miu.courseregistrationsystem.entity.AcademicBlock;
 import edu.miu.courseregistrationsystem.entity.RegistrationGroup;
 import edu.miu.courseregistrationsystem.entity.Student;
@@ -95,16 +97,39 @@ public class RegistrationGroupServiceImp implements RegistrationGroupService {
      * student can get all the registration group he/she is registered
      */
     @Override
-    public List<RegistrationGroup> getRegistrationGroupByStudentIds(long studentId) {
+    public List<RegistrationGroupStudentDto> getRegistrationGroupByStudentIds(long studentId) {
         List<RegistrationGroup> registrationGroups = registrationGroupRepository.findAll();
-        List<RegistrationGroup> registrationGroupsForStudent = new ArrayList<>();
-        for(RegistrationGroup registrationGroup : registrationGroups){
+        List<RegistrationGroup> registrationGroups1 = new ArrayList<>();
+        for (RegistrationGroup registrationGroup : registrationGroups) {
             List<Student> students = registrationGroup.getStudents();
-            for(Student student : students){
-                if(student.getId() == studentId){
-                    registrationGroupsForStudent.add(registrationGroup);
+
+            for (Student student: students) {
+                System.out.println(student);
+                if(student.getId() == studentId) {
+                    System.out.println("TEST");
+                    registrationGroups1.add(registrationGroup);
                 }
             }
+        }
+
+        List<RegistrationGroupStudentDto> registrationGroupsForStudent = new ArrayList<>();
+        for(RegistrationGroup registrationGroup : registrationGroups1){
+            RegistrationGroupStudentDto registrationGroup1 = new RegistrationGroupStudentDto();
+            registrationGroup1.setId(registrationGroup.getId());
+            List<AcademicBlockStudentDto> academicBlockStudentDtos = new ArrayList<>();
+            List<AcademicBlock> academicBlocks = registrationGroup.getAcademicBlocks();
+            for (AcademicBlock academicBlock : academicBlocks) {
+                AcademicBlockStudentDto academicBlockStudentDto = new AcademicBlockStudentDto();
+                academicBlockStudentDto.setId(academicBlock.getId());
+                academicBlockStudentDto.setCode(academicBlock.getCode());
+                academicBlockStudentDto.setName(academicBlock.getName());
+                academicBlockStudentDto.setSemester(academicBlock.getSemester());
+                academicBlockStudentDto.setStartDate(academicBlock.getStartDate());
+                academicBlockStudentDto.setEndDate(academicBlock.getEndDate());
+                academicBlockStudentDtos.add(academicBlockStudentDto);
+            }
+            registrationGroup1.setAcademicBlocks(academicBlockStudentDtos);
+            registrationGroupsForStudent.add(registrationGroup1);
         }
         return registrationGroupsForStudent;
     }

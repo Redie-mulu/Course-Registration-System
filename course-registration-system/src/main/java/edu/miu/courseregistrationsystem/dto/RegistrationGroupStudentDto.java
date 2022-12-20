@@ -1,9 +1,6 @@
 package edu.miu.courseregistrationsystem.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 /**
@@ -15,7 +12,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Data
 public class RegistrationGroupStudentDto {
     long id;
     private List<AcademicBlockStudentDto> academicBlocks;
+
 }

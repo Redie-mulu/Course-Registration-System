@@ -1,6 +1,6 @@
 package edu.miu.courseregistrationsystem.dto;
 
-import edu.miu.courseregistrationsystem.entity.Address;
+
 import lombok.*;
 
 
@@ -12,11 +12,8 @@ public class StudentDto {
     private long id;
     private String name;
     private String email;
-
     private Address mailingAddress;
-
     private Address homeAddress;
-
     @Data
     public static class Address {
         private long id;
@@ -26,5 +23,4 @@ public class StudentDto {
         private String stateProvince;
         private String countryRegion;
     }
-
 }
