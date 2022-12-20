@@ -1,0 +1,37 @@
+Index: course-registration-system/src/main/java/edu/miu/courseregistrationsystem/entity/Student.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.miu.courseregistrationsystem.entity;\n\nimport lombok.AllArgsConstructor;\nimport lombok.Data;\nimport lombok.NoArgsConstructor;\n\nimport javax.persistence.*;\nimport java.util.List;\n\n@Entity\n@AllArgsConstructor\n@NoArgsConstructor\n@Data\npublic class Student extends User {\n\n    private long id;\n    private String name;\n    private String email;\n    @ManyToOne\n    @JoinColumn(name = \"mailing_address_id\")\n    private Address mailingAddress;\n    @ManyToOne\n    @JoinColumn(name = \"home_address_id\")\n    private Address homeAddress;\n\n    @Override\n    public String toString() {\n        return \"Student{\" +\n                \"id='\" + id + '\\'' +\n                \", name='\" + name + '\\'' +\n                \", email='\" + email + '\\'' +\n                \", mailingAddress=\" + mailingAddress +\n//                \", homeAddress=\" + homeAddress +\n                '}';\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/entity/Student.java b/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/entity/Student.java
+--- a/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/entity/Student.java	(revision 9e70599f7deda8e4e27aac8d3fa5c5fa30e6902d)
++++ b/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/entity/Student.java	(date 1671508377269)
+@@ -1,12 +1,18 @@
+ package edu.miu.courseregistrationsystem.entity;
+ 
+ import lombok.AllArgsConstructor;
++import lombok.Builder;
+ import lombok.Data;
+ import lombok.NoArgsConstructor;
+ 
+ import javax.persistence.*;
+ import java.util.List;
+ 
++/**
++ * @author REDIET
++ * @version 1.0
++ *@created 16-Dec-2022 10:00:00 AM
++ */
+ @Entity
+ @AllArgsConstructor
+ @NoArgsConstructor
+@@ -23,6 +29,7 @@
+     @JoinColumn(name = "home_address_id")
+     private Address homeAddress;
+ 
++
+     @Override
+     public String toString() {
+         return "Student{" +
