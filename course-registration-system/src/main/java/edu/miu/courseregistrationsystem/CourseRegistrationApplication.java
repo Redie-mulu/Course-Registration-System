@@ -57,6 +57,6 @@ public class CourseRegistrationApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		jmsTemplate.convertAndSend("testQueue", "Hello World!");
+		jmsTemplate.convertAndSend("testQueue2", "Hello World!");
 	}
 }

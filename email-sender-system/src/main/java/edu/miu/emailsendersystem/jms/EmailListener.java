@@ -10,7 +10,7 @@ public class EmailListener {
 //    public void receiveMessage(final String emailAsString) {
 //        System.out.println("JMS receiver received message:" + emailAsString);
 //    }
-    @JmsListener(destination = "testQueue")
+    @JmsListener(destination = "testQueue2")
     public void receiveMessage2(final String emailAsString) {
         System.out.println("JMS receiver received message:" + emailAsString);
     }
