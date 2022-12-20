@@ -1,0 +1,19 @@
+Index: course-registration-system/src/main/java/edu/miu/courseregistrationsystem/entity/Student.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.miu.courseregistrationsystem.entity;\n\nimport lombok.AllArgsConstructor;\nimport lombok.Builder;\nimport lombok.Data;\nimport lombok.NoArgsConstructor;\n\nimport javax.persistence.*;\nimport java.util.List;\n\n/**\n * @author REDIET\n * @version 1.0\n *@created 16-Dec-2022 10:00:00 AM\n */\n@Entity\n@AllArgsConstructor\n@NoArgsConstructor\n@Data\npublic class Student  {\n\n    @Id\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\n    private long id;\n    private String name;\n    private String email;\n\n    @ManyToOne(cascade = CascadeType.ALL)\n    @JoinColumn(name = \"mailing_address_id\")\n    private Address mailingAddress;\n\n    @ManyToOne(cascade = CascadeType.ALL)\n    @JoinColumn(name = \"home_address_id\")\n    private Address homeAddress;\n\n\n    @Override\n    public String toString() {\n        return \"Student{\" +\n                \"id='\" + id + '\\'' +\n                \", name='\" + name + '\\'' +\n                \", email='\" + email + '\\'' +\n                \", mailingAddress=\" + mailingAddress +\n//                \", homeAddress=\" + homeAddress +\n                '}';\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/entity/Student.java b/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/entity/Student.java
+--- a/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/entity/Student.java	(revision 102cb96785a98c208d616a5b8888f4405590888f)
++++ b/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/entity/Student.java	(date 1671508297585)
+@@ -17,7 +17,7 @@
+ @AllArgsConstructor
+ @NoArgsConstructor
+ @Data
+-public class Student  {
++public class Student {
+ 
+     @Id
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
