@@ -1,10 +1,9 @@
 package edu.miu.courseregistrationsystem.dto;
 
-import edu.miu.courseregistrationsystem.entity.Student;
-import lombok.*;
-
-import javax.persistence.ManyToMany;
-import java.util.List;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * @author Rediet
@@ -14,7 +13,9 @@ import java.util.List;
 
 
 @Builder
-@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
 public class AddressDto {
 
     private long id;

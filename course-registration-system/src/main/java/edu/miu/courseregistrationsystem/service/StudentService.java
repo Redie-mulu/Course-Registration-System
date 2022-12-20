@@ -21,4 +21,15 @@ public interface StudentService {
      */
     public List<Student> addStudents(List<StudentDto> students);
 
+    /**
+     * @author Feven
+     * @version 1.0
+     *@created 19-Dec-2022 10:00:00 AM
+     */
+
+    public List<StudentDto> findAll();
+    public StudentDto findOne(Long id);
+    public StudentDto  update(StudentDto studentDto);
+    public void delete(Long id);
+    public StudentDto add(StudentDto studentDto);
 }
