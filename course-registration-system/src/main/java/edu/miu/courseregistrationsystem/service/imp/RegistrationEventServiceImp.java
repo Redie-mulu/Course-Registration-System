@@ -2,6 +2,7 @@ package edu.miu.courseregistrationsystem.service.imp;
 
 import edu.miu.courseregistrationsystem.dto.RegistrationEventDto;
 import edu.miu.courseregistrationsystem.dto.RegistrationEventStudentDto;
+import edu.miu.courseregistrationsystem.dto.RegistrationGroupStudentDto;
 import edu.miu.courseregistrationsystem.entity.RegistrationEvent;
 import edu.miu.courseregistrationsystem.entity.RegistrationGroup;
 import edu.miu.courseregistrationsystem.entity.Student;
@@ -15,7 +16,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
+import java.time.Duration;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +39,7 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
         RegistrationEvent registrationEvent = registrationEventMapper.registrationEventFromRegistrationEventDto(registrationEventDto);
         System.out.println(registrationEvent);
         registrationEventRepository.save(registrationEvent);
-        RegistrationEventStudentDto registrationEventStudentDto = registrationEventMapper.registrationEventStudentDtoFromRegistrationEvent(registrationEvent);
+        RegistrationEventDto registrationEventStudentDto = registrationEventMapper.registrationEventDtoFromRegistrationEvent(registrationEvent);
         jmsTemplate.convertAndSend("registrationEventQueue", "registrationEvent");
         System.out.println("message sent");
         return registrationEventDto;
@@ -73,7 +76,7 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
          List<RegistrationEvent> registrationEvents = registrationEventRepository.findAll();
          List<RegistrationEvent> latestRegistrationEventTwo = new ArrayList<>();
     for(RegistrationEvent registrationEvent: registrationEvents){
-        if(registrationEvent.getStartDate().isBefore(LocalDate.now()) && registrationEvent.getEndDate().isAfter(LocalDate.now())){
+        if(registrationEvent.getStartDate().isBefore(LocalDateTime.now()) && registrationEvent.getEndDate().isAfter(LocalDateTime.now())){
             latestRegistrationEventTwo.add(registrationEvent);
         }
     }
@@ -111,25 +114,34 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
                 }
             }
         }*/
-//        return registrationEventMapper.registrationEventStudentDtosFromRegistrationGroups(registrationEventsForStudent);
-        return registrationEventMapper.registrationEventStudentDtosFromRegistrationGroups(registrationEvents);
+        List<RegistrationEventStudentDto> registrationEventStudentDtos = new ArrayList<>();
+        for(RegistrationEvent registrationEvent: registrationEvents){
+            RegistrationEventStudentDto registrationEventStudentDto = new RegistrationEventStudentDto();
+            registrationEventStudentDto.setId(registrationEvent.getId());
+            registrationEventStudentDto.setStartDate(registrationEvent.getStartDate());
+            registrationEventStudentDto.setEndDate(registrationEvent.getEndDate());
+            registrationEventStudentDtos.add(registrationEventStudentDto);
+
+        }
+        return registrationEventStudentDtos;
     }
 
     /**
      * @author REDIET
      * send an email to student 8 and 4 hours before the registration event ends
      */
-    @Override
+    /*@Override
     public void sendEmailReminder() {
-       /* List<RegistrationEvent> registrationEvents = registrationEventRepository.findAll();
+        List<RegistrationEvent> registrationEvents = registrationEventRepository.findAll();
         for(RegistrationEvent registrationEvent: registrationEvents){
-            if(registrationEvent.getEndDate().minusHours(8).isBefore(LocalDate.now()) && registrationEvent.getEndDate().minusHours(4).isAfter(LocalDate.now())){
-                for(RegistrationGroup registrationGroup: registrationEvent.getRegistrationGroups()){
-                    for(Student student: registrationGroup.getStudents()){
-                        System.out.println("send email to student: ");
-                    }
-                }
+            LocalDateTime now = LocalDateTime.now();
+            Duration duration = Duration.between(registrationEvent.getEndDate(), now);
+            if(duration.toHours() == 4 || duration.toHours() == 8) {
+
+                jmsTemplate.convertAndSend("OpenRegistrationEventQueue",
+                        "Registration will be closed after" + duration.toHours() + " hours");
+
             }
-        }*/
-    }
+        }
+    }*/
 }

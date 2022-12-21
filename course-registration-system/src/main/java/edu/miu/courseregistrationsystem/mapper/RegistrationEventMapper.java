@@ -20,11 +20,8 @@ public interface RegistrationEventMapper {
 
     public RegistrationEvent registrationEventFromRegistrationEventDto(RegistrationEventDto registrationEventDto);
 
-////    @Mapping(target = "registrationGroups", ignore = true)
     public RegistrationEventDto registrationEventDtoFromRegistrationEvent(RegistrationEvent registrationEvent);
     public List<RegistrationEventDto> registrationEventDtosFromRegistrationEvents(List<RegistrationEvent> registrationEvents);
     public List<RegistrationEvent> registrationEventsFromRegistrationEventDtos(List<RegistrationEventDto> registrationEventDtos);
-    public RegistrationEventStudentDto registrationEventStudentDtoFromRegistrationEvent(RegistrationEvent registrationEvent);
-    public List<RegistrationEventStudentDto> registrationEventStudentDtosFromRegistrationGroups(List<RegistrationEvent> registrationEvents);
 
 }

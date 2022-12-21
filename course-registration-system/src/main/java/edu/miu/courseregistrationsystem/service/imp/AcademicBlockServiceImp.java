@@ -63,18 +63,26 @@ public class AcademicBlockServiceImp implements AcademicBlockService {
      */
     @Override
     public List<AcademicBlockStudentDto> getAcademicBlocksByStudent(long studentId) {
-//        List<AcademicBlock> academicBlocks = academicBlockRepository.findAll();
-//        List<AcademicBlock> academicBlocksByStudent = new ArrayList<>();
-//        for (AcademicBlock academicBlock: academicBlocks) {
-//            List<CourseOffering> courseOfferings = academicBlock.getCourseOfferings();
-//            for (CourseOffering courseOffering: courseOfferings) {
-//                if (courseOffering.getStudents().contains(studentId)) {
-//                    academicBlocksByStudent.add(academicBlock);
-//                }
-//            }
-//
-//        }
-//        return academicBlockMapper.academicBlockStudentDtosFromAcademicBlocks(academicBlocksByStudent);
-        return null;
+        List<AcademicBlock> academicBlocks = academicBlockRepository.findAll();
+        List<AcademicBlock> academicBlocksByStudent = new ArrayList<>();
+        for (AcademicBlock academicBlock: academicBlocks) {
+            List<CourseOffering> courseOfferings = academicBlock.getCourseOfferings();
+            for (CourseOffering courseOffering: courseOfferings) {
+                if (courseOffering.getStudents().contains(studentId)) {
+                    academicBlocksByStudent.add(academicBlock);
+                }
+            }
+
+        }
+        List<AcademicBlockStudentDto> academicBlockStudentDtos = new ArrayList<>();
+        for (AcademicBlock academicBlock: academicBlocksByStudent) {
+            AcademicBlockStudentDto academicBlockStudentDto = new AcademicBlockStudentDto();
+            academicBlockStudentDto.setId(academicBlock.getId());
+            academicBlockStudentDto.setName(academicBlock.getName());
+            academicBlockStudentDto.setStartDate(academicBlock.getStartDate());
+            academicBlockStudentDto.setEndDate(academicBlock.getEndDate());
+            academicBlockStudentDtos.add(academicBlockStudentDto);
+        }
+    return academicBlockStudentDtos;
     }
 }

@@ -33,5 +33,5 @@ public interface RegistrationEventService {
      */
     public  List<RegistrationEventStudentDto>  getRegistrationEventByStudentId(long studentId);
 
-    public void sendEmailReminder();
+//    public void sendEmailReminder();
 }

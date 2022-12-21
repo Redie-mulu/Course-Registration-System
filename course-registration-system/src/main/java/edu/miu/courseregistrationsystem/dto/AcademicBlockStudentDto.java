@@ -1,9 +1,6 @@
 package edu.miu.courseregistrationsystem.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDate;
 
@@ -12,10 +9,11 @@ import java.time.LocalDate;
  * @version 1.0
  * @created 19/12/2020 10:51 PM
  */
-@Getter
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Data
 public class AcademicBlockStudentDto {
 
     private long id;
