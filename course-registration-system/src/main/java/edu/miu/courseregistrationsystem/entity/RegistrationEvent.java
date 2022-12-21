@@ -35,12 +35,6 @@ public class RegistrationEvent {
         this.endDate = endDate;
         this.registrationGroups = registrationGroups;
     }
-/*public RegistrationEvent(long id, LocalDate startDate, LocalDate endDate, List<RegistrationGroup> registrationGroups) {
-        this.id = id;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.registrationGroups = registrationGroups;
-    }*/
 
     public void setStatus(String status) {
         if (startDate.isBefore(LocalDateTime.now()) && endDate.isAfter(LocalDateTime.now())) {

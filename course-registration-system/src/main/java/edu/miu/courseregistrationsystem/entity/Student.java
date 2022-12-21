@@ -29,5 +29,6 @@ public class Student extends User {
     @JoinColumn(name = "home_address_id")
     private Address homeAddress;
 
+// TODO: Add List of Registration Request as an attribute
 
 }

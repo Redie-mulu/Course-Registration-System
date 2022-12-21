@@ -1,13 +1,11 @@
 package edu.miu.courseregistrationsystem.entity;
 
-import edu.miu.courseregistrationsystem.dto.CourseOfferingDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 /**
  * @author REDIET

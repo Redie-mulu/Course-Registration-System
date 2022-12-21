@@ -15,4 +15,6 @@ import javax.persistence.Entity;
 @Data
 public class Admin extends User{
 
+    //ToDo: Add Process Registration Request method
+
 }

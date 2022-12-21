@@ -20,10 +20,12 @@ public class Course {
     private String code;
     private String name;
     private String description;
-    @OneToMany
-    @JoinColumn(name = "course_id")
+    //TODO: Course and prerequisite are many to many
+    @ManyToMany
+    @JoinTable(name = "prerequisite",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "prerequisite_id"))
     private List<Course> preRequisite;
-
     @Override
     public String toString() {
         return "Course{" +
@@ -31,7 +33,7 @@ public class Course {
                 ", code='" + code + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-//                ", preRequisite=" + preRequisite +
+                ", preRequisite=" + preRequisite +
                 '}';
     }
 

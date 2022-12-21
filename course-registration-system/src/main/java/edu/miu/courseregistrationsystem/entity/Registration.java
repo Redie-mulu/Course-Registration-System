@@ -19,4 +19,5 @@ import java.util.List;
 public class Registration {
 
     List<CourseOffering> courseOfferings = new ArrayList<>();
+    // ToDo: Add list Student as an attribute
 }

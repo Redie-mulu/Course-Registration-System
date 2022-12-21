@@ -12,14 +12,12 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-
 public class CourseDto {
+    private long id;
     private String code;
     private String name;
-    private String semester;
-    private LocalDate startDate;
-    private LocalDate endDate;
-
-    private List<CourseOfferingDto> courseOffering;
+    private String description;
+    //TODO: Course and prerequisite are many to many
+    private List<CourseDto> preRequisite;
 
 }

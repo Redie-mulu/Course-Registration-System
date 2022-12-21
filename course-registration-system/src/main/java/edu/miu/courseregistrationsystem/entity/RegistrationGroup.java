@@ -19,7 +19,8 @@ import java.util.List;
 @Data
 public class RegistrationGroup {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
     @ManyToMany(cascade = CascadeType.ALL)
     private List<Student> students;
