@@ -13,6 +13,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * RegistrationRequest
@@ -26,7 +27,9 @@ public class RegistrationRequestAdapter {
     public static RegistrationRequest registrationRequestDtoToRegistrationRequest(RegistrationRequestDto registrationRequestDto) {
         RegistrationRequest request = new RegistrationRequest();
         List<Course> listOfCourse = new ArrayList<>();
-        request.setStatus(registrationRequestDto.getStatus());
+        if(Objects.nonNull(registrationRequestDto.getStatus())) {
+            request.setStatus(registrationRequestDto.getStatus());
+        }
         request.setPriority(registrationRequestDto.getPriority());
 
         CourseOffering courseOffering = new CourseOffering();
