@@ -17,10 +17,6 @@ public class CourseDto {
     private String code;
     private String name;
     private String description;
-    private String semester;
-    private LocalDate startDate;
-    private LocalDate endDate;
-
-    private List<Course> preRequisite;
+    private List<CourseDto> preRequisite;
 
 }
