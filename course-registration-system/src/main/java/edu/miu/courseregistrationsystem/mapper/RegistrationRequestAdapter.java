@@ -12,6 +12,9 @@ import edu.miu.courseregistrationsystem.entity.RegistrationRequest;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * RegistrationRequestAdapter
+ */
 public class RegistrationRequestAdapter {
 
     public static RegistrationRequest registrationRequestDtoToRegistrationRequest(RegistrationRequestDto registrationRequestDto) {
