@@ -1,5 +1,6 @@
 package edu.miu.courseregistrationsystem.service;
 
+import edu.miu.courseregistrationsystem.dto.RegistrationRequestDto;
 import edu.miu.courseregistrationsystem.dto.StudentDto;
 import edu.miu.courseregistrationsystem.entity.Student;
 
@@ -32,4 +33,6 @@ public interface StudentService {
     public StudentDto  update(StudentDto studentDto);
     public void delete(Long id);
     public StudentDto add(StudentDto studentDto);
+
+    public void addRegistrationRequest(long studentId, RegistrationRequestDto registrationRequestDto);
 }

@@ -28,7 +28,7 @@ public class Student extends User {
     @JoinColumn(name = "home_address_id")
     private Address homeAddress;
 
-    @OneToMany(cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "student_id")
     List<RegistrationRequest> requests;
 

@@ -21,7 +21,7 @@ public class Course {
     private String name;
     private String description;
     //TODO: Course and prerequisite are many to many
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "prerequisite",
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "prerequisite_id"))

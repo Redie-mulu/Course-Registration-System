@@ -19,9 +19,9 @@ public class CourseOffering {
     private Long capacity;
     private Long availableSeats;
     private String initials;
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.ALL})
     private Course course;
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "courseOffering_id")
     private Faculty faculty;
 

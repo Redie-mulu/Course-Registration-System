@@ -5,7 +5,6 @@ import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -52,10 +51,5 @@ public class CourseRegistrationApplication {
         }
     }
 
-
-//    @Override
-//    public void run(String... args) throws Exception {
-//        jmsTemplate.convertAndSend("testQueueNew", "Hello World!");
-//    }
 
 }

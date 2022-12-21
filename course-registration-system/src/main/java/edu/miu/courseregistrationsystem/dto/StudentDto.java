@@ -18,7 +18,7 @@ public class StudentDto {
     private AddressDto mailingAddress;
     private AddressDto homeAddress;
 
-    private List<RegistrationRequest> requests;
+//    private List<RegistrationRequest> requests;
     @Data
     public static class Address {
         private long id;
