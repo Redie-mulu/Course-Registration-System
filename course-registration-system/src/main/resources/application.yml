@@ -4,12 +4,13 @@ spring:
     description: Registration system
     basedir: ${user.home}/.${spring.application.name}
   datasource:
-    database: NewDataBase
+    driverClassName: org.postgresql.Driver
+    database: newdatabase
     hostname: localhost
     port: 5432
-    username:
-    password:
-    url: jdbc:postgresql://${spring.datasource.hostname}:${spring.datasource.port}/${spring.datasource.database}
+    username: ruth
+    password: 123456789
+    url: jdbc:postgresql://localhost/NewDataBase
     driver-class-name: org.postgresql.Driver
     hikari:
       connection-test-query: "SELECT 1"
@@ -18,8 +19,8 @@ spring:
       leak-detection-threshold: 60000
   initialization-mode: always
   jpa:
+    show-sql: true
     hibernate:
-      ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     database-platform: org.hibernate.dialect.PostgreSQLDialect

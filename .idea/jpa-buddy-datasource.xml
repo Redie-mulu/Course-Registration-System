@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpbDataSourceConfig">
+    <data-sources>
+      <data-source id="68b42c4e-ed89-4a16-8701-431a46c45e66" name="newdatabase" url="jdbc:postgresql://localhost/Course-Registration-System" driverClass="org.postgresql.Driver" />
+      <data-source id="f382a50f-1dd5-4fd0-9891-e09639922eeb" name="newConnection" url="jdbc:postgresql://localhost/NewDataBase" driverClass="org.postgresql.Driver" />
+    </data-sources>
+  </component>
+</project>
