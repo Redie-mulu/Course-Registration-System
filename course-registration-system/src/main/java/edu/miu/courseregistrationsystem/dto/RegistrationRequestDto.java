@@ -25,13 +25,13 @@ public class RegistrationRequestDto {
     private CourseOfferingDto courseOffering;
 
 //    @Data
-//    public static class CourseOffering {
+//    public static class CourseOfferingDto {
 //        private long id;
 //        private String code;
 //        private long capacity;
 //        private long availableSeats;
 //        private String initials;
-//        private Course course;
+//        private CourseDto course;
 //
 //        private Faculty staff;
 //    }

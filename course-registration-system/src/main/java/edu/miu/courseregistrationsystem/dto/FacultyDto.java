@@ -1,11 +1,14 @@
 package edu.miu.courseregistrationsystem.dto;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
+import lombok.*;
 
 @Builder
-@Getter
+@Getter @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class FacultyDto {
+    private long id;
+    private String name;
+    private String email;
     private String title;
 }

@@ -21,6 +21,6 @@ public class CourseOfferingDto {
     private long capacity;
     private long availableSeats;
     private String initials;
-    private Course course;
-    private Faculty staff;
+    private CourseDto course;
+    private FacultyDto faculty;
 }

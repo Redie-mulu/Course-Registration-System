@@ -1,9 +1,12 @@
 package edu.miu.courseregistrationsystem.mapper;
 
+import edu.miu.courseregistrationsystem.dto.CourseDto;
 import edu.miu.courseregistrationsystem.dto.CourseOfferingDto;
+import edu.miu.courseregistrationsystem.dto.FacultyDto;
 import edu.miu.courseregistrationsystem.dto.RegistrationRequestDto;
 import edu.miu.courseregistrationsystem.entity.Course;
 import edu.miu.courseregistrationsystem.entity.CourseOffering;
+import edu.miu.courseregistrationsystem.entity.Faculty;
 import edu.miu.courseregistrationsystem.entity.RegistrationRequest;
 
 import java.util.ArrayList;
@@ -21,7 +24,14 @@ public class RegistrationRequestAdapter {
         courseOffering.setCapacity(registrationRequestDto.getCourseOffering().getCapacity());
         courseOffering.setAvailableSeats(registrationRequestDto.getCourseOffering().getAvailableSeats());
         courseOffering.setInitials(registrationRequestDto.getCourseOffering().getInitials());
-        courseOffering.setStaff(registrationRequestDto.getCourseOffering().getStaff());
+
+        Faculty faculty = new Faculty();
+        faculty.setId(registrationRequestDto.getCourseOffering().getFaculty().getId());
+        faculty.setTitle(registrationRequestDto.getCourseOffering().getFaculty().getTitle());
+        faculty.setName(registrationRequestDto.getCourseOffering().getFaculty().getName());
+        faculty.setEmail(registrationRequestDto.getCourseOffering().getFaculty().getEmail());
+
+        courseOffering.setFaculty(faculty);
         //courseOffering.initial();
         Course course = new Course();
         course.setCode(registrationRequestDto.getCourseOffering().getCourse().getCode());
@@ -48,8 +58,15 @@ public class RegistrationRequestAdapter {
         courseOfferingDto.setCapacity(registrationRequest.getCourseOffering().getCapacity());
         courseOfferingDto.setAvailableSeats(registrationRequest.getCourseOffering().getAvailableSeats());
         courseOfferingDto.setInitials(registrationRequest.getCourseOffering().getInitials());
-        courseOfferingDto.setStaff(registrationRequest.getCourseOffering().getStaff());
-        Course course = new Course();
+
+        FacultyDto facultyDto = new FacultyDto();
+        facultyDto.setId(registrationRequest.getCourseOffering().getFaculty().getId());
+        facultyDto.setTitle(registrationRequest.getCourseOffering().getFaculty().getTitle());
+        facultyDto.setName(registrationRequest.getCourseOffering().getFaculty().getName());
+        facultyDto.setEmail(registrationRequest.getCourseOffering().getFaculty().getEmail());
+
+        courseOfferingDto.setFaculty(facultyDto);
+        CourseDto course = new CourseDto();
         course.setId(registrationRequest.getCourseOffering().getCourse().getId());
         course.setCode(registrationRequest.getCourseOffering().getCourse().getCode());
         course.setName(registrationRequest.getCourseOffering().getCourse().getName());

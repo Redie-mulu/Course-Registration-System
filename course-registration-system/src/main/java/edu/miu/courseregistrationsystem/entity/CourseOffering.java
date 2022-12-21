@@ -19,16 +19,16 @@ public class CourseOffering {
     private Long capacity;
     private Long availableSeats;
     private String initials;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Course course;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "courseOffering_id")
-    private Faculty staff;
+    private Faculty faculty;
 
 
     public void initial(){
         String[] initial = new String[2];
-        initial = staff.getName().split(" ");
+        initial = faculty.getName().split(" ");
 
         char firstName = initial[0].charAt(0);
         char secondName = initial[1].charAt(0);

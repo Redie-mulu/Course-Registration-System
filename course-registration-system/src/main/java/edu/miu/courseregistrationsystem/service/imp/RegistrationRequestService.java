@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Transactional
 @Service
@@ -46,8 +47,16 @@ public class RegistrationRequestService {
 
     public RegistrationRequestDto updateRegistrationRequest(RegistrationRequestDto requestDto) {
         RegistrationRequest request = RegistrationRequestAdapter.registrationRequestDtoToRegistrationRequest(requestDto);
+
+        RegistrationRequest requestFromDb = registrationRequestRepository.findById(requestDto.getId()).get();
+
+        requestFromDb.setStatus(request.getStatus());
+        requestFromDb.setCourseOffering(request.getCourseOffering());
+        requestFromDb.setPriority(request.getPriority());
+        requestFromDb.setId(requestDto.getId());
+
         return RegistrationRequestAdapter
-                .registrationRequestToRegistrationRequestDto(registrationRequestRepository.saveAndFlush(request));
+                .registrationRequestToRegistrationRequestDto(registrationRequestRepository.saveAndFlush(requestFromDb));
     }
 
 

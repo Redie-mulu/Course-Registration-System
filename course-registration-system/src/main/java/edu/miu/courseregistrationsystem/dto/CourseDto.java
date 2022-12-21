@@ -12,8 +12,11 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 public class CourseDto {
+
+    private Long id;
     private String code;
     private String name;
+    private String description;
     private String semester;
     private LocalDate startDate;
     private LocalDate endDate;
