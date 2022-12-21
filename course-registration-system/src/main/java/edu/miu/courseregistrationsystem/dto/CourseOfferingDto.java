@@ -10,20 +10,17 @@ import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Builder
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-
+@Builder
 public class CourseOfferingDto {
     private long id;
     private String code;
     private long capacity;
     private long availableSeats;
     private String initials;
-    private CourseDto courseDto;
-    private List<FacultyDto> staff;
-    private List<StudentDto> students;
-
-
+    private Course course;
+    private Faculty staff;
 }

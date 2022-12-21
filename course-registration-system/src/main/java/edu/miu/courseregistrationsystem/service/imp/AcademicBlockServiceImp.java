@@ -63,17 +63,18 @@ public class AcademicBlockServiceImp implements AcademicBlockService {
      */
     @Override
     public List<AcademicBlockStudentDto> getAcademicBlocksByStudent(long studentId) {
-        List<AcademicBlock> academicBlocks = academicBlockRepository.findAll();
-        List<AcademicBlock> academicBlocksByStudent = new ArrayList<>();
-        for (AcademicBlock academicBlock: academicBlocks) {
-            List<CourseOffering> courseOfferings = academicBlock.getCourseOfferings();
-            for (CourseOffering courseOffering: courseOfferings) {
-                if (courseOffering.getStudents().contains(studentId)) {
-                    academicBlocksByStudent.add(academicBlock);
-                }
-            }
-
-        }
-        return academicBlockMapper.academicBlockStudentDtosFromAcademicBlocks(academicBlocksByStudent);
+//        List<AcademicBlock> academicBlocks = academicBlockRepository.findAll();
+//        List<AcademicBlock> academicBlocksByStudent = new ArrayList<>();
+//        for (AcademicBlock academicBlock: academicBlocks) {
+//            List<CourseOffering> courseOfferings = academicBlock.getCourseOfferings();
+//            for (CourseOffering courseOffering: courseOfferings) {
+//                if (courseOffering.getStudents().contains(studentId)) {
+//                    academicBlocksByStudent.add(academicBlock);
+//                }
+//            }
+//
+//        }
+//        return academicBlockMapper.academicBlockStudentDtosFromAcademicBlocks(academicBlocksByStudent);
+        return null;
     }
 }

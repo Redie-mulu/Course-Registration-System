@@ -19,7 +19,7 @@
 		<org.mapstruct.version>1.5.3.Final</org.mapstruct.version>
 		<org.projectlombok.version>1.18.24</org.projectlombok.version>
 		<org.springdoc.version>1.6.13</org.springdoc.version>
-		<org.mapstruct.version>1.4.1.Final</org.mapstruct.version>
+<!--		<org.mapstruct.version>1.4.1.Final</org.mapstruct.version>-->
 	</properties>
 	<dependencies>
 		<dependency>
