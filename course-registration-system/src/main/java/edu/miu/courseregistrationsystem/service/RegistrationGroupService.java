@@ -1,6 +1,7 @@
 package edu.miu.courseregistrationsystem.service;
 
 import edu.miu.courseregistrationsystem.dto.RegistrationGroupDto;
+import edu.miu.courseregistrationsystem.dto.RegistrationGroupStudentDto;
 import edu.miu.courseregistrationsystem.entity.RegistrationGroup;
 
 import java.util.List;
@@ -15,6 +16,6 @@ public interface RegistrationGroupService {
      * @author Rediet
      * student can get all the registration group he/she is registered
      */
-    public List<RegistrationGroup> getRegistrationGroupByStudentIds(long studentId);
+    public List<RegistrationGroupStudentDto> getRegistrationGroupByStudentIds(long studentId);
 
 }

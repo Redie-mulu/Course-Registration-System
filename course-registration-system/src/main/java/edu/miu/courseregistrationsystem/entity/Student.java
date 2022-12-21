@@ -16,13 +16,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Student  {
+public class Student extends User {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private String name;
-    private String email;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "mailing_address_id")
@@ -32,16 +27,5 @@ public class Student  {
     @JoinColumn(name = "home_address_id")
     private Address homeAddress;
 
-
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", mailingAddress=" + mailingAddress +
-//                ", homeAddress=" + homeAddress +
-                '}';
-    }
 
 }

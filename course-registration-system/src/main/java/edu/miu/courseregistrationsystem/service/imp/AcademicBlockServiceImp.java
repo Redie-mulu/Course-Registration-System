@@ -74,6 +74,15 @@ public class AcademicBlockServiceImp implements AcademicBlockService {
             }
 
         }
-        return academicBlockMapper.academicBlockStudentDtosFromAcademicBlocks(academicBlocksByStudent);
+        List<AcademicBlockStudentDto> academicBlockStudentDtos = new ArrayList<>();
+        for (AcademicBlock academicBlock: academicBlocksByStudent) {
+            AcademicBlockStudentDto academicBlockStudentDto = new AcademicBlockStudentDto();
+            academicBlockStudentDto.setId(academicBlock.getId());
+            academicBlockStudentDto.setName(academicBlock.getName());
+            academicBlockStudentDto.setStartDate(academicBlock.getStartDate());
+            academicBlockStudentDto.setEndDate(academicBlock.getEndDate());
+            academicBlockStudentDtos.add(academicBlockStudentDto);
+        }
+    return academicBlockStudentDtos;
     }
 }

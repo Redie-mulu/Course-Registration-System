@@ -20,18 +20,15 @@ public class StudentServiceImp implements StudentService {
     @Autowired
     private StudentRepository studentRepository;
 
-//    @Autowired
-//    private ModelMapper modelMapper;
 
     @Override
     public StudentDto registerStudent(StudentDto studentDto) {
         Student student = studentMapper.studentFromStudentDto(studentDto);
 //        Student student = modelMapper.map(studentDto, Student.class);
-        System.out.println(student);
+
         Student new_student = studentRepository.save(student);
 
         return studentMapper.studentDtoFromStudent(new_student);
-        //return studentDto;
     }
 
     @Override
@@ -61,19 +58,19 @@ public class StudentServiceImp implements StudentService {
     }
 
     /**
-     * @author Rediet
-     * @param students
-     * admin can add students
+     * @param students admin can add students
      * @return
+     * @author Rediet
      */
     @Override
     public List<Student> addStudents(List<StudentDto> students) {
         return studentRepository.saveAll(studentMapper.studentsFromStudentDtos(students));
     }
+
     /**
+     * @return
      * @author Feven
      * students that registers
-     * @return
      */
     @Override
     public List<StudentDto> findAll() {
@@ -90,7 +87,7 @@ public class StudentServiceImp implements StudentService {
     }
 
     @Override
-    public StudentDto  update(StudentDto studentDto) {
+    public StudentDto update(StudentDto studentDto) {
         Student student = studentMapper.studentFromStudentDto(studentDto);
         studentRepository.save(student);
         return studentDto;

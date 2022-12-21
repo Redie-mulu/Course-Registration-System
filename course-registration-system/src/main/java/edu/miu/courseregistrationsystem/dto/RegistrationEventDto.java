@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.OneToMany;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @AllArgsConstructor
@@ -13,7 +14,7 @@ import java.util.List;
 @Builder
 public class RegistrationEventDto {
     private long id;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
     List<RegistrationGroupDto> registrationGroups;
 }

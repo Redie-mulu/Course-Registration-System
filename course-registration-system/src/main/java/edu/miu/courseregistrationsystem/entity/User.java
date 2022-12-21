@@ -1,5 +1,7 @@
 package edu.miu.courseregistrationsystem.entity;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 /**
@@ -8,6 +10,7 @@ import javax.persistence.*;
  *@created 16-Dec-2022 9:00:00 AM
  */
 @Entity
+@Data
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class User {
     @Id
