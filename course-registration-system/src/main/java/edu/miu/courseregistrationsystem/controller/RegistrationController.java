@@ -1,8 +1,10 @@
 package edu.miu.courseregistrationsystem.controller;
 
 import edu.miu.courseregistrationsystem.dto.CourseOfferingDto;
+import edu.miu.courseregistrationsystem.dto.RegistrationDto;
 import edu.miu.courseregistrationsystem.dto.StudentDto;
 import edu.miu.courseregistrationsystem.mapper.CourseOfferingMapper;
+import edu.miu.courseregistrationsystem.mapper.RegistrationMapper;
 import edu.miu.courseregistrationsystem.service.RegisterService;
 import edu.miu.courseregistrationsystem.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +25,26 @@ import java.util.List;
 public class RegistrationController {
 
     private CourseOfferingMapper courseOfferingMapper;
+    private RegistrationMapper registrationMapper;
 
     private StudentService studentService;
 
     private RegisterService registrationService;
+
+    //list of Registrations
+    @GetMapping("/allRegistration")
+    public ResponseEntity<?> findAllRegistration() {
+        List<RegistrationDto> registrationDto= registrationService.getAllRegistrations();
+        return new ResponseEntity<>(registrationDto, HttpStatus.OK);
+    }
+
+    @PostMapping("/allRegistration")
+    public ResponseEntity<?> addRegistration(@RequestBody RegistrationDto registrationDto){
+        registrationService.addRegistration(registrationDto);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+
 
     //Student in registration
     @GetMapping

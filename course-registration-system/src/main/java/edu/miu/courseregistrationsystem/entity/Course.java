@@ -1,12 +1,10 @@
 package edu.miu.courseregistrationsystem.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,7 +21,8 @@ public class Course {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "course_id")
     private List<Course> preRequisite;
-
+        public Course(String code){
+        }
     @Override
     public String toString() {
         return "Course{" +
