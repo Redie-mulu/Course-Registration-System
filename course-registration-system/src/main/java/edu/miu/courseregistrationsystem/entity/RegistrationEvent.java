@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -19,8 +20,8 @@ public class RegistrationEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
     private String status = "new";
     @OneToMany(cascade = CascadeType.ALL)
     List<RegistrationGroup> registrationGroups;
@@ -28,24 +29,27 @@ public class RegistrationEvent {
     public RegistrationEvent() {
     }
 
-    public RegistrationEvent(long id, LocalDate startDate, LocalDate endDate, List<RegistrationGroup> registrationGroups) {
+    public RegistrationEvent(long id, LocalDateTime startDate, LocalDateTime endDate, List<RegistrationGroup> registrationGroups) {
         this.id = id;
         this.startDate = startDate;
         this.endDate = endDate;
         this.registrationGroups = registrationGroups;
     }
+/*public RegistrationEvent(long id, LocalDate startDate, LocalDate endDate, List<RegistrationGroup> registrationGroups) {
+        this.id = id;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.registrationGroups = registrationGroups;
+    }*/
 
     public void setStatus(String status) {
-        if (startDate.isBefore(LocalDate.now()) && endDate.isAfter(LocalDate.now())) {
+        if (startDate.isBefore(LocalDateTime.now()) && endDate.isAfter(LocalDateTime.now())) {
             this.status = "Open";
         } else {
             this.status = "Closed";
         }
         this.status = status;
     }
-   /* public void minusHours(int hours){
-        this.endDate.getHour()-=hours;
-    }*/
 
     @Override
     public String toString() {

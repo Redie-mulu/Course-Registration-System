@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Feven
@@ -18,14 +20,12 @@ import javax.persistence.*;
 @Data
 public class Registration {
 
-    @Id
-    @GeneratedValue
-
-    private long id;
+    @Id @GeneratedValue
+    private Long id;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Student student;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private CourseOffering courseOffering;
+    CourseOffering courseOfferings;
 }

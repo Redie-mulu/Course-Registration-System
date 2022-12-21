@@ -5,46 +5,36 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 public class CourseOffering {
     @Id
-    @GeneratedValue
-    private long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String code;
-    private long capacity;
-    private long availableSeats;
+    private Long capacity;
+    private Long availableSeats;
     private String initials;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Course course;
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "courseOffering_id")
-    private Faculty staff;
-
+    private Faculty faculty;
 
 
     public void initial(){
         String[] initial = new String[2];
-        initial = staff.getName().split("");
+        initial = faculty.getName().split(" ");
 
-        char firstname = initial[0].charAt(0);
-        char lastname = initial[1].charAt(0);
+        char firstName = initial[0].charAt(0);
+        char secondName = initial[1].charAt(0);
 
-        this.initials = ""+ firstname + lastname;
+        this.initials = "" + firstName + secondName;
+        this.code += "-" + this.initials;
     }
 
-    @Override
-    public String toString() {
-        return "CourseOffering{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", capacity=" + capacity +
-                ", availableSeats=" + availableSeats +
-                ", initials='" + initials + '\'' +
-                ", course=" + course +
-                ", staff=" + staff +
-                '}';
-    }
 }

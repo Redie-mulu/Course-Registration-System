@@ -17,5 +17,5 @@ import java.util.List;
 public interface RegistrationEventRepository extends JpaRepository<RegistrationEvent, Long> {
 
     List<RegistrationEvent> findByRegistrationGroupsStudentsId(long studentId);
-//    List<RegistrationEvent> findByStartDateLessThanAndEndDateGreaterThan(LocalDate LocalDate);
+
 }

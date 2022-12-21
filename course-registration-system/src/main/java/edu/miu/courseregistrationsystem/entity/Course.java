@@ -18,7 +18,7 @@ public class Course {
     private String code;
     private String name;
     private String description;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "course_id")
     private List<Course> preRequisite;
         public Course(String code){

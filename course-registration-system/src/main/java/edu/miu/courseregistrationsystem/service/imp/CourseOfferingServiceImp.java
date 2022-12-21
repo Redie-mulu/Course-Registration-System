@@ -14,7 +14,6 @@ import java.util.List;
 @Service
 @Transactional
 public class CourseOfferingServiceImp implements CourseOfferingService {
-
     @Autowired
     CourseOfferingRepository courseOfferingRepository;
     @Autowired
@@ -57,7 +56,8 @@ public class CourseOfferingServiceImp implements CourseOfferingService {
      */
     @Override
     public List<CourseOfferingDto> getCourseOfferingsByStudent(long academicBlockId) {
-        List<CourseOffering> courseOfferings = courseOfferingRepository.findByCourseId(academicBlockId);
-        return courseOfferingMapper.courseOfferingDtosFromCourseOfferings(courseOfferings);
+//        List<CourseOffering> courseOfferings = courseOfferingRepository.findByStudentsId(academicBlockId);
+//        return courseOfferingMapper.courseOfferingDtosFromCourseOfferings(courseOfferings);
+        return null;
     }
 }

@@ -3,6 +3,7 @@ package edu.miu.courseregistrationsystem.dto;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
@@ -12,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 public class RegistrationEventStudentDto {
     private long id;
-    private LocalDate startDate;
-    private LocalDate endDate;
+    private LocalDateTime startDate;
+    private LocalDateTime endDate;
     List<RegistrationGroupStudentDto> registrationGroups;
 }

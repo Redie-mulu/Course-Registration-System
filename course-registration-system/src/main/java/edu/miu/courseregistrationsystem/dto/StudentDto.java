@@ -1,7 +1,10 @@
 package edu.miu.courseregistrationsystem.dto;
 
-import edu.miu.courseregistrationsystem.entity.Address;
+
+import edu.miu.courseregistrationsystem.entity.RegistrationRequest;
 import lombok.*;
+
+import java.util.List;
 
 
 @AllArgsConstructor
@@ -12,11 +15,10 @@ public class StudentDto {
     private long id;
     private String name;
     private String email;
+    private AddressDto mailingAddress;
+    private AddressDto homeAddress;
 
-    private Address mailingAddress;
-
-    private Address homeAddress;
-
+    private List<RegistrationRequest> requests;
     @Data
     public static class Address {
         private long id;
@@ -26,5 +28,4 @@ public class StudentDto {
         private String stateProvince;
         private String countryRegion;
     }
-
 }

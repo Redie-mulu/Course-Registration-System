@@ -2,6 +2,7 @@ package edu.miu.courseregistrationsystem.controller;
 
 import edu.miu.courseregistrationsystem.dto.RegistrationEventDto;
 import edu.miu.courseregistrationsystem.dto.RegistrationGroupDto;
+import edu.miu.courseregistrationsystem.dto.RegistrationGroupStudentDto;
 import edu.miu.courseregistrationsystem.service.RegistrationGroupService;
 import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,10 +46,10 @@ public class RegistrationGroupController {
      * @author Rediet
      * student can get registration group he is part of by student id
      */
-    @GetMapping ("/{studentIds}")
-    public ResponseEntity<?> getRegistrationGroupByStudentIds(@PathVariable long studentIds) {
-        List<RegistrationGroupDto> registrationGroupDtos = registrationGroupService.getAllRegistrationGroups();
-        return new ResponseEntity<>(registrationGroupDtos, HttpStatus.OK);
+    @GetMapping ("/{studentId}")
+    public ResponseEntity<?> getRegistrationGroupByStudentIds(@PathVariable long studentId) {
+        List<RegistrationGroupStudentDto> registrationGroupDtos = registrationGroupService.getRegistrationGroupByStudentIds(studentId);
+        return new ResponseEntity<List<RegistrationGroupStudentDto>>(registrationGroupDtos, HttpStatus.OK);
     }
 
 }

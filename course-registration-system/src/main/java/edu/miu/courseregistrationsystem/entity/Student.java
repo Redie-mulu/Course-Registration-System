@@ -3,8 +3,10 @@ package edu.miu.courseregistrationsystem.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * @author REDIET
@@ -15,13 +17,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Student  {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private String name;
-    private String email;
+@SuperBuilder
+public class Student extends User {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "mailing_address_id")
@@ -31,16 +28,9 @@ public class Student  {
     @JoinColumn(name = "home_address_id")
     private Address homeAddress;
 
+    @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "student_id")
+    List<RegistrationRequest> requests;
 
-    @Override
-    public String toString() {
-        return "Student{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", email='" + email + '\'' +
-                ", mailingAddress=" + mailingAddress +
-//                ", homeAddress=" + homeAddress +
-                '}';
-    }
 
 }
