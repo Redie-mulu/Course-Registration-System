@@ -18,8 +18,6 @@ public class RegistrationRequestDto {
     private Long id;
 
     private Integer priority;
-
-    @Enumerated(EnumType.STRING)
     private RegistrationRequestStatus status;
 
     private CourseOfferingDto courseOffering;

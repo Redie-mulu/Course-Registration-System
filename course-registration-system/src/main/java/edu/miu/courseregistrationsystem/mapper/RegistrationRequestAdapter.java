@@ -8,18 +8,28 @@ import edu.miu.courseregistrationsystem.entity.Course;
 import edu.miu.courseregistrationsystem.entity.CourseOffering;
 import edu.miu.courseregistrationsystem.entity.Faculty;
 import edu.miu.courseregistrationsystem.entity.RegistrationRequest;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
- * RegistrationRequestAdapter
+ * RegistrationRequest
  */
+
+@Component
 public class RegistrationRequestAdapter {
+
+    private static CourseMapper courseMapper;
 
     public static RegistrationRequest registrationRequestDtoToRegistrationRequest(RegistrationRequestDto registrationRequestDto) {
         RegistrationRequest request = new RegistrationRequest();
-        request.setStatus(registrationRequestDto.getStatus());
+        List<Course> listOfCourse = new ArrayList<>();
+        if(Objects.nonNull(registrationRequestDto.getStatus())) {
+            request.setStatus(registrationRequestDto.getStatus());
+        }
         request.setPriority(registrationRequestDto.getPriority());
 
         CourseOffering courseOffering = new CourseOffering();
@@ -40,7 +50,12 @@ public class RegistrationRequestAdapter {
         course.setCode(registrationRequestDto.getCourseOffering().getCourse().getCode());
         course.setName(registrationRequestDto.getCourseOffering().getCourse().getName());
         course.setDescription(registrationRequestDto.getCourseOffering().getCourse().getDescription());
-        course.setPreRequisite(registrationRequestDto.getCourseOffering().getCourse().getPreRequisite());
+        for(CourseDto courseDto: registrationRequestDto.getCourseOffering().getCourse().getPreRequisite()) {
+            Course preRequesitecourse = courseMapper.courseFromCourseDto(courseDto);
+            listOfCourse.add(preRequesitecourse);
+        }
+
+        course.setPreRequisite(listOfCourse);
 
         courseOffering.setCourse(course);
 
@@ -51,6 +66,7 @@ public class RegistrationRequestAdapter {
 
     public static RegistrationRequestDto registrationRequestToRegistrationRequestDto(RegistrationRequest registrationRequest) {
         RegistrationRequestDto requestDto = new RegistrationRequestDto();
+        List<CourseDto> listOfCourseDtos = new ArrayList<>();
         requestDto.setId(registrationRequest.getId());
         requestDto.setStatus(registrationRequest.getStatus());
         requestDto.setPriority(registrationRequest.getPriority());
@@ -74,7 +90,12 @@ public class RegistrationRequestAdapter {
         course.setCode(registrationRequest.getCourseOffering().getCourse().getCode());
         course.setName(registrationRequest.getCourseOffering().getCourse().getName());
         course.setDescription(registrationRequest.getCourseOffering().getCourse().getDescription());
-        course.setPreRequisite(registrationRequest.getCourseOffering().getCourse().getPreRequisite());
+        for(Course courseAdapted: registrationRequest.getCourseOffering().getCourse().getPreRequisite()) {
+            CourseDto preRequesitecourse = courseMapper.courseDtoFromCourse(courseAdapted);
+            preRequesitecourse.setId(courseAdapted.getId());
+            listOfCourseDtos.add(preRequesitecourse);
+        }
+        course.setPreRequisite(listOfCourseDtos);
 
         courseOfferingDto.setCourse(course);
 
@@ -93,5 +114,10 @@ public class RegistrationRequestAdapter {
         }
 
         return listToReturn;
+    }
+
+    @Autowired
+    public void setCourseMapper(CourseMapper courseMapper) {
+        this.courseMapper = courseMapper;
     }
 }

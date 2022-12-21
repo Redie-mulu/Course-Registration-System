@@ -1,6 +1,7 @@
 package edu.miu.courseregistrationsystem.entity;
 
 
+import edu.miu.courseregistrationsystem.enumeration.RegistrationEventStatus;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -22,7 +23,9 @@ public class RegistrationEvent {
     private long id;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
-    private String status = "new";
+
+    @Enumerated(EnumType.STRING)
+    private RegistrationEventStatus status = RegistrationEventStatus.NEW;
     @OneToMany(cascade = CascadeType.ALL)
     List<RegistrationGroup> registrationGroups;
 
@@ -36,13 +39,13 @@ public class RegistrationEvent {
         this.registrationGroups = registrationGroups;
     }
 
-    public void setStatus(String status) {
+    public void setStatus() {
         if (startDate.isBefore(LocalDateTime.now()) && endDate.isAfter(LocalDateTime.now())) {
-            this.status = "Open";
+            this.status = RegistrationEventStatus.OPEN;
         } else {
-            this.status = "Closed";
+            this.status = RegistrationEventStatus.CLOSED;
         }
-        this.status = status;
+        //this.status = status;
     }
 
     @Override

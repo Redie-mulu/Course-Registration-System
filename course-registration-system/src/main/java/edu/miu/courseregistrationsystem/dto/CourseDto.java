@@ -1,9 +1,8 @@
 package edu.miu.courseregistrationsystem.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import edu.miu.courseregistrationsystem.entity.Course;
+import edu.miu.courseregistrationsystem.entity.CourseOffering;
+import lombok.*;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -11,9 +10,10 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
+@Data
 public class CourseDto {
-    private long id;
+
+    private Long id;
     private String code;
     private String name;
     private String description;

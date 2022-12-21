@@ -22,7 +22,7 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 @OpenAPIDefinition
 @EnableJms
 @EnableScheduling
-public class CourseRegistrationApplication implements CommandLineRunner {
+public class CourseRegistrationApplication {
     @Autowired
     JmsTemplate jmsTemplate;
 
@@ -53,9 +53,9 @@ public class CourseRegistrationApplication implements CommandLineRunner {
     }
 
 
-    @Override
-    public void run(String... args) throws Exception {
-        jmsTemplate.convertAndSend("testQueueNew", "Hello World!");
-    }
+//    @Override
+//    public void run(String... args) throws Exception {
+//        jmsTemplate.convertAndSend("testQueueNew", "Hello World!");
+//    }
 
 }
