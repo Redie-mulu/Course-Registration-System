@@ -65,15 +65,15 @@ public class AcademicBlockServiceImp implements AcademicBlockService {
     public List<AcademicBlockStudentDto> getAcademicBlocksByStudent(long studentId) {
         List<AcademicBlock> academicBlocks = academicBlockRepository.findAll();
         List<AcademicBlock> academicBlocksByStudent = new ArrayList<>();
-        for (AcademicBlock academicBlock: academicBlocks) {
-            List<CourseOffering> courseOfferings = academicBlock.getCourseOfferings();
-            for (CourseOffering courseOffering: courseOfferings) {
-                if (courseOffering.getStudents().contains(studentId)) {
-                    academicBlocksByStudent.add(academicBlock);
-                }
-            }
-
-        }
+//        for (AcademicBlock academicBlock: academicBlocks) {
+//            List<CourseOffering> courseOfferings = academicBlock.getCourseOfferings();
+//            for (CourseOffering courseOffering: courseOfferings) {
+//                if (courseOffering.getStudents().contains(studentId)) {
+//                    academicBlocksByStudent.add(academicBlock);
+//                }
+//            }
+//
+//        }
         List<AcademicBlockStudentDto> academicBlockStudentDtos = new ArrayList<>();
         for (AcademicBlock academicBlock: academicBlocksByStudent) {
             AcademicBlockStudentDto academicBlockStudentDto = new AcademicBlockStudentDto();

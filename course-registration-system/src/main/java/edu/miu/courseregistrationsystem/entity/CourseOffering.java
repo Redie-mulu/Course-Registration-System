@@ -13,54 +13,28 @@ import java.util.List;
 @Data
 public class CourseOffering {
     @Id
-    @GeneratedValue
-    private long id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String code;
-    private long capacity;
-    private long availableSeats;
+    private Long capacity;
+    private Long availableSeats;
     private String initials;
-//    @ManyToMany(cascade = CascadeType.PERSIST)
-//    @JoinTable(name = "Bloc_CourseOffering",
-//    joinColumns = {@JoinColumn(name = "courseOffering_id")},
-//    inverseJoinColumns = {@JoinColumn(name = "academicBlock_id")})
-//    private List<AcademicBlock> block = new ArrayList<>();
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     private Course course;
-    @OneToMany(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "courseOffering_id")
-    private List<Faculty> staff ;
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "Registration")
-    private List<Student> students ;
+    private Faculty faculty;
 
 
-    public long availableSeats(){
-        return this.capacity - students.size();
-    }
-//    public void addAcademicBlock(AcademicBlock block){
-//        this.block.add(block);
-//    }
-    public void addFaculty(Faculty faculty){
-        staff.add(faculty);
-    }
-
-    // Todo
     public void initial(){
+        String[] initial = new String[2];
+        initial = faculty.getName().split(" ");
 
+        char firstName = initial[0].charAt(0);
+        char secondName = initial[1].charAt(0);
+
+        this.initials = "" + firstName + secondName;
+        this.code += "-" + this.initials;
     }
 
-    @Override
-    public String toString() {
-        return "CourseOffering{" +
-                "id=" + id +
-                ", code='" + code + '\'' +
-                ", capacity=" + capacity +
-                ", availableSeats=" + availableSeats +
-                ", initials='" + initials + '\'' +
-//                ", block=" + block +
-                ", course=" + course +
-                ", staff=" + staff +
-                ", students=" + students +
-                '}';
-    }
 }
