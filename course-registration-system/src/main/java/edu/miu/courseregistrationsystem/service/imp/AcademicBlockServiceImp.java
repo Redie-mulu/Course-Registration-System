@@ -15,6 +15,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+
 @Service
 @Transactional
 public class AcademicBlockServiceImp implements AcademicBlockService {
@@ -64,10 +65,9 @@ public class AcademicBlockServiceImp implements AcademicBlockService {
      */
     @Override
     public List<AcademicBlockStudentDto> getAcademicBlocksByStudent(long studentId) {
-        System.out.println("student id is "+studentId);
         List<AcademicBlock> academicBlocks = academicBlockRepository.findAll();
         List<AcademicBlock> academicBlocksByStudent = new ArrayList<>();
-        for (AcademicBlock academicBlock: academicBlocks) {
+    /*    for (AcademicBlock academicBlock: academicBlocks) {
             List<CourseOffering> courseOfferings = academicBlock.getCourseOfferings();
             for (CourseOffering courseOffering: courseOfferings) {
                 List<Student> students = courseOffering.getStudents();
@@ -78,7 +78,7 @@ public class AcademicBlockServiceImp implements AcademicBlockService {
                 }
             }
 
-        }
+        }*/
         List<AcademicBlockStudentDto> academicBlockStudentDtos = new ArrayList<>();
         for (AcademicBlock academicBlock: academicBlocksByStudent) {
             AcademicBlockStudentDto academicBlockStudentDto = new AcademicBlockStudentDto();

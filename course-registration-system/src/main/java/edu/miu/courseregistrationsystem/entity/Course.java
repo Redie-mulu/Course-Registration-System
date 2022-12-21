@@ -26,6 +26,7 @@ public class Course {
             joinColumns = @JoinColumn(name = "course_id"),
             inverseJoinColumns = @JoinColumn(name = "prerequisite_id"))
     private List<Course> preRequisite;
+
     @Override
     public String toString() {
         return "Course{" +

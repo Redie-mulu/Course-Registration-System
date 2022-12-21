@@ -1,12 +1,12 @@
 package edu.miu.courseregistrationsystem.entity;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.util.List;
 
 /**
  * @author REDIET
@@ -20,7 +20,6 @@ import javax.persistence.*;
 @SuperBuilder
 public class Student extends User {
 
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "mailing_address_id")
     private Address mailingAddress;
@@ -29,6 +28,9 @@ public class Student extends User {
     @JoinColumn(name = "home_address_id")
     private Address homeAddress;
 
-// TODO: Add List of Registration Request as an attribute
+    @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "student_id")
+    List<RegistrationRequest> requests;
+
 
 }

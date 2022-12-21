@@ -1,7 +1,9 @@
 package edu.miu.courseregistrationsystem.service;
 
 import edu.miu.courseregistrationsystem.dto.CourseOfferingDto;
+import edu.miu.courseregistrationsystem.dto.RegistrationDto;
 import edu.miu.courseregistrationsystem.entity.CourseOffering;
+import edu.miu.courseregistrationsystem.entity.Registration;
 
 import java.util.List;
 /**
@@ -16,4 +18,6 @@ public interface RegisterService{
     public CourseOffering update(CourseOfferingDto courseOfferingDto);
     public void delete(Long id);
     public CourseOffering add(CourseOffering t);
+    public  List<RegistrationDto> getAllRegistrations();
+    public Registration addRegistration(RegistrationDto registrationDto);
 }

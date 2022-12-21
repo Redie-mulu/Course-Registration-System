@@ -21,5 +21,8 @@ public class AcademicBlockDto {
     private LocalDate endDate;
     // TODO: AcademicBlock and CourseOffering are one to many
     private List<CourseOfferingDto> courseOfferings;
+//    private List<CourseOffering> courseOfferings;
+
+
 
 }
