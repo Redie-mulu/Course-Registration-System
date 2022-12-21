@@ -18,7 +18,7 @@ public class RegistrationRequest {
     private Integer priority;
 
     @Enumerated(EnumType.STRING)
-    private RegistrationRequestStatus status;
+    private RegistrationRequestStatus status = RegistrationRequestStatus.NEW;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn
