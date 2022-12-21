@@ -5,20 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f8907c85-f0d0-4dff-8c02-19e3acf3e2dc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jpa-buddy-datasource.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mapstruct_mapstruct_1_4_1_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/MapperUsingAdapter/RegistrationRequestMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/controller/RegistrationRequestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/dto/RegistrationRequestDto.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/entity/RegistrationRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/repository/RegistrationRequestRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/RegistrationRequestService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/service/imp/RegistrationRequestServiceImp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
