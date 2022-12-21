@@ -21,27 +21,33 @@ public class RegistrationRequestService {
 
     public RegistrationRequestDto createRegistrationRequest(RegistrationRequestDto registrationRequestDto) {
         RegistrationRequest request =
-                RegistrationRequestAdapter.registrationRequestDtoToRegistrationRequestAdapter(registrationRequestDto);
+                RegistrationRequestAdapter.registrationRequestDtoToRegistrationRequest(registrationRequestDto);
         request.getCourseOffering().initial();
 
         RegistrationRequest response = registrationRequestRepository.save(request);
         return RegistrationRequestAdapter
-                .registrationRequestToRegistrationRequestDtoAdapter(registrationRequestRepository.save(request));
+                .registrationRequestToRegistrationRequestDto(registrationRequestRepository.save(request));
     }
 
     public List<RegistrationRequestDto> getAllRegistrationRequest() {
         List<RegistrationRequest> list = registrationRequestRepository.findAll();
-        return registrationRequestMapper
+        return RegistrationRequestAdapter
                 .registrationRequestsToRegistrationRequestDtos(list);
     }
 
     public RegistrationRequestDto getOneRegistrationRequest(Long id) {
         return RegistrationRequestAdapter
-                .registrationRequestToRegistrationRequestDtoAdapter(registrationRequestRepository.findById(id).get());
+                .registrationRequestToRegistrationRequestDto(registrationRequestRepository.findById(id).get());
     }
 
     public void deleteRegistrationRequest(Long id) {
         registrationRequestRepository.deleteById(id);
+    }
+
+    public RegistrationRequestDto updateRegistrationRequest(RegistrationRequestDto requestDto) {
+        RegistrationRequest request = RegistrationRequestAdapter.registrationRequestDtoToRegistrationRequest(requestDto);
+        return RegistrationRequestAdapter
+                .registrationRequestToRegistrationRequestDto(registrationRequestRepository.saveAndFlush(request));
     }
 
 

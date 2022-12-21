@@ -17,7 +17,7 @@ public class RegistrationRequest {
 
     private Integer priority;
 
-    //@Enumerated(EnumType.STRING)
+    @Enumerated(EnumType.STRING)
     private RegistrationRequestStatus status;
 
     @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)

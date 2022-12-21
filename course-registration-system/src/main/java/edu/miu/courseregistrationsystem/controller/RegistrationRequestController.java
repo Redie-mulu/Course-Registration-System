@@ -34,7 +34,8 @@ public class RegistrationRequestController {
 
     @PutMapping
     public ResponseEntity<?> updateRegistrationRequest(@RequestBody RegistrationRequestDto registrationRequestDto) {
-        return  null;
+        RegistrationRequestDto responseDto =  registrationRequestService.updateRegistrationRequest(registrationRequestDto);
+        return ResponseEntity.ok(responseDto);
     }
 
     @DeleteMapping("/{id}")

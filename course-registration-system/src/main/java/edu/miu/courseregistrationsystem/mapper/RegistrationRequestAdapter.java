@@ -6,11 +6,12 @@ import edu.miu.courseregistrationsystem.entity.Course;
 import edu.miu.courseregistrationsystem.entity.CourseOffering;
 import edu.miu.courseregistrationsystem.entity.RegistrationRequest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RegistrationRequestAdapter {
 
-    public static RegistrationRequest registrationRequestDtoToRegistrationRequestAdapter(RegistrationRequestDto registrationRequestDto) {
+    public static RegistrationRequest registrationRequestDtoToRegistrationRequest(RegistrationRequestDto registrationRequestDto) {
         RegistrationRequest request = new RegistrationRequest();
         request.setStatus(registrationRequestDto.getStatus());
         request.setPriority(registrationRequestDto.getPriority());
@@ -18,6 +19,7 @@ public class RegistrationRequestAdapter {
         CourseOffering courseOffering = new CourseOffering();
         courseOffering.setCode(registrationRequestDto.getCourseOffering().getCode());
         courseOffering.setCapacity(registrationRequestDto.getCourseOffering().getCapacity());
+        courseOffering.setAvailableSeats(registrationRequestDto.getCourseOffering().getAvailableSeats());
         courseOffering.setInitials(registrationRequestDto.getCourseOffering().getInitials());
         courseOffering.setStaff(registrationRequestDto.getCourseOffering().getStaff());
         //courseOffering.initial();
@@ -34,7 +36,7 @@ public class RegistrationRequestAdapter {
         return request;
     }
 
-    public static RegistrationRequestDto registrationRequestToRegistrationRequestDtoAdapter(RegistrationRequest registrationRequest) {
+    public static RegistrationRequestDto registrationRequestToRegistrationRequestDto(RegistrationRequest registrationRequest) {
         RegistrationRequestDto requestDto = new RegistrationRequestDto();
         requestDto.setId(registrationRequest.getId());
         requestDto.setStatus(registrationRequest.getStatus());
@@ -44,6 +46,7 @@ public class RegistrationRequestAdapter {
         courseOfferingDto.setId(registrationRequest.getCourseOffering().getId());
         courseOfferingDto.setCode(registrationRequest.getCourseOffering().getCode());
         courseOfferingDto.setCapacity(registrationRequest.getCourseOffering().getCapacity());
+        courseOfferingDto.setAvailableSeats(registrationRequest.getCourseOffering().getAvailableSeats());
         courseOfferingDto.setInitials(registrationRequest.getCourseOffering().getInitials());
         courseOfferingDto.setStaff(registrationRequest.getCourseOffering().getStaff());
         Course course = new Course();
@@ -60,7 +63,15 @@ public class RegistrationRequestAdapter {
         return requestDto;
     }
 
-//    public static List<RegistrationRequestDto> registrationRequestsToRegistrationRequestDtos(List<RegistrationRequest> lists) {
-//        List<RegistrationRequestDto> listToReturn = new
-//    }
+    public static List<RegistrationRequestDto> registrationRequestsToRegistrationRequestDtos(List<RegistrationRequest> lists) {
+        List<RegistrationRequestDto> listToReturn = new ArrayList<>();
+
+        for (RegistrationRequest request: lists) {
+            RegistrationRequestDto requestDto =
+                    RegistrationRequestAdapter.registrationRequestToRegistrationRequestDto(request);
+            listToReturn.add(requestDto);
+        }
+
+        return listToReturn;
+    }
 }

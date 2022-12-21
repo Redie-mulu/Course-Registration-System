@@ -17,7 +17,7 @@ public class CourseOffering {
     private Long id;
     private String code;
     private Long capacity;
-    private Long availableSeats = Long.parseLong("0");
+    private Long availableSeats;
     private String initials;
     @ManyToOne(cascade = CascadeType.ALL)
     private Course course;
@@ -34,7 +34,7 @@ public class CourseOffering {
         char secondName = initial[1].charAt(0);
 
         this.initials = "" + firstName + secondName;
-        this.code += this.initials;
+        this.code += "-" + this.initials;
     }
 
 }

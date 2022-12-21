@@ -4,6 +4,8 @@ import edu.miu.courseregistrationsystem.entity.*;
 import edu.miu.courseregistrationsystem.enumeration.RegistrationRequestStatus;
 import lombok.*;
 
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import java.util.List;
 
 @Data
@@ -17,6 +19,7 @@ public class RegistrationRequestDto {
 
     private Integer priority;
 
+    @Enumerated(EnumType.STRING)
     private RegistrationRequestStatus status;
 
     private CourseOfferingDto courseOffering;
