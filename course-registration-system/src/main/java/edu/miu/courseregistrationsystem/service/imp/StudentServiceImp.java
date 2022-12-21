@@ -24,10 +24,7 @@ public class StudentServiceImp implements StudentService {
     @Override
     public StudentDto registerStudent(StudentDto studentDto) {
         Student student = studentMapper.studentFromStudentDto(studentDto);
-//        Student student = modelMapper.map(studentDto, Student.class);
-
         Student new_student = studentRepository.save(student);
-
         return studentMapper.studentDtoFromStudent(new_student);
     }
 

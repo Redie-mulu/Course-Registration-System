@@ -27,13 +27,15 @@ public class RegistrationEventEmailSender {
     @Autowired
     private RegistrationEventRepository registrationEventRepository;
 
-//    @Scheduled(fixedRate = 2000)
+//    @Scheduled(cron = "0 0 12 ? * ?")
+    @Scheduled(fixedRate = 20000)
     public void sendEmailReminder() {
         Date date = Calendar.getInstance().getTime();
         DateFormat timeFormatter = DateFormat.getTimeInstance(DateFormat.DEFAULT);
         String currentTime = timeFormatter.format(date);
         System.out.println("This task runs at " + currentTime);
         List<RegistrationEvent> registrationEvents = registrationEventRepository.findAll();
+        jmsTemplate.convertAndSend("registrationEventQueue1", "registrationEvents");
         for(RegistrationEvent registrationEvent: registrationEvents){
             LocalDateTime now = LocalDateTime.now();
             Duration duration = Duration.between(registrationEvent.getEndDate(), now);

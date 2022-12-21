@@ -12,8 +12,8 @@ public class StudentDto {
     private long id;
     private String name;
     private String email;
-    private Address mailingAddress;
-    private Address homeAddress;
+    private AddressDto mailingAddress;
+    private AddressDto homeAddress;
     @Data
     public static class Address {
         private long id;
