@@ -22,6 +22,10 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
+    @GetMapping("test")
+    public String test() {
+        return "test";
+    }
     @GetMapping
     public ResponseEntity<?> getAllStudents() {
         Students students = new Students();
