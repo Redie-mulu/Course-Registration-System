@@ -19,7 +19,8 @@ import java.util.List;
 @Data
 public class RegistrationGroup {
 
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
     @OneToMany(cascade = CascadeType.MERGE)
     @JoinColumn(name = "registration_group_id")

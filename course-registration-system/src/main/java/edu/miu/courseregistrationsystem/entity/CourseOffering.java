@@ -7,22 +7,22 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class CourseOffering {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
     private String code;
     private Long capacity;
     private Long availableSeats;
     private String initials;
-    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.ALL})
     private Course course;
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "courseOffering_id")
+    @ManyToOne(cascade = CascadeType.ALL)
     private Faculty faculty;
 
 
@@ -36,5 +36,4 @@ public class CourseOffering {
         this.initials = "" + firstName + secondName;
         this.code += "-" + this.initials;
     }
-
 }

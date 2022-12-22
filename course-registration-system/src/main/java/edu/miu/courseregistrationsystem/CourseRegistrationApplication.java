@@ -2,11 +2,10 @@ package edu.miu.courseregistrationsystem;
 
 import edu.miu.courseregistrationsystem.config.ConfigFileExternalizationConfig;
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
-//import org.modelmapper.ModelMapper;
+import org.modelmapper.ModelMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -18,8 +17,6 @@ import org.springframework.jms.annotation.EnableJms;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
-
-//@EnableScheduling
 @SpringBootApplication(scanBasePackages = {"edu.miu.courseregistrationsystem"})
 @EntityScan(basePackages = {"edu.miu.courseregistrationsystem"})
 @EnableJpaRepositories(basePackages = {"edu.miu.courseregistrationsystem"})
@@ -55,11 +52,9 @@ public class CourseRegistrationApplication {
             LOGGER.error("Please proceed to manually creation of configuration files!");
         }
     }
-
-
-//    @Override
-//    public void run(String... args) throws Exception {
-//        jmsTemplate.convertAndSend("testQueueNew", "Hello World!");
-//    }
+    @Bean
+    public ModelMapper modelMapper(){
+        return new ModelMapper();
+    }
 
 }

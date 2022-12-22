@@ -4,6 +4,7 @@ import edu.miu.courseregistrationsystem.dto.AcademicBlockDto;
 import edu.miu.courseregistrationsystem.dto.AcademicBlockStudentDto;
 import edu.miu.courseregistrationsystem.entity.AcademicBlock;
 import edu.miu.courseregistrationsystem.entity.CourseOffering;
+import edu.miu.courseregistrationsystem.entity.Student;
 import edu.miu.courseregistrationsystem.mapper.AcademicBlockMapper;
 import edu.miu.courseregistrationsystem.repository.AcademicBlockRepository;
 import edu.miu.courseregistrationsystem.service.AcademicBlockService;
@@ -19,6 +20,7 @@ import java.util.List;
 @Transactional
 public class AcademicBlockServiceImp implements AcademicBlockService {
 
+    @Autowired
     private AcademicBlockMapper academicBlockMapper;
     @Autowired
     AcademicBlockRepository academicBlockRepository;
@@ -65,15 +67,18 @@ public class AcademicBlockServiceImp implements AcademicBlockService {
     public List<AcademicBlockStudentDto> getAcademicBlocksByStudent(long studentId) {
         List<AcademicBlock> academicBlocks = academicBlockRepository.findAll();
         List<AcademicBlock> academicBlocksByStudent = new ArrayList<>();
-//        for (AcademicBlock academicBlock: academicBlocks) {
-//            List<CourseOffering> courseOfferings = academicBlock.getCourseOfferings();
-//            for (CourseOffering courseOffering: courseOfferings) {
-//                if (courseOffering.getStudents().contains(studentId)) {
-//                    academicBlocksByStudent.add(academicBlock);
-//                }
-//            }
-//
-//        }
+    /*    for (AcademicBlock academicBlock: academicBlocks) {
+            List<CourseOffering> courseOfferings = academicBlock.getCourseOfferings();
+            for (CourseOffering courseOffering: courseOfferings) {
+                List<Student> students = courseOffering.getStudents();
+                for (Student student: students) {
+                    if (student.getId() == studentId) {
+                        academicBlocksByStudent.add(academicBlock);
+                    }
+                }
+            }
+
+        }*/
         List<AcademicBlockStudentDto> academicBlockStudentDtos = new ArrayList<>();
         for (AcademicBlock academicBlock: academicBlocksByStudent) {
             AcademicBlockStudentDto academicBlockStudentDto = new AcademicBlockStudentDto();

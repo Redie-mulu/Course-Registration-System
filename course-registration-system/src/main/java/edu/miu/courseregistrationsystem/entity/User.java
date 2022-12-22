@@ -21,7 +21,7 @@ import javax.persistence.*;
 public abstract class User {
     @Id
     @GeneratedValue(strategy = GenerationType.TABLE)
-    private Long id;
+    private long id;
     private String name;
     private String email;
 

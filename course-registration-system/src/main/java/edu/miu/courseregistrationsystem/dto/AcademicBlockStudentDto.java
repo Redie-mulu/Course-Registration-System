@@ -1,8 +1,12 @@
 package edu.miu.courseregistrationsystem.dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * @author Rediet
@@ -22,4 +26,5 @@ public class AcademicBlockStudentDto {
     private String semester;
     private LocalDate startDate;
     private LocalDate endDate;
+    private List<CourseOfferingDto> courseOfferings;
 }

@@ -1,5 +1,6 @@
 package edu.miu.courseregistrationsystem.controller;
 
+import edu.miu.courseregistrationsystem.dto.RegistrationRequestDto;
 import edu.miu.courseregistrationsystem.dto.StudentDto;
 import edu.miu.courseregistrationsystem.mapper.StudentMapper;
 import edu.miu.courseregistrationsystem.service.StudentService;
@@ -34,6 +35,7 @@ public class StudentController {
     @PostMapping
     public ResponseEntity<?> registerStudent(@RequestBody StudentDto studentDto) {
         studentService.registerStudent(studentDto);
+        //return new ResponseEntity<StudentDto>(studentDto, HttpStatus.OK);
         return new ResponseEntity<StudentDto>(studentService.registerStudent(studentDto), HttpStatus.OK);
     }
     @GetMapping("/{id}")
@@ -61,6 +63,14 @@ public class StudentController {
         studentService.addStudents(studentDtos);
         System.out.println(studentDtos);
         return new ResponseEntity<Students>(HttpStatus.OK);
+    }
+    /**
+     * student can creat registration request
+     */
+    @PostMapping("{id}/registration")
+    public ResponseEntity<?> createRegistrationRequest(@PathVariable long id, @RequestBody RegistrationRequestDto registrationRequestDto) {
+        studentService.addRegistrationRequest(id, registrationRequestDto);
+        return new ResponseEntity<RegistrationRequestDto>(HttpStatus.OK);
     }
 
     @Autowired

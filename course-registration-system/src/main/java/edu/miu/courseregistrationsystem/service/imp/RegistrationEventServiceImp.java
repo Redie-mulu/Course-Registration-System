@@ -1,14 +1,17 @@
 package edu.miu.courseregistrationsystem.service.imp;
 
+import edu.miu.courseregistrationsystem.dto.AcademicBlockStudentDto;
 import edu.miu.courseregistrationsystem.dto.RegistrationEventDto;
 import edu.miu.courseregistrationsystem.dto.RegistrationEventStudentDto;
 import edu.miu.courseregistrationsystem.dto.RegistrationGroupStudentDto;
+import edu.miu.courseregistrationsystem.entity.AcademicBlock;
 import edu.miu.courseregistrationsystem.entity.RegistrationEvent;
 import edu.miu.courseregistrationsystem.entity.RegistrationGroup;
 import edu.miu.courseregistrationsystem.entity.Student;
 import edu.miu.courseregistrationsystem.mapper.RegistrationEventMapper;
 import edu.miu.courseregistrationsystem.repository.RegistrationEventRepository;
 import edu.miu.courseregistrationsystem.service.RegistrationEventService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.JmsTemplate;
@@ -34,6 +37,9 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
     private RegistrationEventMapper registrationEventMapper;
     @Autowired
     private RegistrationGroupServiceImp registrationGroupServiceImp;
+    @Autowired
+    private ModelMapper modelMapper;
+
 
     @Override
     public RegistrationEventDto addRegistrationEvent(RegistrationEventDto registrationEventDto) {
@@ -118,15 +124,33 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
             }
         }*/
         List<RegistrationEventStudentDto> registrationEventStudentDtos = new ArrayList<>();
-        for(RegistrationEvent registrationEvent: registrationEvents){
+        for (RegistrationEvent registrationEvent: registrationEvents){
             RegistrationEventStudentDto registrationEventStudentDto = new RegistrationEventStudentDto();
-            registrationEventStudentDto.setId(registrationEvent.getId());
-            registrationEventStudentDto.setStartDate(registrationEvent.getStartDate());
-            registrationEventStudentDto.setEndDate(registrationEvent.getEndDate());
-            registrationEventStudentDtos.add(registrationEventStudentDto);
-
+           RegistrationEventStudentDto registrationEventStudentDto1 = modelMapper.map(registrationEvent, RegistrationEventStudentDto.class);
+            registrationEventStudentDtos.add(registrationEventStudentDto1);
         }
+
         return registrationEventStudentDtos;
+    }
+    //convert registrationGroupdto to registrationGroupStudentDto
+    public List<RegistrationGroupStudentDto> convertRegistrationGroupDtoToRegistrationGroupStudentDto(List<RegistrationGroup> registrationGroups){
+        List<RegistrationGroupStudentDto> registrationGroupStudentDtos = new ArrayList<>();
+        for(RegistrationGroup registrationGroup: registrationGroups){
+            RegistrationGroupStudentDto registrationGroupStudentDto = new RegistrationGroupStudentDto();
+            registrationGroupStudentDto.setId(registrationGroup.getId());
+        List<AcademicBlock> academicBlocks = registrationGroup.getAcademicBlocks();
+        List<AcademicBlockStudentDto> academicBlockStudentDtos = new ArrayList<>();
+        for (AcademicBlock academicBlock: academicBlocks){
+            AcademicBlockStudentDto academicBlockStudentDto = new AcademicBlockStudentDto();
+            academicBlockStudentDto.setId(academicBlock.getId());
+            academicBlockStudentDto.setStartDate(academicBlock.getStartDate());
+            academicBlockStudentDto.setEndDate(academicBlock.getEndDate());
+
+            academicBlockStudentDtos.add(academicBlockStudentDto);
+        }
+            registrationGroupStudentDtos.add(registrationGroupStudentDto);
+        }
+        return registrationGroupStudentDtos;
     }
 
     /**

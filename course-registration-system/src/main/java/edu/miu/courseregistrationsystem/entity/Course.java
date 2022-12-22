@@ -1,10 +1,12 @@
 package edu.miu.courseregistrationsystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -18,11 +20,13 @@ public class Course {
     private String code;
     private String name;
     private String description;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "course_id")
+    //TODO: Course and prerequisite are many to many
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "prerequisite",
+            joinColumns = @JoinColumn(name = "course_id"),
+            inverseJoinColumns = @JoinColumn(name = "prerequisite_id"))
     private List<Course> preRequisite;
-        public Course(String code){
-        }
+
     @Override
     public String toString() {
         return "Course{" +
@@ -30,7 +34,7 @@ public class Course {
                 ", code='" + code + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
-//                ", preRequisite=" + preRequisite +
+                ", preRequisite=" + preRequisite +
                 '}';
     }
 

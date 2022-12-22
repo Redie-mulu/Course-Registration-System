@@ -1,13 +1,11 @@
 package edu.miu.courseregistrationsystem.entity;
 
-import edu.miu.courseregistrationsystem.dto.CourseOfferingDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 /**
  * @author REDIET
@@ -27,7 +25,7 @@ public class AcademicBlock {
      * The code for the course offering
      *
      * 2020-09-01D
-      */
+     */
     private String code;
     /**
      * The name of the academic block
@@ -37,11 +35,9 @@ public class AcademicBlock {
     private LocalDate startDate;
     private LocalDate endDate;
 
-    @OneToMany(cascade = CascadeType.MERGE)
+    @OneToMany(cascade = CascadeType.ALL)
     private List<CourseOffering> courseOfferings;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    List<RegistrationGroup> registrationGroups;
 
     public void addCourseOffering(CourseOffering courseOffering){
         this.courseOfferings.add(courseOffering);

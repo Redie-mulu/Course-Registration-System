@@ -26,7 +26,8 @@ public class RegistrationEvent {
 
     @Enumerated(EnumType.STRING)
     private RegistrationEventStatus status = RegistrationEventStatus.NEW;
-    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    //@OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
+    @OneToMany(cascade = {CascadeType.ALL})
     List<RegistrationGroup> registrationGroups;
 
     public RegistrationEvent() {
@@ -38,12 +39,6 @@ public class RegistrationEvent {
         this.endDate = endDate;
         this.registrationGroups = registrationGroups;
     }
-/*public RegistrationEvent(long id, LocalDate startDate, LocalDate endDate, List<RegistrationGroup> registrationGroups) {
-        this.id = id;
-        this.startDate = startDate;
-        this.endDate = endDate;
-        this.registrationGroups = registrationGroups;
-    }*/
 
     public void setStatus() {
         if (startDate.isBefore(LocalDateTime.now()) && endDate.isAfter(LocalDateTime.now())) {
