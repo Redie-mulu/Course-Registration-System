@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Transactional
@@ -28,11 +29,14 @@ public class RegistrationRequestService {
 
     public RegistrationRequestDto createRegistrationRequest(RegistrationRequestDto registrationRequestDto) throws ApplicationException {
         List<RegistrationEventDto> registrationEventList = registrationEventService.getLatestRegistrationEvent();
+        RegistrationEventDto registrationEvent = registrationEventList.get(0);
 
-        if(registrationEventList.size() == 0) {
+        if(Objects.isNull(registrationEvent)
+                || (LocalDateTime.now().isBefore(registrationEvent.getStartDate())
+                || LocalDateTime.now().isAfter(registrationEvent.getEndDate()))) {
             throw new ApplicationException("Registration period not opened or closed!");
         } else {
-            //RegistrationEventDto registrationEvent = registrationEventList.get(0);
+            //
             RegistrationRequest request =
                     registrationRequestMapper.registrationRequestDtoToRegistrationRequest(registrationRequestDto);
             request.getCourseOffering().initial();
