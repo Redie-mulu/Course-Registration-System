@@ -7,10 +7,7 @@ import edu.miu.courseregistrationsystem.dto.RegistrationGroupStudentDto;
 import edu.miu.courseregistrationsystem.entity.*;
 import edu.miu.courseregistrationsystem.enumeration.RegistrationRequestStatus;
 import edu.miu.courseregistrationsystem.mapper.RegistrationEventMapper;
-import edu.miu.courseregistrationsystem.repository.CourseRepository;
-import edu.miu.courseregistrationsystem.repository.RegistrationEventRepository;
-import edu.miu.courseregistrationsystem.repository.RegistrationRepository;
-import edu.miu.courseregistrationsystem.repository.RegistrationRequestRepository;
+import edu.miu.courseregistrationsystem.repository.*;
 import edu.miu.courseregistrationsystem.service.RegistrationEventService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +22,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -47,6 +45,8 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
 
     @Autowired
     private RegistrationRequestRepository registrationRequestRepository;
+    @Autowired
+    private StudentRepository studentRepository;
 
 
     @Override
@@ -184,21 +184,26 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
     public void processRegistrationEvent(long registrationEventId) {
 
         RegistrationEvent registrationEvent = registrationEventRepository.findById(registrationEventId).get();
-        List<Student> students = registrationEvent.getRegistrationGroups().get(0).getStudents();
-        for(Student student: students) {
-            System.out.println("student" + student);
-            List<RegistrationRequest> registrationRequests = student.getRequests();
-            for (RegistrationRequest registrationRequest : registrationRequests) {
-                Registration registration = convertRegistrationRequestToRegistration(registrationRequest, student.getId());
-                System.out.println("registration" + registration);
-//                System.out.println(registration);
-                registrationRepository.save(registration);
-            }
+//        if(registrationEvent.getStatus().equals("Closed")) {
 
-        }
+            List<Student> students = registrationEvent.getRegistrationGroups().stream()
+                    .flatMap(registrationGroup -> registrationGroup.getStudents().stream())
+                    .collect(Collectors.toList());
+            for (Student student : students) {
+                System.out.println("student" + student);
+                List<RegistrationRequest> registrationRequests = student.getRequests();
+                for (RegistrationRequest registrationRequest : registrationRequests) {
+                    Registration registration = convertRegistrationRequestToRegistration(registrationRequest, student.getId());
+                    System.out.println("registration" + registration);
+//                System.out.println(registration);
+                    registrationRepository.save(registration);
+                }
+
+            }
+//        }
     }
     public Registration convertRegistrationRequestToRegistration(RegistrationRequest registrationRequest, long studentId) {
-     if(registrationRequest.getPriority() == 1) {
+    /* if(registrationRequest.getPriority() == 1) {
          if(checkAvailableSeats(registrationRequest.getCourseOffering()) && checkPrerequisites(registrationRequest.getCourseOffering(), studentId)) {
                 Registration registration = new Registration();
              registration.setCourseOfferings(registrationRequest.getCourseOffering());
@@ -210,8 +215,15 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
          }
         else {
          registrationRequest.setStatus(RegistrationRequestStatus.ACCEPTED);
-        }
-        return null;
+        }*/
+        Registration registration = new Registration();
+
+        registration.setCourseOfferings(registrationRequest.getCourseOffering());
+        registration.setStudent(studentRepository.findById(studentId).get());
+        registrationRequest.setStatus(RegistrationRequestStatus.ACCEPTED);
+        registrationRequestRepository.save(registrationRequest);
+        System.out.println("registrationRequest" + registrationRequest);
+        return registration;
      }
 
 

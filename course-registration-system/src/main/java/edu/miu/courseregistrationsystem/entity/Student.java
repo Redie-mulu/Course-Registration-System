@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -32,5 +33,11 @@ public class Student extends User {
     @JoinColumn(name = "student_id")
     List<RegistrationRequest> requests;
 
+    public void addRegistrationRequest(RegistrationRequest registrationRequest) {
+        if (requests == null) {
+            requests = new ArrayList<>();
+        }
+        requests.add(registrationRequest);
+    }
 
 }
