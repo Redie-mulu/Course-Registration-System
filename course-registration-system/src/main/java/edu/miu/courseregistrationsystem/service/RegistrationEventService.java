@@ -34,4 +34,10 @@ public interface RegistrationEventService {
     public  List<RegistrationEventStudentDto>  getRegistrationEventByStudentId(long studentId);
 
 //    public void sendEmailReminder();
+
+    /**
+     * dmin should be able to process registration event
+     */
+    public void processRegistrationEvent(long registrationEventId);
+
 }

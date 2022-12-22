@@ -3,11 +3,10 @@ package edu.miu.courseregistrationsystem.service.imp;
 import edu.miu.courseregistrationsystem.dto.AcademicBlockStudentDto;
 import edu.miu.courseregistrationsystem.dto.RegistrationGroupDto;
 import edu.miu.courseregistrationsystem.dto.RegistrationGroupStudentDto;
-import edu.miu.courseregistrationsystem.entity.AcademicBlock;
-import edu.miu.courseregistrationsystem.entity.RegistrationGroup;
-import edu.miu.courseregistrationsystem.entity.Student;
+import edu.miu.courseregistrationsystem.entity.*;
 import edu.miu.courseregistrationsystem.mapper.RegistrationGroupMapper;
 import edu.miu.courseregistrationsystem.repository.AcademicBlockRepository;
+import edu.miu.courseregistrationsystem.repository.RegistrationEventRepository;
 import edu.miu.courseregistrationsystem.repository.RegistrationGroupRepository;
 import edu.miu.courseregistrationsystem.repository.StudentRepository;
 import edu.miu.courseregistrationsystem.service.RegistrationGroupService;
@@ -35,6 +34,8 @@ public class RegistrationGroupServiceImp implements RegistrationGroupService {
     private StudentRepository studentRepository;
     @Autowired
     private AcademicBlockRepository academicBlockRepository;
+    @Autowired
+    private RegistrationEventRepository registrationEventRepository;
 
     /**
      * @author Rediet
@@ -133,4 +134,5 @@ public class RegistrationGroupServiceImp implements RegistrationGroupService {
         }
         return registrationGroupsForStudent;
     }
+
 }

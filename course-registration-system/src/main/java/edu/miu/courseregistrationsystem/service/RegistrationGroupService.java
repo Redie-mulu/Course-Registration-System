@@ -17,5 +17,4 @@ public interface RegistrationGroupService {
      * student can get all the registration group he/she is registered
      */
     public List<RegistrationGroupStudentDto> getRegistrationGroupByStudentIds(long studentId);
-
-}
+ }
