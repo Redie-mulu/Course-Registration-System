@@ -47,6 +47,8 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
     private RegistrationRequestRepository registrationRequestRepository;
     @Autowired
     private StudentRepository studentRepository;
+    @Autowired
+    private CourseOfferingRepository courseOfferingRepository;
 
 
     @Override
@@ -203,27 +205,27 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
 //        }
     }
     public Registration convertRegistrationRequestToRegistration(RegistrationRequest registrationRequest, long studentId) {
-    /* if(registrationRequest.getPriority() == 1) {
+     if(registrationRequest.getPriority() == 1) {
          if(checkAvailableSeats(registrationRequest.getCourseOffering()) && checkPrerequisites(registrationRequest.getCourseOffering(), studentId)) {
                 Registration registration = new Registration();
              registration.setCourseOfferings(registrationRequest.getCourseOffering());
+             registration.setStudent(studentRepository.findById(studentId).get());
              registrationRequest.setStatus(RegistrationRequestStatus.ACCEPTED);
              registrationRequestRepository.save(registrationRequest);
              System.out.println("registrationRequest" + registrationRequest);
+             /**
+              * update available seats
+              */
+                CourseOffering courseOffering = registrationRequest.getCourseOffering();
+                courseOffering.setAvailableSeats(courseOffering.getAvailableSeats() - 1);
+                courseOfferingRepository.save(courseOffering);
              return registration;
             }
          }
         else {
          registrationRequest.setStatus(RegistrationRequestStatus.ACCEPTED);
-        }*/
-        Registration registration = new Registration();
-
-        registration.setCourseOfferings(registrationRequest.getCourseOffering());
-        registration.setStudent(studentRepository.findById(studentId).get());
-        registrationRequest.setStatus(RegistrationRequestStatus.ACCEPTED);
-        registrationRequestRepository.save(registrationRequest);
-        System.out.println("registrationRequest" + registrationRequest);
-        return registration;
+        }
+        return null;
      }
 
 
