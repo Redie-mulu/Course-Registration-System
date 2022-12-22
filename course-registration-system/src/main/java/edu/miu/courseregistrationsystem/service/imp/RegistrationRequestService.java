@@ -50,7 +50,7 @@ public class RegistrationRequestService {
         RegistrationRequestDto responseDto = new RegistrationRequestDto();
         List<RegistrationEventDto> registrationEventList = registrationEventService.getLatestRegistrationEvent();
         if(registrationEventList.isEmpty()) {
-            throw new ApplicationException("No registration event availaible!");
+            throw new ApplicationException("Registration period not opened or closed!");
         }
         RegistrationEventDto event = registrationEventList.get(0);
         if(LocalDateTime.now().isBefore(event.getStartDate())
@@ -60,7 +60,7 @@ public class RegistrationRequestService {
                 && event.getEndDate().isAfter(LocalDateTime.now()))) {
             RegistrationRequest request =
                     registrationRequestMapper.registrationRequestDtoToRegistrationRequest(registrationRequestDto);
-            request.getCourseOffering().initial();
+            //request.getCourseOffering().initial();
 
             RegistrationRequest response = registrationRequestRepository.save(request);
             Student student = studentRepository.findById(studentId).get();

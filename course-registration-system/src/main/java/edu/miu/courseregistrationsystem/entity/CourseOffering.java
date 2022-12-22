@@ -1,8 +1,6 @@
 package edu.miu.courseregistrationsystem.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -11,7 +9,7 @@ import java.util.List;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Data
+@Data @Setter @Getter
 public class CourseOffering {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
