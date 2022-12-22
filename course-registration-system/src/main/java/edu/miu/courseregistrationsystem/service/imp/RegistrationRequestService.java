@@ -5,6 +5,7 @@ import edu.miu.courseregistrationsystem.dto.RegistrationRequestDto;
 import edu.miu.courseregistrationsystem.entity.RegistrationEvent;
 import edu.miu.courseregistrationsystem.entity.RegistrationRequest;
 //import edu.miu.courseregistrationsystem.mapper.RegistrationRequestAdapter;
+import edu.miu.courseregistrationsystem.exception.ApplicationException;
 import edu.miu.courseregistrationsystem.mapper.RegistrationRequestMapper;
 import edu.miu.courseregistrationsystem.repository.RegistrationRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,19 +26,32 @@ public class RegistrationRequestService {
 
     private RegistrationEventServiceImp registrationEventService;
 
-    public RegistrationRequestDto createRegistrationRequest(RegistrationRequestDto registrationRequestDto) {
-        List<RegistrationEventDto> registrationEvent = registrationEventService.getLatestRegistrationEvent();
+    public RegistrationRequestDto createRegistrationRequest(RegistrationRequestDto registrationRequestDto) throws ApplicationException {
+        List<RegistrationEventDto> registrationEventList = registrationEventService.getLatestRegistrationEvent();
 
-        RegistrationRequest request =
-                //RegistrationRequestAdapter.registrationRequestDtoToRegistrationRequest(registrationRequestDto);
-                registrationRequestMapper.registrationRequestDtoToRegistrationRequest(registrationRequestDto);
-        request.getCourseOffering().initial();
+        if(registrationEventList.size() == 0) {
+            throw new ApplicationException("Registration period not opened or closed!");
+        } else {
+            //RegistrationEventDto registrationEvent = registrationEventList.get(0);
+            RegistrationRequest request =
+                    registrationRequestMapper.registrationRequestDtoToRegistrationRequest(registrationRequestDto);
+            request.getCourseOffering().initial();
 
-        RegistrationRequest response = registrationRequestRepository.save(request);
-        //return RegistrationRequestAdapter
-        //        .registrationRequestToRegistrationRequestDto(registrationRequestRepository.save(request));
-        return registrationRequestMapper
-                .registrationRequestToRegistrationRequestDto(registrationRequestRepository.save(request));
+            RegistrationRequest response = registrationRequestRepository.save(request);
+            return registrationRequestMapper
+                    .registrationRequestToRegistrationRequestDto(registrationRequestRepository.save(request));
+        }
+
+//        RegistrationRequest request =
+//                //RegistrationRequestAdapter.registrationRequestDtoToRegistrationRequest(registrationRequestDto);
+//                registrationRequestMapper.registrationRequestDtoToRegistrationRequest(registrationRequestDto);
+//        request.getCourseOffering().initial();
+//
+//        RegistrationRequest response = registrationRequestRepository.save(request);
+//        //return RegistrationRequestAdapter
+//        //        .registrationRequestToRegistrationRequestDto(registrationRequestRepository.save(request));
+//        return registrationRequestMapper
+//                .registrationRequestToRegistrationRequestDto(registrationRequestRepository.save(request));
     }
 
     public List<RegistrationRequestDto> getAllRegistrationRequest() {

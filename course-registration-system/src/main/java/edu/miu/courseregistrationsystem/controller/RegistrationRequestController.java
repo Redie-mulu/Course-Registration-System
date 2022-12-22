@@ -1,6 +1,7 @@
 package edu.miu.courseregistrationsystem.controller;
 
 import edu.miu.courseregistrationsystem.dto.RegistrationRequestDto;
+import edu.miu.courseregistrationsystem.exception.ApplicationException;
 import edu.miu.courseregistrationsystem.service.imp.RegistrationRequestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,8 +17,13 @@ public class RegistrationRequestController {
 
     @PostMapping
     public ResponseEntity<?> addRegistrationRequest(@RequestBody RegistrationRequestDto registrationRequestDto) {
-        RegistrationRequestDto responseDto = registrationRequestService.createRegistrationRequest(registrationRequestDto);
-        return ResponseEntity.ok(responseDto);
+        RegistrationRequestDto responseDto = new RegistrationRequestDto();
+        try{
+            responseDto = registrationRequestService.createRegistrationRequest(registrationRequestDto);
+            return ResponseEntity.ok(responseDto);
+        } catch (ApplicationException e) {
+            return ResponseEntity.ok(e.getMessage());
+        }
     }
 
     @GetMapping

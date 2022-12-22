@@ -45,8 +45,6 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
     public RegistrationEventDto addRegistrationEvent(RegistrationEventDto registrationEventDto) {
         RegistrationEvent registrationEvent = new RegistrationEvent();
         registrationEvent = registrationEventMapper.registrationEventFromRegistrationEventDto(registrationEventDto);
-        //System.out.println(registrationEvent);
-        //registrationEventRepository.save(registrationEvent);
         RegistrationEventDto registrationEventStudentDto = registrationEventMapper
                 .registrationEventDtoFromRegistrationEvent(registrationEventRepository.save(registrationEvent));
         jmsTemplate.convertAndSend("registrationEventQueue", "registrationEvent");

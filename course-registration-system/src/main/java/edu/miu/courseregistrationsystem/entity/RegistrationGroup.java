@@ -22,7 +22,7 @@ public class RegistrationGroup {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     long id;
-    @OneToMany(cascade = CascadeType.MERGE)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "registration_group_id")
     private List<Student> students;
     @OneToMany(cascade = CascadeType.ALL)
