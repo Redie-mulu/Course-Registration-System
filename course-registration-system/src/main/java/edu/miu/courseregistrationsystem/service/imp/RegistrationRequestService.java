@@ -4,10 +4,11 @@ import edu.miu.courseregistrationsystem.dto.RegistrationEventDto;
 import edu.miu.courseregistrationsystem.dto.RegistrationRequestDto;
 import edu.miu.courseregistrationsystem.entity.RegistrationEvent;
 import edu.miu.courseregistrationsystem.entity.RegistrationRequest;
-//import edu.miu.courseregistrationsystem.mapper.RegistrationRequestAdapter;
+import edu.miu.courseregistrationsystem.entity.Student;
 import edu.miu.courseregistrationsystem.exception.ApplicationException;
 import edu.miu.courseregistrationsystem.mapper.RegistrationRequestMapper;
 import edu.miu.courseregistrationsystem.repository.RegistrationRequestRepository;
+import edu.miu.courseregistrationsystem.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,40 +24,62 @@ public class RegistrationRequestService {
 
     private RegistrationRequestRepository registrationRequestRepository;
 
+    private StudentRepository studentRepository;
+
     private RegistrationRequestMapper registrationRequestMapper;
 
     private RegistrationEventServiceImp registrationEventService;
 
-    public RegistrationRequestDto createRegistrationRequest(RegistrationRequestDto registrationRequestDto) throws ApplicationException {
-        List<RegistrationEventDto> registrationEventList = registrationEventService.getLatestRegistrationEvent();
-        RegistrationEventDto registrationEvent = registrationEventList.get(0);
+//    public RegistrationRequestDto createRegistrationRequest(RegistrationRequestDto registrationRequestDto) throws ApplicationException {
+//        List<RegistrationEventDto> registrationEventList = registrationEventService.getLatestRegistrationEvent();
+//        RegistrationEventDto registrationEvent = registrationEventList.get(0);
+//
+//        if (Objects.isNull(registrationEvent)
+//                || (LocalDateTime.now().isBefore(registrationEvent.getStartDate())
+//                || LocalDateTime.now().isAfter(registrationEvent.getEndDate()))) {
+//            throw new ApplicationException("Registration period not opened or closed!");
+//        } else {
+//            //
+//            RegistrationRequest request =
+//                    registrationRequestMapper.registrationRequestDtoToRegistrationRequest(registrationRequestDto);
+//            request.getCourseOffering().initial();
+//        }
+//    }
 
-        if(Objects.isNull(registrationEvent)
-                || (LocalDateTime.now().isBefore(registrationEvent.getStartDate())
-                || LocalDateTime.now().isAfter(registrationEvent.getEndDate()))) {
+    public RegistrationRequestDto createRegistrationRequest(long studentId, RegistrationRequestDto registrationRequestDto) throws ApplicationException {
+        RegistrationRequestDto responseDto = new RegistrationRequestDto();
+        List<RegistrationEventDto> registrationEventList = registrationEventService.getLatestRegistrationEvent();
+        if(registrationEventList.isEmpty()) {
+            throw new ApplicationException("No registration event availaible!");
+        }
+        RegistrationEventDto event = registrationEventList.get(0);
+        if(LocalDateTime.now().isBefore(event.getStartDate())
+                || (LocalDateTime.now().isAfter(event.getEndDate()))) {
             throw new ApplicationException("Registration period not opened or closed!");
-        } else {
-            //
+        } else if((event.getStartDate().isBefore(LocalDateTime.now())
+                && event.getEndDate().isAfter(LocalDateTime.now()))) {
             RegistrationRequest request =
                     registrationRequestMapper.registrationRequestDtoToRegistrationRequest(registrationRequestDto);
             request.getCourseOffering().initial();
 
             RegistrationRequest response = registrationRequestRepository.save(request);
-            return registrationRequestMapper
+            Student student = studentRepository.findById(studentId).get();
+            student.addRegistrationRequest(response);
+            studentRepository.save(student);
+
+            responseDto = registrationRequestMapper
                     .registrationRequestToRegistrationRequestDto(registrationRequestRepository.save(request));
         }
+        return responseDto;
     }
+
 
     public List<RegistrationRequestDto> getAllRegistrationRequest() {
         List<RegistrationRequest> list = registrationRequestRepository.findAll();
-        //return RegistrationRequestAdapter
-        //        .registrationRequestsToRegistrationRequestDtos(list);
         return registrationRequestMapper.registrationRequestsToRegistrationRequestDtos(list);
     }
 
     public RegistrationRequestDto getOneRegistrationRequest(Long id) {
-        //return RegistrationRequestAdapter
-        //        .registrationRequestToRegistrationRequestDto(registrationRequestRepository.findById(id).get());
         return registrationRequestMapper
                 .registrationRequestToRegistrationRequestDto(registrationRequestRepository.findById(id).get());
     }
@@ -91,5 +114,10 @@ public class RegistrationRequestService {
     @Autowired
     public void setRegistrationEventService(RegistrationEventServiceImp registrationEventService) {
         this.registrationEventService = registrationEventService;
+    }
+
+    @Autowired
+    public void setStudentRepository(StudentRepository studentRepository) {
+        this.studentRepository = studentRepository;
     }
 }

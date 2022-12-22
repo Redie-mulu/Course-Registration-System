@@ -4,12 +4,10 @@ import edu.miu.courseregistrationsystem.dto.AcademicBlockStudentDto;
 import edu.miu.courseregistrationsystem.dto.RegistrationEventDto;
 import edu.miu.courseregistrationsystem.dto.RegistrationEventStudentDto;
 import edu.miu.courseregistrationsystem.dto.RegistrationGroupStudentDto;
-import edu.miu.courseregistrationsystem.entity.AcademicBlock;
-import edu.miu.courseregistrationsystem.entity.RegistrationEvent;
-import edu.miu.courseregistrationsystem.entity.RegistrationGroup;
-import edu.miu.courseregistrationsystem.entity.Student;
+import edu.miu.courseregistrationsystem.entity.*;
+import edu.miu.courseregistrationsystem.enumeration.RegistrationRequestStatus;
 import edu.miu.courseregistrationsystem.mapper.RegistrationEventMapper;
-import edu.miu.courseregistrationsystem.repository.RegistrationEventRepository;
+import edu.miu.courseregistrationsystem.repository.*;
 import edu.miu.courseregistrationsystem.service.RegistrationEventService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +23,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -39,6 +38,18 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
     private RegistrationGroupServiceImp registrationGroupServiceImp;
     @Autowired
     private ModelMapper modelMapper;
+    @Autowired
+    private RegistrationRepository registrationRepository;
+
+    @Autowired
+    private CourseRepository courseRepository;
+
+    @Autowired
+    private RegistrationRequestRepository registrationRequestRepository;
+    @Autowired
+    private StudentRepository studentRepository;
+    @Autowired
+    private CourseOfferingRepository courseOfferingRepository;
 
 
     @Override
@@ -169,4 +180,94 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
             }
         }
     }*/
+    /**
+     * dmin should be able to process registration event
+     */
+    @Override
+    public void processRegistrationEvent(long registrationEventId) {
+
+        RegistrationEvent registrationEvent = registrationEventRepository.findById(registrationEventId).get();
+//        if(registrationEvent.getStatus().equals("Closed")) {
+
+            List<Student> students = registrationEvent.getRegistrationGroups().stream()
+                    .flatMap(registrationGroup -> registrationGroup.getStudents().stream())
+                    .collect(Collectors.toList());
+            for (Student student : students) {
+                System.out.println("student" + student);
+                List<RegistrationRequest> registrationRequests = student.getRequests();
+                for (RegistrationRequest registrationRequest : registrationRequests) {
+                    Registration registration = convertRegistrationRequestToRegistration(registrationRequest, student.getId());
+                    System.out.println("registration" + registration);
+//                System.out.println(registration);
+                    registrationRepository.save(registration);
+                }
+
+            }
+//        }
+    }
+    public Registration convertRegistrationRequestToRegistration(RegistrationRequest registrationRequest, long studentId) {
+     if(registrationRequest.getPriority() == 1) {
+         if(checkAvailableSeats(registrationRequest.getCourseOffering()) && checkPrerequisites(registrationRequest.getCourseOffering(), studentId)) {
+                Registration registration = new Registration();
+             registration.setCourseOfferings(registrationRequest.getCourseOffering());
+             registration.setStudent(studentRepository.findById(studentId).get());
+             registrationRequest.setStatus(RegistrationRequestStatus.ACCEPTED);
+             registrationRequestRepository.save(registrationRequest);
+             System.out.println("registrationRequest" + registrationRequest);
+             /**
+              * update available seats
+              */
+                CourseOffering courseOffering = registrationRequest.getCourseOffering();
+                courseOffering.setAvailableSeats(courseOffering.getAvailableSeats() - 1);
+                courseOfferingRepository.save(courseOffering);
+             return registration;
+            }
+         }
+        else {
+         registrationRequest.setStatus(RegistrationRequestStatus.ACCEPTED);
+        }
+        return null;
+     }
+
+
+    /**
+     *
+     *check if the courseOffering have available seats
+     */
+    public boolean checkAvailableSeats(CourseOffering courseOffering){
+        if(courseOffering.getAvailableSeats() > 0){
+            System.out.println("available seats");
+            return true;
+        }
+        return false;
+    }
+    public boolean checkPrerequisites(CourseOffering courseOffering, long studentId){
+        Course course = courseOffering.getCourse();
+        List<Course> coursePrerequisites = new ArrayList<>();
+        coursePrerequisites = courseRepository.findById(course.getId()).get().getPreRequisite();
+        // if the course has no prerequisites it is possible to register
+        if(coursePrerequisites.size() == 0) {
+            return true;
+        }
+        /**
+         * if the course has prerequisites, we need to check if the student has taken the prerequisites
+         * get the list of prerequisites of the course form courseRepository
+         * get the list of registrations of the student form registrationRepository
+         * and check if the student already has taken the prerequisites
+         */
+        List<Course> prerequisites = courseOffering.getCourse().getPreRequisite();
+        List<Registration> registrations = registrationRepository.findAllByStudentId(studentId);
+        List<Course> courseTakenByStudent = new ArrayList<>();
+        for(Registration registration: registrations){
+            courseTakenByStudent.add(registration.getCourseOfferings().getCourse());
+        }
+        for(Course course1: prerequisites){
+            System.out.println("course1" + course1);
+            if(!courseTakenByStudent.contains(course1)){
+                return false;
+            }
+        }
+        return true;
+    }
+
 }

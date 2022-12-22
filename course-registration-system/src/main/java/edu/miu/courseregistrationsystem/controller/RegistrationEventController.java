@@ -93,5 +93,17 @@ public class  RegistrationEventController {
         List<RegistrationEventStudentDto> registrationEventDtos = registrationEventService.getRegistrationEventByStudentId(id);
         return new ResponseEntity<List<RegistrationEventStudentDto>>(registrationEventDtos, HttpStatus.OK);
     }
+    /** admin should be able to process registration event
+     *
+     */
+    @PatchMapping("/{id}")
+    public ResponseEntity<?> processRegistrationEvent(@PathVariable long id, @RequestParam boolean processed) {
+        if(processed) {
+            registrationEventService.processRegistrationEvent(id);
+        } else {
+            new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 
 }

@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 public class CourseDto {
 
-    private Long id;
+    private long id;
     private String code;
     private String name;
     private String description;

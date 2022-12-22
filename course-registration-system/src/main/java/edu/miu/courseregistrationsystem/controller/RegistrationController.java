@@ -75,8 +75,8 @@ public class RegistrationController {
 
     @PostMapping
     public ResponseEntity<?> addStudent(@RequestBody StudentDto studentDto){
-            studentService.add(studentDto);
-        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+            StudentDto responseDto = studentService.add(studentDto);
+        return ResponseEntity.ok(responseDto);
     }
     //CourseOffering in Registration
 

@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -35,6 +36,14 @@ public class Student extends User {
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "student_id")
     List<RegistrationGroup> registrationGroups;
+
+    public void addRegistrationRequest(RegistrationRequest registrationRequest) {
+        if (requests == null) {
+            requests = new ArrayList<>();
+        }
+        requests.add(registrationRequest);
+    }
+
 
 
 }

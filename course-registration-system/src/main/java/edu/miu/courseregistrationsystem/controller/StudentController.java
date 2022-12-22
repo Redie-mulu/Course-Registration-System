@@ -25,6 +25,10 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
+    @GetMapping("test")
+    public String test() {
+        return "test";
+    }
     @GetMapping
     public ResponseEntity<?> getAllStudents() {
         Students students = new Students();
@@ -34,9 +38,9 @@ public class StudentController {
     }
     @PostMapping
     public ResponseEntity<?> registerStudent(@RequestBody StudentDto studentDto) {
-        studentService.registerStudent(studentDto);
+        StudentDto responseDto = studentService.registerStudent(studentDto);
         //return new ResponseEntity<StudentDto>(studentDto, HttpStatus.OK);
-        return new ResponseEntity<StudentDto>(studentService.registerStudent(studentDto), HttpStatus.OK);
+        return new ResponseEntity<StudentDto>(responseDto, HttpStatus.OK);
     }
     @GetMapping("/{id}")
     public ResponseEntity<?> getStudent(@PathVariable long id) {

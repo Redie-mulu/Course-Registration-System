@@ -16,12 +16,16 @@ public class RegistrationRequestController {
     private RegistrationRequestService registrationRequestService;
 
     @PostMapping
-    public ResponseEntity<?> addRegistrationRequest(@RequestBody RegistrationRequestDto registrationRequestDto) {
+    public ResponseEntity<?> addRegistrationRequest(@RequestParam long studentId, @RequestBody RegistrationRequestDto registrationRequestDto) {
         RegistrationRequestDto responseDto = new RegistrationRequestDto();
+
+//        responseDto = registrationRequestService.createRegistrationRequest(studentId, registrationRequestDto);
+//        return ResponseEntity.ok(responseDto);
+//
         try{
-            responseDto = registrationRequestService.createRegistrationRequest(registrationRequestDto);
+            responseDto = registrationRequestService.createRegistrationRequest(studentId, registrationRequestDto);
             return ResponseEntity.ok(responseDto);
-        } catch (ApplicationException e) {
+        } catch (Exception e) {
             return ResponseEntity.ok(e.getMessage());
         }
     }
