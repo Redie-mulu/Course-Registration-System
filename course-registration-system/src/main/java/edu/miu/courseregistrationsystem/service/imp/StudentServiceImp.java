@@ -104,8 +104,9 @@ public class StudentServiceImp implements StudentService {
     @Override
     public StudentDto add(StudentDto studentDto) {
         Student student = studentMapper.studentFromStudentDto(studentDto);
-        studentRepository.save(student);
-        return studentDto;
+        Student response = studentRepository.save(student);
+        StudentDto responseDto = studentMapper.studentDtoFromStudent(response);
+        return responseDto;
     }
 
     @Override
