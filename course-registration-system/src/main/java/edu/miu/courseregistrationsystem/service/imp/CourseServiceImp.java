@@ -7,6 +7,7 @@ import edu.miu.courseregistrationsystem.mapper.CourseMapper;
 import edu.miu.courseregistrationsystem.repository.CourseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 /**
@@ -16,6 +17,7 @@ import java.util.List;
  */
 
 @Service
+@Transactional
 public class CourseServiceImp implements CourseService{
     @Autowired
     CourseRepository courseRepository;

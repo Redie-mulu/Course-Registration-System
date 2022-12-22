@@ -28,7 +28,7 @@ public class Student extends User {
     @JoinColumn(name = "home_address_id")
     private Address homeAddress;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.MERGE)
     @JoinColumn(name = "student_id")
     List<RegistrationRequest> requests;
 

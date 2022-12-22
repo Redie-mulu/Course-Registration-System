@@ -1,6 +1,7 @@
 package edu.miu.courseregistrationsystem.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -25,7 +26,7 @@ public class AcademicBlock {
      * The code for the course offering
      *
      * 2020-09-01D
-      */
+     */
     private String code;
     /**
      * The name of the academic block
@@ -37,6 +38,7 @@ public class AcademicBlock {
 
     @OneToMany(cascade = CascadeType.ALL)
     private List<CourseOffering> courseOfferings;
+
 
     public void addCourseOffering(CourseOffering courseOffering){
         this.courseOfferings.add(courseOffering);

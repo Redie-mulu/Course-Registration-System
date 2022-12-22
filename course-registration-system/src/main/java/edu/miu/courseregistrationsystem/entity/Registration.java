@@ -20,7 +20,7 @@ import java.util.List;
 @Data
 public class Registration {
 
-    @Id @GeneratedValue
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne(cascade = CascadeType.ALL)

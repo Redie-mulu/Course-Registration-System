@@ -50,10 +50,10 @@ public class RegistrationRequestAdapter {
         course.setCode(registrationRequestDto.getCourseOffering().getCourse().getCode());
         course.setName(registrationRequestDto.getCourseOffering().getCourse().getName());
         course.setDescription(registrationRequestDto.getCourseOffering().getCourse().getDescription());
-        for(CourseDto courseDto: registrationRequestDto.getCourseOffering().getCourse().getPreRequisite()) {
-            Course preRequesitecourse = courseMapper.courseFromCourseDto(courseDto);
-            listOfCourse.add(preRequesitecourse);
-        }
+//        for(CourseDto courseDto: registrationRequestDto.getCourseOffering().getCourse().getPreRequisite()) {
+//            Course preRequesitecourse = courseMapper.courseFromCourseDto(courseDto);
+//            listOfCourse.add(preRequesitecourse);
+//        }
 
         course.setPreRequisite(listOfCourse);
 

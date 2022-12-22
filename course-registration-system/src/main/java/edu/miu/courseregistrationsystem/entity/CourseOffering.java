@@ -7,13 +7,14 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 public class CourseOffering {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String code;
     private Long capacity;
@@ -22,7 +23,6 @@ public class CourseOffering {
     @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.PERSIST, CascadeType.ALL})
     private Course course;
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "courseOffering_id")
     private Faculty faculty;
 
 
