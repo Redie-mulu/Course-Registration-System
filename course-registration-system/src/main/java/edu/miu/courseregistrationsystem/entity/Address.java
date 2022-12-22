@@ -16,7 +16,7 @@ import java.util.List;
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
     private String street;
     private String city;
     private String postalCode;

@@ -28,7 +28,7 @@ public class RegistrationEventEmailSender {
     private RegistrationEventRepository registrationEventRepository;
 
 //    @Scheduled(cron = "0 0 12 ? * ?")
-    @Scheduled(fixedRate = 20000)
+//    @Scheduled(fixedRate = 20000)
     public void sendEmailReminder() {
         Date date = Calendar.getInstance().getTime();
         DateFormat timeFormatter = DateFormat.getTimeInstance(DateFormat.DEFAULT);

@@ -38,7 +38,7 @@ public class StudentServiceImpTest {
         long id = 201;
         Address address = new Address("123", "123", "123", "123", "123");
 
-        Student student = Student.builder().id(1).name("Redi").email("Redi@gmail.com")
+        Student student = Student.builder().id(1L).name("Redi").email("Redi@gmail.com")
                 .homeAddress(address).mailingAddress(address).build();
         Optional<Student> suraOptional = Optional.of(student);
         when(studentRepository.findById(Mockito.any())).thenReturn(suraOptional);

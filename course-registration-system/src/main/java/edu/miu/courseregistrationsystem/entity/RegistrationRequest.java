@@ -24,4 +24,8 @@ public class RegistrationRequest {
     @JoinColumn
     private CourseOffering courseOffering;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "student_Id")
+    private Student student;
+
 }

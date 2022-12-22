@@ -13,9 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+//import org.springframework.transaction.annotation.Transactional;
 
 
+import javax.transaction.Transactional;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -36,10 +37,12 @@ public class RegistrationEventServiceImp implements RegistrationEventService {
 
     @Override
     public RegistrationEventDto addRegistrationEvent(RegistrationEventDto registrationEventDto) {
-        RegistrationEvent registrationEvent = registrationEventMapper.registrationEventFromRegistrationEventDto(registrationEventDto);
-        System.out.println(registrationEvent);
-        registrationEventRepository.save(registrationEvent);
-        RegistrationEventDto registrationEventStudentDto = registrationEventMapper.registrationEventDtoFromRegistrationEvent(registrationEvent);
+        RegistrationEvent registrationEvent = new RegistrationEvent();
+        registrationEvent = registrationEventMapper.registrationEventFromRegistrationEventDto(registrationEventDto);
+        //System.out.println(registrationEvent);
+        //registrationEventRepository.save(registrationEvent);
+        RegistrationEventDto registrationEventStudentDto = registrationEventMapper
+                .registrationEventDtoFromRegistrationEvent(registrationEventRepository.save(registrationEvent));
         jmsTemplate.convertAndSend("registrationEventQueue", "registrationEvent");
         System.out.println("message sent");
         return registrationEventDto;

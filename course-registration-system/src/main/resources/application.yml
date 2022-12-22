@@ -24,6 +24,9 @@ spring:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     database: postgresql
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
 #  activemq:
 #    broker-url: tcp://localhost:61616
 #    user: admin

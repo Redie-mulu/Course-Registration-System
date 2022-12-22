@@ -28,9 +28,12 @@ public class Student extends User {
     @JoinColumn(name = "home_address_id")
     private Address homeAddress;
 
-    @OneToMany(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "student_id")
+    @OneToMany(mappedBy = "student", cascade = CascadeType.MERGE)
     List<RegistrationRequest> requests;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "student_id")
+    List<RegistrationGroup> registrationGroups;
 
 
 }

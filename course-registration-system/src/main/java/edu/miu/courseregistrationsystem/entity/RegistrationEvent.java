@@ -26,7 +26,7 @@ public class RegistrationEvent {
 
     @Enumerated(EnumType.STRING)
     private RegistrationEventStatus status = RegistrationEventStatus.NEW;
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = {CascadeType.MERGE, CascadeType.PERSIST})
     List<RegistrationGroup> registrationGroups;
 
     public RegistrationEvent() {

@@ -37,8 +37,11 @@ public class AcademicBlock {
     private LocalDate startDate;
     private LocalDate endDate;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.MERGE)
     private List<CourseOffering> courseOfferings;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    List<RegistrationGroup> registrationGroups;
 
     public void addCourseOffering(CourseOffering courseOffering){
         this.courseOfferings.add(courseOffering);

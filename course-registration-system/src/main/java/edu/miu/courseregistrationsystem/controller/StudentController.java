@@ -1,6 +1,7 @@
 package edu.miu.courseregistrationsystem.controller;
 
 import edu.miu.courseregistrationsystem.dto.StudentDto;
+import edu.miu.courseregistrationsystem.mapper.StudentMapper;
 import edu.miu.courseregistrationsystem.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/students")
 public class StudentController {
+
+    private StudentMapper studentMapper;
     @Autowired
     private StudentService studentService;
 
@@ -28,10 +31,10 @@ public class StudentController {
         students.setStudents(students2);
         return new ResponseEntity<>(students, HttpStatus.OK);
     }
-    @PostMapping("/register")
+    @PostMapping
     public ResponseEntity<?> registerStudent(@RequestBody StudentDto studentDto) {
         studentService.registerStudent(studentDto);
-        return new ResponseEntity<StudentDto>(studentDto, HttpStatus.OK);
+        return new ResponseEntity<StudentDto>(studentService.registerStudent(studentDto), HttpStatus.OK);
     }
     @GetMapping("/{id}")
     public ResponseEntity<?> getStudent(@PathVariable long id) {
@@ -53,11 +56,15 @@ public class StudentController {
      * @param "studentDto"
      */
     // TODO: fix list of students
-    @PostMapping
+   // @PostMapping
     public ResponseEntity<?> addStudents(@RequestBody List<StudentDto> studentDtos) {
         studentService.addStudents(studentDtos);
         System.out.println(studentDtos);
         return new ResponseEntity<Students>(HttpStatus.OK);
     }
 
+    @Autowired
+    public void setStudentMapper(StudentMapper studentMapper) {
+        this.studentMapper = studentMapper;
+    }
 }
