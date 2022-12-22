@@ -41,17 +41,6 @@ public class RegistrationRequestService {
             return registrationRequestMapper
                     .registrationRequestToRegistrationRequestDto(registrationRequestRepository.save(request));
         }
-
-//        RegistrationRequest request =
-//                //RegistrationRequestAdapter.registrationRequestDtoToRegistrationRequest(registrationRequestDto);
-//                registrationRequestMapper.registrationRequestDtoToRegistrationRequest(registrationRequestDto);
-//        request.getCourseOffering().initial();
-//
-//        RegistrationRequest response = registrationRequestRepository.save(request);
-//        //return RegistrationRequestAdapter
-//        //        .registrationRequestToRegistrationRequestDto(registrationRequestRepository.save(request));
-//        return registrationRequestMapper
-//                .registrationRequestToRegistrationRequestDto(registrationRequestRepository.save(request));
     }
 
     public List<RegistrationRequestDto> getAllRegistrationRequest() {
@@ -80,10 +69,6 @@ public class RegistrationRequestService {
         requestFromDb.setStatus(request.getStatus());
         requestFromDb.setCourseOffering(request.getCourseOffering());
         requestFromDb.setPriority(request.getPriority());
-        //requestFromDb.setId(requestDto.getId());
-
-        //return RegistrationRequestAdapter
-        //        .registrationRequestToRegistrationRequestDto(registrationRequestRepository.saveAndFlush(requestFromDb));
         return registrationRequestMapper
                 .registrationRequestToRegistrationRequestDto(registrationRequestRepository.saveAndFlush(requestFromDb));
     }
