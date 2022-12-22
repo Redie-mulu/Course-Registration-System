@@ -2,7 +2,7 @@ package edu.miu.courseregistrationsystem.mapper;
 
 import edu.miu.courseregistrationsystem.dto.RegistrationGroupDto;
 import edu.miu.courseregistrationsystem.entity.RegistrationGroup;
-import org.mapstruct.Mapper;
+ import org.mapstruct.Mapper;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,8 @@ import java.util.List;
  * @version 1.0
  * @created 10/12/2020 12:04 AM
  */
-@Mapper(componentModel = "spring")
+@Mapper
+        (componentModel = "spring")
 public interface RegistrationGroupMapper {
 
     public RegistrationGroup registrationGroupFromRegistrationGroupDto(RegistrationGroupDto registrationGroupDto);

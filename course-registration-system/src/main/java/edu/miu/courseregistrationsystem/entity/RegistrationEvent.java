@@ -1,6 +1,7 @@
 package edu.miu.courseregistrationsystem.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -19,7 +20,9 @@ public class RegistrationEvent {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @JsonIgnore
     private LocalDate startDate;
+    @JsonIgnore
     private LocalDate endDate;
     private String status = "new";
     @OneToMany(cascade = CascadeType.ALL)

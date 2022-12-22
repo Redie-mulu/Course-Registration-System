@@ -1,5 +1,6 @@
 package edu.miu.courseregistrationsystem.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import edu.miu.courseregistrationsystem.entity.CourseOffering;
 import lombok.*;
 
@@ -17,7 +18,9 @@ public class AcademicBlockDto {
     private String code;
     private String name;
     private String semester;
+    @JsonIgnore
     private LocalDate startDate;
+    @JsonIgnore
     private LocalDate endDate;
 //    private List<CourseOfferingDto> courseOfferings;
 

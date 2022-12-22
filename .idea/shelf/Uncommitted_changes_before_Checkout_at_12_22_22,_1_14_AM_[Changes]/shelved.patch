@@ -1,0 +1,188 @@
+Index: course-registration-system/src/main/java/edu/miu/courseregistrationsystem/mapper/RegistrationRequestMapper.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package edu.miu.courseregistrationsystem.mapper;\n\nimport edu.miu.courseregistrationsystem.dto.RegistrationRequestDto;\nimport edu.miu.courseregistrationsystem.entity.RegistrationRequest;\nimport org.mapstruct.Mapper;\n\nimport java.util.List;\n\n/**\n * * @author: Ruta\n * @author <a href=\"mailto:hermann.tipoh@gmail.com\">Koffi Adolf Hermann Tipoh </a>\n * @version %I% %G%\n * @since 12/17/2022\n *\n * Interface to map RegistrationRequestDTo to RegistrationRequest and vice versa\n */\n@Mapper(componentModel = \"spring\")\npublic interface RegistrationRequestMapper {\n    public RegistrationRequest registrationRequestDtoToregistrationRequest(RegistrationRequestDto registrationRequestDto);\n\n    public RegistrationRequestDto registrationRequestToregistrationRequestDto(RegistrationRequest registrationRequest);\n\n    public List<RegistrationRequestDto> registrationRequestsToregistrationRequestDtos(List<RegistrationRequest> registrationRequests);\n\n    public List<RegistrationRequest> registrationRequestDtosToregistrationRequests(List<RegistrationRequestDto> registrationRequestDtos);\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/mapper/RegistrationRequestMapper.java b/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/mapper/RegistrationRequestMapper.java
+--- a/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/mapper/RegistrationRequestMapper.java	(revision ebc57145bef1ea1f517c59a36a77af896f7ad193)
++++ b/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/mapper/RegistrationRequestMapper.java	(date 1671693242337)
+@@ -14,7 +14,8 @@
+  *
+  * Interface to map RegistrationRequestDTo to RegistrationRequest and vice versa
+  */
+-@Mapper(componentModel = "spring")
++@Mapper
++        (componentModel = "spring")
+ public interface RegistrationRequestMapper {
+     public RegistrationRequest registrationRequestDtoToregistrationRequest(RegistrationRequestDto registrationRequestDto);
+ 
+Index: .idea/inspectionProfiles/Project_Default.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><component name=\"InspectionProjectProfileManager\">\n  <profile version=\"1.0\">\n    <option name=\"myName\" value=\"Project Default\" />\n    <inspection_tool class=\"com.haulmont.jpb.CompositeIdClassSerializable\" enabled=\"true\" level=\"WARNING\" enabled_by_default=\"true\">\n      <option name=\"j\">\n        <Project />\n      </option>\n    </inspection_tool>\n  </profile>\n</component>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/inspectionProfiles/Project_Default.xml b/.idea/inspectionProfiles/Project_Default.xml
+--- a/.idea/inspectionProfiles/Project_Default.xml	(revision ebc57145bef1ea1f517c59a36a77af896f7ad193)
++++ b/.idea/inspectionProfiles/Project_Default.xml	(date 1671693213274)
+@@ -2,7 +2,7 @@
+   <profile version="1.0">
+     <option name="myName" value="Project Default" />
+     <inspection_tool class="com.haulmont.jpb.CompositeIdClassSerializable" enabled="true" level="WARNING" enabled_by_default="true">
+-      <option name="j">
++      <option name="X">
+         <Project />
+       </option>
+     </inspection_tool>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"f8907c85-f0d0-4dff-8c02-19e3acf3e2dc\" name=\"Changes\" comment=\"\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Interface\" />\n        <option value=\"Class\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\n      <map>\n        <entry key=\"$PROJECT_DIR$\" value=\"develop\" />\n      </map>\n    </option>\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"JpbToolWindowState\">\n    <option name=\"isToolWindowVisible\" value=\"false\" />\n  </component>\n  <component name=\"MarkdownSettingsMigration\">\n    <option name=\"stateVersion\" value=\"1\" />\n  </component>\n  <component name=\"MavenImportPreferences\">\n    <option name=\"generalSettings\">\n      <MavenGeneralSettings>\n        <option name=\"mavenHome\" value=\"Use Maven wrapper\" />\n        <option name=\"useMavenConfig\" value=\"true\" />\n      </MavenGeneralSettings>\n    </option>\n  </component>\n  <component name=\"ProjectId\" id=\"2J1bd0JYFHHiHYGCXZC8DEs1bj6\" />\n  <component name=\"ProjectLevelVcsManager\">\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\n  </component>\n  <component name=\"ProjectViewState\">\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">{\n  &quot;keyToString&quot;: {\n    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,\n    &quot;last_opened_file_path&quot;: &quot;/Users/ruth/Desktop/EA/Project/cs/newProject/Course-Registration-System&quot;,\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\n    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,\n    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,\n    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,\n    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,\n    &quot;spring.configuration.checksum&quot;: &quot;a445e67bc3767185b4793e80f880397c&quot;,\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\n  },\n  &quot;keyToStringList&quot;: {\n    &quot;DatabaseDriversLRU&quot;: [\n      &quot;postgresql&quot;\n    ]\n  }\n}</component>\n  <component name=\"RunAnythingCache\">\n    <option name=\"myCommands\">\n      <command value=\"mvn clean install\" />\n    </option>\n  </component>\n  <component name=\"RunManager\" selected=\"Spring Boot.CourseRegistrationApplication\">\n    <configuration name=\"CourseRegistrationApplication\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"course-registration-system\" />\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"edu.miu.courseregistrationsystem.CourseRegistrationApplication\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"edu.miu.courseregistrationsystem.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Spring Boot.CourseRegistrationApplication\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"f8907c85-f0d0-4dff-8c02-19e3acf3e2dc\" name=\"Changes\" comment=\"\" />\n      <created>1671248619986</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1671248619986</updated>\n      <workItem from=\"1671520394815\" duration=\"1247000\" />\n      <workItem from=\"1671561083703\" duration=\"685000\" />\n    </task>\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"FILTERS\">\n                <map>\n                  <entry key=\"branch\">\n                    <value>\n                      <list>\n                        <option value=\"origin/main\" />\n                      </list>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n  </component>\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\n    <SUITE FILE_PATH=\"coverage/Course_Registration_System$CourseRegistrationApplication.ic\" NAME=\"CourseRegistrationApplication Coverage Results\" MODIFIED=\"1671494729987\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\">\n      <FILTER>edu.miu.courseregistrationsystem.*</FILTER>\n    </SUITE>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision ebc57145bef1ea1f517c59a36a77af896f7ad193)
++++ b/.idea/workspace.xml	(date 1671693213907)
+@@ -5,84 +5,57 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="f8907c85-f0d0-4dff-8c02-19e3acf3e2dc" name="Changes" comment="">
+-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/mapper/RegistrationRequestMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/course-registration-system/src/main/java/edu/miu/courseregistrationsystem/mapper/RegistrationRequestMapper.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+     <option name="LAST_RESOLUTION" value="IGNORE" />
+-  </component>
+-  <component name="FileTemplateManagerImpl">
+-    <option name="RECENT_TEMPLATES">
+-      <list>
+-        <option value="Interface" />
+-        <option value="Class" />
+-      </list>
+-    </option>
+   </component>
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="develop" />
++        <entry key="$PROJECT_DIR$" value="main" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+-  <component name="JpbToolWindowState">
+-    <option name="isToolWindowVisible" value="false" />
+-  </component>
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+   </component>
+   <component name="MavenImportPreferences">
+     <option name="generalSettings">
+       <MavenGeneralSettings>
+-        <option name="mavenHome" value="Use Maven wrapper" />
+         <option name="useMavenConfig" value="true" />
+       </MavenGeneralSettings>
+     </option>
+   </component>
+   <component name="ProjectId" id="2J1bd0JYFHHiHYGCXZC8DEs1bj6" />
+-  <component name="ProjectLevelVcsManager">
+-    <ConfirmationsSetting value="2" id="Add" />
+-  </component>
+   <component name="ProjectViewState">
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;/Users/ruth/Desktop/EA/Project/cs/newProject/Course-Registration-System&quot;,
+-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+-    &quot;project.structure.last.edited&quot;: &quot;Global Libraries&quot;,
+-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+-    &quot;spring.configuration.checksum&quot;: &quot;a445e67bc3767185b4793e80f880397c&quot;,
+-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+-  },
+-  &quot;keyToStringList&quot;: {
+-    &quot;DatabaseDriversLRU&quot;: [
+-      &quot;postgresql&quot;
+-    ]
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "Git.Branch.Popup.ShowAllRemotes": "true",
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "WebServerToolWindowFactoryState": "false",
++    "node.js.detected.package.eslint": "true",
++    "node.js.detected.package.tslint": "true",
++    "node.js.selected.package.eslint": "(autodetect)",
++    "node.js.selected.package.tslint": "(autodetect)",
++    "nodejs_package_manager_path": "npm",
++    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
++    "spring.configuration.checksum": "a445e67bc3767185b4793e80f880397c",
++    "vue.rearranger.settings.migration": "true"
+   }
+-}</component>
+-  <component name="RunAnythingCache">
+-    <option name="myCommands">
+-      <command value="mvn clean install" />
+-    </option>
+-  </component>
+-  <component name="RunManager" selected="Spring Boot.CourseRegistrationApplication">
+-    <configuration name="CourseRegistrationApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+-      <module name="course-registration-system" />
+-      <option name="SPRING_BOOT_MAIN_CLASS" value="edu.miu.courseregistrationsystem.CourseRegistrationApplication" />
++}]]></component>
++  <component name="RunManager">
++    <configuration name="CourseRegistrationApplication" type="Application" factoryName="Application" nameIsGenerated="true">
++      <option name="ALTERNATIVE_JRE_PATH" value="18" />
++      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
++      <option name="MAIN_CLASS_NAME" value="edu.miu.courseregistrationsystem.CourseRegistrationApplication" />
+       <extension name="coverage">
+         <pattern>
+           <option name="PATTERN" value="edu.miu.courseregistrationsystem.*" />
+@@ -93,11 +66,6 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <recent_temporary>
+-      <list>
+-        <item itemvalue="Spring Boot.CourseRegistrationApplication" />
+-      </list>
+-    </recent_temporary>
+   </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+@@ -107,8 +75,6 @@
+       <option name="number" value="Default" />
+       <option name="presentableId" value="Default" />
+       <updated>1671248619986</updated>
+-      <workItem from="1671520394815" duration="1247000" />
+-      <workItem from="1671561083703" duration="685000" />
+     </task>
+     <servers />
+   </component>
+@@ -138,9 +104,4 @@
+       </map>
+     </option>
+   </component>
+-  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+-    <SUITE FILE_PATH="coverage/Course_Registration_System$CourseRegistrationApplication.ic" NAME="CourseRegistrationApplication Coverage Results" MODIFIED="1671494729987" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+-      <FILTER>edu.miu.courseregistrationsystem.*</FILTER>
+-    </SUITE>
+-  </component>
+ </project>
+\ No newline at end of file

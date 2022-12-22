@@ -14,7 +14,8 @@ import java.util.List;
  *
  * Interface to map RegistrationRequestDTo to RegistrationRequest and vice versa
  */
-@Mapper(componentModel = "spring")
+@Mapper
+        (componentModel = "spring")
 public interface RegistrationRequestMapper {
     public RegistrationRequest registrationRequestDtoToregistrationRequest(RegistrationRequestDto registrationRequestDto);
 

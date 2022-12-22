@@ -1,5 +1,6 @@
 package edu.miu.courseregistrationsystem.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import edu.miu.courseregistrationsystem.dto.CourseOfferingDto;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -34,7 +35,9 @@ public class AcademicBlock {
      */
     private String name;
     private String semester;
+    @JsonIgnore
     private LocalDate startDate;
+    @JsonIgnore
     private LocalDate endDate;
 
     @OneToMany(cascade = CascadeType.ALL)
